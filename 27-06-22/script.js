@@ -37,8 +37,8 @@ try {
   }
 } catch (error) {
   localStorage.setItem("username", userLogIn);
-  console.log("Nome utente invalido, prova con Pippo");
-  alert("Nome utente invalido, prova con Pippo");
+  console.log("Nome utente invalido");
+  alert("Nome utente invalido");
   document.body.append(imgEl);
   imgEl.src = "http://maurizioreale.it/wp-content/uploads/2016/01/errore.png";
 }
