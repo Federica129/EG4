@@ -1,3 +1,5 @@
+import { DELETE, GET } from "./api.js";
+
 const c = (el) => document.createElement(el);
 
 const q = (el) => document.querySelector(el);
@@ -50,6 +52,11 @@ const createMessageEl = (parent, text, sender, date, id) => {
   dataPar.textContent = date.split("T")[0].split("-").reverse().join("-");
   //dataPar.textContent = date;
 
+  wrapper.addEventListener("click", () => {
+    DELETE("https://edgemony-backend.herokuapp.com/messages/", id).then(() =>
+      location.reload()
+    );
+  });
   wrapper.append(textPar, senderPar, dataPar);
   parent.appendChild(wrapper);
 };

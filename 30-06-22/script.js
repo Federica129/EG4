@@ -29,8 +29,8 @@ GET("https://edgemony-backend.herokuapp.com/friends").then((friendList) => {
 GET("https://edgemony-backend.herokuapp.com/messages").then((messagesList) => {
   messagesList
     .reverse()
-    .map(({ text, sender, date }) =>
-      createMessageEl(messagesListEl, text, sender, date)
+    .map(({ text, sender, date, id }) =>
+      createMessageEl(messagesListEl, text, sender, date, id)
     ); // Questo è identico a quello che succede in riga 11
 });
 
@@ -83,9 +83,9 @@ filterInput.addEventListener("input", (e) => {
   );
 });
 
-removeCard.addEventListener("click", () => {
-  DELETE(
-    "https://edgemony-backend.herokuapp.com/messages",
-    createMessageEl
-  ).then(() => location.reload());
-});
+// removeCard.addEventListener("click", (e) => {
+//   DELETE(
+//     "https://edgemony-backend.herokuapp.com/messages",
+//     createMessageEl
+//   ).then(() => location.reload());
+// });
