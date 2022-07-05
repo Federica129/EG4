@@ -50,17 +50,18 @@ const shop = {
     return this._products;
   },
   set products(value) {
-    // let [id = 0, name = "TV", price = 40] = value.split(" "); ---> PROVA con riga 59
-    this._products[0].id = id + 1;
-    this._products[0].name = name;
-    this._products[0].price = price;
+    // let [id = 0, name = "TV", price = 40] = value.split(" "); ---> PROVA con riga 60
+    // this._products[0].id = id + 1;
+    // this._products[0].name = name;
+    // this._products[0].price = price;
+    this._products = [...this._products, value];
   },
 };
 // shop.products = " Radio 50";
 // shop._products = [{ id: 2, name: "PC", price: 30 }];
 shop._products[0] = { id: 1, name: "Radio", price: 50 };
 
-console.log(shop.products);
+console.log(shop._products);
 
 document.body.innerHTML = `<li>${shop.products[0].id}</li>
 <li>${shop.products[0].name}</li>
