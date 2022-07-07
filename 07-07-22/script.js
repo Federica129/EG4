@@ -39,11 +39,13 @@ formEl.addEventListener("submit", (event) => {
   //   buttonEl.textContent = "Delete";
 
   const inputEl = document.querySelector("input");
-  const newTask = inputEl.value;
+  const newTask = [inputEl.value];
   const hours = new Date().getHours(); //Bonus track
   const minuts = new Date().getMinutes();
   const newTaskHTML = `<li><input type="checkbox"/><span>${newTask}</span> - Added task at ${hours}:${minuts} <button class="remove">X</button></li>`;
 
+  localStorage.setItem("Lista", newTask);
+  localStorage.getItem("Lista");
   ulEl.innerHTML += newTaskHTML; // Per avere più di una task in lista mettendo +=. += a se stesso
   inputEl.value = ""; //Svuotare l'input dopo l'INVIO
 
