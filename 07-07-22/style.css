@@ -20,6 +20,10 @@ ul {
   margin-right: 30%;
   background-color: #576f72;
   border-radius: 30px;
+  text-align: center;
+}
+.title img {
+  width: 300px;
 }
 .add {
   padding: 5px 15px;

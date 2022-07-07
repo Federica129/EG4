@@ -42,7 +42,7 @@ formEl.addEventListener("submit", (event) => {
   const newTask = inputEl.value;
   const hours = new Date().getHours(); //Bonus track
   const minuts = new Date().getMinutes();
-  const newTaskHTML = `<li><input type="checkbox"/><span>${newTask}</span> - Add task at ${hours}:${minuts} <button class="remove">X</button></li>`;
+  const newTaskHTML = `<li><input type="checkbox"/><span>${newTask}</span> - Added task at ${hours}:${minuts} <button class="remove">X</button></li>`;
 
   ulEl.innerHTML += newTaskHTML; // Per avere più di una task in lista mettendo +=. += a se stesso
   inputEl.value = ""; //Svuotare l'input dopo l'INVIO
