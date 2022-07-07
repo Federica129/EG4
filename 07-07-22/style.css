@@ -1,0 +1,76 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e4dccf;
+  margin: 0px;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+
+  color: white;
+}
+
+ul {
+  padding: 0;
+}
+
+.title {
+  margin-left: 30%;
+  margin-right: 30%;
+  background-color: #576f72;
+  border-radius: 30px;
+}
+.add {
+  padding: 5px 15px;
+  background-color: #576f72;
+  border: none;
+  border-radius: 15px;
+  color: white;
+}
+
+.add:hover {
+  background-color: #7d9d9c;
+  cursor: pointer;
+}
+.remove {
+  color: #ffffff;
+  border: none;
+  border-radius: 15px;
+  background-color: rgb(255, 56, 56);
+}
+.remove:hover {
+  background-color: rgb(255, 121, 121);
+  cursor: pointer;
+}
+
+.box {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.list {
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.task-list li {
+  display: block;
+  padding: 0.5rem 0;
+}
+
+.task-list li input[type="checkbox"] {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+/* input di tipo checkbox dentro il li, solo che checked */
+.task-list li input[type="checkbox"]:checked {
+  margin-right: 1rem;
+}
+
+/* uno span, dopo un input di tipo checkbox dentro il li, solo che checked */
+.task-list li input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+}
