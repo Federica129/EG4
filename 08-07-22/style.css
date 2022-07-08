@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  background-image: url("http://www.comunepietraligure.it/images/2020/01/23/biblioteca1_large.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+ul {
+  width: 80%;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.form1 {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+.box {
+  display: flex;
+  justify-content: center;
+}
