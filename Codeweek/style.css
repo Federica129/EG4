@@ -1,0 +1,253 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+body {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  background-color: #417d7a;
+}
+h1 {
+  color: #1a3c40;
+  text-shadow: 2px 2px 3px rgba(100, 100, 100, 0.514);
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  gap: 20px;
+  padding: 0;
+  text-align: center;
+  align-items: center;
+}
+
+h3 {
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+  font-size: 2rem;
+  text-shadow: 2px 2px 2px rgba(100, 100, 100, 0.479);
+  color: #ede6db;
+}
+
+a {
+  text-decoration: none;
+  color: #1a3c40;
+  text-shadow: 2px 2px 3px rgba(100, 100, 100, 0.514);
+  font-size: 25px;
+  font-weight: 600;
+  transition: 0.5s;
+}
+
+ul a:hover {
+  color: #ff530d;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.nav-main {
+  padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ede6db;
+  align-items: center;
+  border-bottom: 2px solid #1d5c63;
+  position: sticky;
+  top: 0;
+}
+.titlebox {
+  display: flex;
+  align-items: center;
+}
+
+.nav-main ul {
+  padding-right: 20px;
+}
+
+.sfondo {
+  background-color: #417d7a;
+  padding: 5px;
+}
+
+.today {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.todayempty {
+  display: flex;
+  justify-content: center;
+}
+
+.infop p {
+  text-shadow: 2px 2px 2px rgba(100, 100, 100, 0.479);
+  color: #ede6db;
+  border-bottom: 2px solid #ff530d;
+  width: fit-content;
+}
+
+.past {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.future {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.boxfuture {
+  box-sizing: content-box;
+}
+
+.box {
+  border-top: 4px solid #ff530d;
+  border-radius: 10px;
+  background-color: #ede6db;
+  box-shadow: 2px 3px 2px #00000048;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.box:hover {
+  background-color: #dac3a2;
+  transition: 0.5s;
+}
+
+.box p {
+  margin: 0;
+  padding: 5px;
+}
+
+.box h6 {
+  margin: 0;
+  padding: 5px;
+}
+
+.main-footer {
+  margin: 0;
+  background-color: #1d5c63;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 2px rgba(10, 10, 10, 0.479);
+}
+.main-footer ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0px;
+  margin: 0;
+  gap: 10px;
+}
+
+.main-footer h4 {
+  color: #ede6db;
+  margin: 10px;
+}
+
+.main-footer i {
+  color: #ede6db;
+  transition: 0.5s;
+}
+
+.main-footer i:hover {
+  padding: 0;
+  color: #ff520da9;
+  transition: 0.5s;
+}
+
+.copy {
+  background-color: #1a3c40;
+}
+
+.copy h6 {
+  color: #ede6db;
+  margin: 10px;
+  text-shadow: 2px 2px 2px rgba(10, 10, 10, 0.479);
+}
+
+@media only screen and (max-width: 950px) {
+  .today {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .past {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .future {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .today {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .past {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .future {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: rgb(255, 255, 255);
+  }
+
+  .nav-main {
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 0;
+  }
+
+  .nav-main ul {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .titlebox {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo img {
+    width: 250px;
+  }
+
+  .today {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .past {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .future {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .box p {
+    font-size: 0.8rem;
+  }
+}
