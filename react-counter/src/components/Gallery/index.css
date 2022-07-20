@@ -1,0 +1,13 @@
+.box {
+  display: flex;
+  justify-content: center;
+}
+
+.gallery {
+  margin: 5px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 0fr);
+  gap: 20px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.493);
+}
