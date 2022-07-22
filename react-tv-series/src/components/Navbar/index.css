@@ -1,0 +1,26 @@
+ul {
+  margin: 0;
+  padding: 10px;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  font-size: 2rem;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.5s;
+  color: white;
+}
+
+a:hover {
+  transition: 0.5s;
+  color: red;
+}
+
+.Navbar {
+  background-color: black;
+  margin: 0;
+  height: 60px;
+}
