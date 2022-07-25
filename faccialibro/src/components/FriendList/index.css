@@ -1,0 +1,17 @@
+.FriendCard {
+  padding: 5px;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #3a3845;
+  color: #f7ccac;
+  border-radius: 10px;
+}
+
+.FriendCard img {
+  width: 25%;
+  border-radius: 30px;
+}
