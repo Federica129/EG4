@@ -1,9 +1,16 @@
-import './index.css';
+import "./index.css";
 
-const Button = ({textContent, color, type}) => {
+const Button = ({ textContent, color, type, onClickPippo }) => {
   return (
-    <button type={ type } className="Button" style={{ backgroundColor: color }}>{ textContent }</button>
-  )
-}
+    <button
+      onClick={onClickPippo}
+      type={type}
+      className="Button"
+      style={{ backgroundColor: color }}
+    >
+      {textContent}
+    </button>
+  );
+};
 
 export default Button;

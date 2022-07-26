@@ -1,10 +1,10 @@
-import { GET, POST, DELETE } from "../../utils/api.js";
+import { GET } from "../../utils/api.js";
 import { useState, useEffect } from "react";
-import FriendList from "../FriendList";
+import FriendCard from "../FriendCard";
 
 import "./index.css";
 
-const AddFriends = () => {
+const FriendCardList = ({ setFilterValue }) => {
   const [friendList, setFriendList] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,13 @@ const AddFriends = () => {
       {friendList.length ? (
         friendList.map((friend) => {
           console.log(friend);
-          return <FriendList content={friend} key={friend.id} />;
+          return (
+            <FriendCard
+              content={friend}
+              key={friend.id}
+              setFilterValue={setFilterValue}
+            />
+          );
         })
       ) : (
         <p>Loading...</p>
@@ -29,4 +35,4 @@ const AddFriends = () => {
   );
 };
 
-export default AddFriends;
+export default FriendCardList;

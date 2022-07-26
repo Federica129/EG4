@@ -4,7 +4,7 @@ import { POST } from "../../utils/api.js";
 import Button from "../Button";
 import "./index.css";
 
-const AddMessage = () => {
+const AddMessage = ({ isRenderedList, setIsRenderedList }) => {
   // Controlled component!!! - Forms e input
   const [messageText, setMessageText] = useState("");
   const [sender, setSender] = useState("");
@@ -17,10 +17,14 @@ const AddMessage = () => {
         text: messageText,
         sender: sender,
         date: new Date().toLocaleDateString(),
-      }).then(() => {
-        setMessageText("");
-        setSender("");
-      });
+      })
+        .then(() => {
+          setMessageText("");
+          setSender("");
+        })
+        .then(() => {
+          setIsRenderedList(!isRenderedList);
+        });
     }
   };
 

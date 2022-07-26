@@ -20,8 +20,8 @@ const POST = async (path, body) => {
   return await res.json();
 };
 
-const DELETE = async (path) => {
-  const res = await fetch(BASE_URL + path, {
+const DELETE = async (path, key) => {
+  const res = await fetch(BASE_URL + path + key, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

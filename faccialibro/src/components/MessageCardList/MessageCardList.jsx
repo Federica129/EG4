@@ -1,19 +1,32 @@
 import { useState, useEffect } from "react";
+import { GET } from "../../utils/api";
 import MessageCard from "../MessageCard";
-import { POST, GET, DELETE } from "../../utils/api";
 import "./index.css";
 
-const MessageCardList = () => {
+const MessageCardList = ({
+  isRenderedList,
+  setIsRenderedList,
+  filterValue,
+}) => {
   const [messageList, setMessageList] = useState([]);
 
   useEffect(() => {
-    // fetch("https://edgemony-backend.herokuapp.com/messages")
-    //   .then((res) => res.json())
-    //   .then((data) => setMessageList(data));
     GET("messages").then((data) => {
-      setMessageList(data);
+      // setMessageList(data);
+
+      if (filterValue) {
+        setMessageList(
+          data
+            .filter((message) =>
+              message.sender.toLowerCase().includes(filterValue.toLowerCase())
+            )
+            .sort((a, b) => sortDates(a, b))
+        );
+      } else {
+        setMessageList(data.sort((a, b) => sortDates(a, b)));
+      }
     });
-  }, []);
+  }, [isRenderedList, filterValue]);
 
   const sortDates = (a, b) => {
     if (a.date < b.date) return 1;
@@ -27,7 +40,13 @@ const MessageCardList = () => {
         messageList
           .sort(sortDates)
           .map((message) => (
-            <MessageCard textContent={message} key={message.id} />
+            <MessageCard
+              textContent={message}
+              key={message.id}
+              id={message.id}
+              setIsRenderedList={setIsRenderedList}
+              isRenderedList={isRenderedList}
+            />
           ))
       ) : (
         <p>Loading...</p>

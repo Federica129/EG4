@@ -1,8 +1,8 @@
 import "./index.css";
 
-const FriendList = ({ content }) => {
+const FriendCard = ({ content, setFilterValue }) => {
   return (
-    <div className="FriendCard">
+    <div className="FriendCard" onClick={() => setFilterValue(content.name)}>
       <div className="box">
         <img src={content.photo} alt="pippo" />
         <p>{content.name}</p>
@@ -11,4 +11,4 @@ const FriendList = ({ content }) => {
   );
 };
 
-export default FriendList;
+export default FriendCard;
