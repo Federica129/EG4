@@ -4,7 +4,11 @@ import FriendCard from "../FriendCard";
 
 import "./index.css";
 
-const FriendCardList = ({ setFilterValue }) => {
+const FriendCardList = ({
+  isRenderedList,
+  setFilterValue,
+  setIsRenderedList,
+}) => {
   const [friendList, setFriendList] = useState([]);
 
   useEffect(() => {
@@ -13,7 +17,7 @@ const FriendCardList = ({ setFilterValue }) => {
         setFriendList(data);
       })
       .then(() => console.log(friendList));
-  }, []);
+  }, [isRenderedList]);
 
   return (
     <div className="FriendList">
@@ -22,9 +26,12 @@ const FriendCardList = ({ setFilterValue }) => {
           console.log(friend);
           return (
             <FriendCard
+              isRenderedList={isRenderedList}
+              setIsRenderedList={setIsRenderedList}
               content={friend}
               key={friend.id}
               setFilterValue={setFilterValue}
+              id={friend.id}
             />
           );
         })

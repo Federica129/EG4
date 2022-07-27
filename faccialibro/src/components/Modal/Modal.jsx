@@ -6,9 +6,9 @@ const Modal = ({ Yes, isModalVisible, setIsModalVisible }) => {
   return (
     isModalVisible && (
       <div className="Modal">
-        <h1>R u sure? :))))</h1>
+        <h1>R u sure? 😏</h1>
         <div className="box2">
-          <Button textContent="Si" color="green" onClickPippo={Yes} />
+          <Button textContent="Yes" color="green" onClickPippo={Yes} />
           <Button
             textContent="No"
             color="red"

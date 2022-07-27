@@ -1,10 +1,11 @@
-.App {
+.main-content {
   color: rgb(24, 24, 24);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .App__messages {
   padding: 20px;
   width: 400px;
 }
+

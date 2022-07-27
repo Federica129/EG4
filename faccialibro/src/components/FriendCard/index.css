@@ -1,13 +1,24 @@
 .FriendCard {
   padding: 5px;
+  width: 300px;
+  box-sizing: content-box;
+  margin: 0px;
 }
 
+.FriendCard Button {
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.FriendCard Button:hover {
+  color: red;
+}
 .box {
   display: flex;
   justify-content: space-between;
   padding: 15px;
-  background-color: #3a3845;
-  color: #f7ccac;
+  background-color: #323949;
+  color: white;
   border-radius: 10px;
 }
 

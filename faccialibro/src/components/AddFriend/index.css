@@ -1,0 +1,21 @@
+.AddFriends {
+  margin-bottom: 40px;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+}
+
+.AddFriends input {
+  padding: 10px 20px;
+}
+
+.AddFriendInput {
+  display: flex;
+  flex-direction: column;
+}
+
+/* form Button {
+  background-color: #007aff;
+} */

@@ -14,18 +14,19 @@ const MessageCard = ({
 
   return (
     <div className="MessageCard">
+      <div className='box'>
       <p className="MessageCard__text">{textContent.text}</p>
+      <Button textContent="X" onClickPippo={() => setIsModalVisible(true)} />
+      </div>
       <div className="MessageCard__info">
         <p className="MessageCard__info--sender">{textContent.sender}</p>
         <p className="MessageCard__info--date">{textContent.date}</p>
-        <Button textContent="X" onClickPippo={() => setIsModalVisible(true)} />
         <Modal
           isModalVisible={isModalVisible}
           setIsModalVisible={setIsModalVisible}
           Yes={() =>
             DELETE("messages/", id).then(() => {
               setIsModalVisible(false);
-              setIsRenderedList(!isRenderedList);
             })
           }
         />

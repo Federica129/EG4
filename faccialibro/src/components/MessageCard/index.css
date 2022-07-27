@@ -2,8 +2,21 @@
   padding: 6px 20px;
   border-radius: 6px;
   box-shadow: 0 0 2px rgba(24, 24, 24, 0.45);
-  background-color: #3a3845;
-  color: #f7ccac;
+  background-color: #323949;
+}
+
+.MessageCard Button {
+  background-color: #3a384500;
+  padding: 0px;
+}
+
+.MessageCard Button:hover {
+  color: red;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
 }
 
 .MessageCard__text {
@@ -15,5 +28,5 @@
   justify-content: space-between;
   font-weight: bold;
   font-size: 0.9rem;
-  color: rgb(174, 174, 174);
+  color: rgba(255, 255, 255, 0.62);
 }
