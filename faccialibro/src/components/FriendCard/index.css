@@ -5,13 +5,17 @@
   margin: 0px;
 }
 
-.FriendCard Button {
+.FriendCard .ButtonDelete {
+  color: white;
   padding: 0;
   background-color: rgba(0, 0, 0, 0);
+  transition: 0.3s;
+  border: none;
 }
 
-.FriendCard Button:hover {
+.FriendCard .ButtonDelete:hover {
   color: red;
+  transition: 0.3s;
 }
 .box {
   display: flex;

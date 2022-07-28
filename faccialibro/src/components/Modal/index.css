@@ -1,14 +1,24 @@
 .Modal {
+  background-color: rgba(0, 0, 0, 0.592);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.ModalBox {
+  background-color: #212129;
+  padding: 20px;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.592);
-  top: 0;
-  left: 0;
-  position: fixed;
   transition: 0.5s;
 }
 
@@ -18,5 +28,67 @@
   border-radius: 20px;
   display: flex;
   justify-content: space-between;
-  background-color: #3a3845;
+}
+
+.box2 .ButtonOption {
+  border: none;
+  color: white;
+  background-color: green;
+  width: 40%;
+  padding: 6px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.box2 .ButtonOption:hover {
+  color: white;
+  background-color: rgba(0, 128, 0, 0.589);
+}
+
+.box2 .ButtonOption2 {
+  border: none;
+  color: white;
+  background-color: red;
+  width: 40%;
+  padding: 6px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.box2 .ButtonOption2:hover {
+  color: white;
+  background-color: rgba(255, 0, 0, 0.562);
+}
+
+.Modal__Login {
+  background-color: rgba(0, 0, 0, 0.592);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.Modal__LoginBox {
+  background-color: #212129;
+  padding: 20px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.Modal__form {
+  width: 30%;
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }

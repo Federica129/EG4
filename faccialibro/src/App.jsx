@@ -10,20 +10,24 @@ import "./App.css";
 function App() {
   const [filterValue, setFilterValue] = useState();
   const [isRenderedList, setIsRenderedList] = useState(false);
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar
+        isLoginVisible={isLoginVisible}
+        setIsLoginVisible={setIsLoginVisible}
+      />
       <div className="main-content">
         <div className="App__friends">
-          <AddFriend
-            isRenderedList={isRenderedList}
-            setIsRenderedList={setIsRenderedList}
-          />
           <FriendCardList
             isRenderedList={isRenderedList}
             setIsRenderedList={setIsRenderedList}
             setFilterValue={setFilterValue}
+          />
+          <AddFriend
+            isRenderedList={isRenderedList}
+            setIsRenderedList={setIsRenderedList}
           />
         </div>
         <div className="App__messages">
@@ -31,11 +35,13 @@ function App() {
             isRenderedList={isRenderedList}
             setIsRenderedList={setIsRenderedList}
           />
-          <input
-            type="text"
-            placeholder="Filtra"
-            onChange={(e) => setFilterValue(e.target.value)}
-          ></input>
+          <div className="inputFilter">
+            <input
+              type="text"
+              placeholder="Filtra"
+              onChange={(e) => setFilterValue(e.target.value)}
+            ></input>
+          </div>
           <MessageCardList
             isRenderedList={isRenderedList}
             setIsRenderedList={setIsRenderedList}

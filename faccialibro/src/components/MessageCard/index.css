@@ -5,13 +5,17 @@
   background-color: #323949;
 }
 
-.MessageCard Button {
-  background-color: #3a384500;
-  padding: 0px;
+.MessageCard .ButtonDelete {
+  color: white;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: 0.3s;
+  border: none;
 }
 
 .MessageCard Button:hover {
   color: red;
+  transition: 0.3s;
 }
 
 .box {

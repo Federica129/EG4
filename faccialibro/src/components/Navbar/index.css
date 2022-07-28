@@ -5,7 +5,7 @@ ul {
   display: flex;
   justify-content: space-around;
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 li {
@@ -31,4 +31,18 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #323949;
+}
+
+.Navbar Button {
+  background-color: #007aff;
+}
+
+.Navbar Button:hover {
+  background-color: #312ecb;
+}
+
+.logo {
+  display: flex;
+  gap: 5px;
+  color: white;
 }

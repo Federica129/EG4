@@ -14,9 +14,13 @@ const MessageCard = ({
 
   return (
     <div className="MessageCard">
-      <div className='box'>
-      <p className="MessageCard__text">{textContent.text}</p>
-      <Button textContent="X" onClickPippo={() => setIsModalVisible(true)} />
+      <div className="box">
+        <p className="MessageCard__text">{textContent.text}</p>
+        <Button
+          classe="ButtonDelete"
+          textContent="X"
+          onClickPippo={() => setIsModalVisible(true)}
+        />
       </div>
       <div className="MessageCard__info">
         <p className="MessageCard__info--sender">{textContent.sender}</p>
@@ -24,9 +28,11 @@ const MessageCard = ({
         <Modal
           isModalVisible={isModalVisible}
           setIsModalVisible={setIsModalVisible}
+          textContent="Are you sure? 😏"
           Yes={() =>
             DELETE("messages/", id).then(() => {
               setIsModalVisible(false);
+              setIsRenderedList(!isRenderedList);
             })
           }
         />

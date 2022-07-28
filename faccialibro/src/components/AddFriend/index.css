@@ -1,9 +1,6 @@
 .AddFriends {
   margin-bottom: 40px;
-  padding: 20px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  padding: 5px;
   margin: 0;
 }
 
@@ -12,10 +9,18 @@
 }
 
 .AddFriendInput {
+  background-color: #323949;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  padding: 20px 20px;
 }
 
-/* form Button {
+.AddFriends Button {
   background-color: #007aff;
-} */
+}
+
+.AddFriends Button:hover {
+  background-color: #312ecb;
+}

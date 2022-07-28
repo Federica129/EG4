@@ -43,7 +43,7 @@ const AddFriend = ({ isRenderedList, setIsRenderedList }) => {
           onChange={(e) => setPhoto(e.target.value)}
           required
         />
-        <Button type="submit" textContent="Invia" color="#3A3845" />
+        <Button classe="Button" type="submit" textContent="Invia" />
       </form>
     </div>
   );

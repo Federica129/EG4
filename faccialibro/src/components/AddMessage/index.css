@@ -1,6 +1,8 @@
 .AddMessage {
-  margin-bottom: 40px;
-  padding: 6px 20px;
+  margin-bottom: 30px;
+  padding: 20px 20px;
+  background-color: #323949;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -8,4 +10,12 @@
 
 .AddMessage input {
   padding: 10px 20px;
+}
+
+.AddMessage Button {
+  background-color: #007aff;
+}
+
+.AddMessage Button:hover {
+  background-color: #312ecb;
 }

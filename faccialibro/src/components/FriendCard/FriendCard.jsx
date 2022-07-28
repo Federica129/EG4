@@ -15,11 +15,12 @@ const FriendCard = ({
         <img src={content.photo} alt="pippo" />
         <p>{content.name}</p>
         <Button
+          classe="ButtonDelete"
           textContent="x"
           onClickPippo={() =>
             DELETE("friends/", id).then(() => {
               setFilterValue(""); //senza questo, cancelli l'amico ma ti filtra anche i messaggi e a noi non interessa
-              setIsRenderedList(!isRenderedList);
+              setIsRenderedList(!isRenderedList); //passa a true e riparte la get
             })
           }
         />

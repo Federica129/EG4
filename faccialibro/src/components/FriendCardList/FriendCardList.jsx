@@ -17,7 +17,7 @@ const FriendCardList = ({
         setFriendList(data);
       })
       .then(() => console.log(friendList));
-  }, [isRenderedList]);
+  }, [isRenderedList]); //il get parte ogni volta che cambia valore
 
   return (
     <div className="FriendList">

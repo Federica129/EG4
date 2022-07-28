@@ -12,15 +12,17 @@ const AddMessage = ({ isRenderedList, setIsRenderedList }) => {
   const onFormSubmit = (e) => {
     e.preventDefault();
 
-    if (messageText && sender) {
+    // if (messageText && sender)
+    if (messageText) {
       POST("messages", {
         text: messageText,
-        sender: sender,
+        // sender: sender,
+        sender: localStorage.getItem("username") || "Generic",
         date: new Date().toLocaleDateString(),
       })
         .then(() => {
           setMessageText("");
-          setSender("");
+          // setSender("");
         })
         .then(() => {
           setIsRenderedList(!isRenderedList);
@@ -38,15 +40,15 @@ const AddMessage = ({ isRenderedList, setIsRenderedList }) => {
         onChange={(e) => setMessageText(e.target.value)}
         required
       />
-      <input
+      {/* <input
         className="AddMessage__sender"
         type="text"
         placeholder="Autore..."
         value={sender}
         onChange={(e) => setSender(e.target.value)}
         required
-      />
-      <Button type="submit" textContent="Invia" color="#3A3845" />
+      /> */}
+      <Button classe="Button" type="submit" textContent="Invia" />
     </form>
   );
 };
