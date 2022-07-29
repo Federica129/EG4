@@ -10,7 +10,7 @@ import "./App.css";
 function App() {
   const [filterValue, setFilterValue] = useState();
   const [isRenderedList, setIsRenderedList] = useState(false);
-  const [isLoginVisible, setIsLoginVisible] = useState(false);
+  const [isLoginVisible, setIsLoginVisible] = useState(true);
 
   return (
     <div className="App">

@@ -7,7 +7,7 @@ import "./index.css";
 const AddMessage = ({ isRenderedList, setIsRenderedList }) => {
   // Controlled component!!! - Forms e input
   const [messageText, setMessageText] = useState("");
-  const [sender, setSender] = useState("");
+  // const [sender, setSender] = useState("");
 
   const onFormSubmit = (e) => {
     e.preventDefault();
