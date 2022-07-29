@@ -8,6 +8,7 @@ const FriendCardList = ({
   isRenderedList,
   setFilterValue,
   setIsRenderedList,
+  setIsLoginVisible,
 }) => {
   const [friendList, setFriendList] = useState([]);
 
@@ -26,6 +27,7 @@ const FriendCardList = ({
           console.log(friend);
           return (
             <FriendCard
+              setIsLoginVisible={setIsLoginVisible}
               isRenderedList={isRenderedList}
               setIsRenderedList={setIsRenderedList}
               content={friend}

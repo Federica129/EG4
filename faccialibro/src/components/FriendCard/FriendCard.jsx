@@ -8,6 +8,7 @@ const FriendCard = ({
   id,
   setIsRenderedList,
   isRenderedList,
+  setIsLoginVisible,
 }) => {
   return (
     <div className="FriendCard" onClick={() => setFilterValue(content.name)}>
@@ -17,12 +18,16 @@ const FriendCard = ({
         <Button
           classe="ButtonDelete"
           textContent="x"
-          onClickPippo={() =>
-            DELETE("friends/", id).then(() => {
-              setFilterValue(""); //senza questo, cancelli l'amico ma ti filtra anche i messaggi e a noi non interessa
-              setIsRenderedList(!isRenderedList); //passa a true e riparte la get
-            })
-          }
+          onClickPippo={() => {
+            if (localStorage.getItem("username")) {
+              DELETE("friends/", id).then(() => {
+                setFilterValue(""); //senza questo, cancelli l'amico ma ti filtra anche i messaggi e a noi non interessa
+                setIsRenderedList(!isRenderedList); //passa a true e riparte la get
+              });
+            } else {
+              setIsLoginVisible(true);
+            }
+          }}
         />
       </div>
     </div>

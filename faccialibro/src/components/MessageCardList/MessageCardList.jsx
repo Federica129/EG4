@@ -7,6 +7,7 @@ const MessageCardList = ({
   isRenderedList,
   setIsRenderedList,
   filterValue,
+  setIsLoginVisible,
 }) => {
   const [messageList, setMessageList] = useState([]);
 
@@ -41,6 +42,7 @@ const MessageCardList = ({
           .sort(sortDates)
           .map((message) => (
             <MessageCard
+              setIsLoginVisible={setIsLoginVisible}
               textContent={message}
               key={message.id}
               id={message.id}

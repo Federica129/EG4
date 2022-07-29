@@ -4,24 +4,33 @@ import { POST } from "../../utils/api.js";
 import Button from "../Button";
 import "./index.css";
 
-const AddFriend = ({ isRenderedList, setIsRenderedList }) => {
+const AddFriend = ({
+  isRenderedList,
+  setIsRenderedList,
+  setIsLoginVisible,
+}) => {
   // Controlled component!!! - Forms e input
   const [nameText, setNameText] = useState("");
   const [photo, setPhoto] = useState("");
   const onFormSubmit = (e) => {
     e.preventDefault();
+
     if (nameText && photo) {
-      POST("friends", {
-        name: nameText,
-        photo: photo,
-      })
-        .then(() => {
-          setNameText("");
-          setPhoto("");
+      if (localStorage.getItem("username")) {
+        POST("friends", {
+          name: nameText,
+          photo: photo,
         })
-        .then(() => {
-          setIsRenderedList(!isRenderedList);
-        });
+          .then(() => {
+            setNameText("");
+            setPhoto("");
+          })
+          .then(() => {
+            setIsRenderedList(!isRenderedList);
+          });
+      } else {
+        setIsLoginVisible(true);
+      }
     }
   };
   return (

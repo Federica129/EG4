@@ -4,7 +4,11 @@ import { POST } from "../../utils/api.js";
 import Button from "../Button";
 import "./index.css";
 
-const AddMessage = ({ isRenderedList, setIsRenderedList }) => {
+const AddMessage = ({
+  isRenderedList,
+  setIsRenderedList,
+  setIsLoginVisible,
+}) => {
   // Controlled component!!! - Forms e input
   const [messageText, setMessageText] = useState("");
   // const [sender, setSender] = useState("");
@@ -14,19 +18,22 @@ const AddMessage = ({ isRenderedList, setIsRenderedList }) => {
 
     // if (messageText && sender)
     if (messageText) {
-      POST("messages", {
-        text: messageText,
-        // sender: sender,
-        sender: localStorage.getItem("username") || "Generic",
-        date: new Date().toLocaleDateString(),
-      })
-        .then(() => {
-          setMessageText("");
-          // setSender("");
+      if (localStorage.getItem("username")) {
+        POST("messages", {
+          text: messageText,
+          // sender: sender,
+          sender: localStorage.getItem("username"),
+          // || "Generic",
+          date: new Date().toLocaleDateString(),
         })
-        .then(() => {
-          setIsRenderedList(!isRenderedList);
-        });
+          .then(() => {
+            setMessageText("");
+            // setSender("");
+          })
+          .then(() => {
+            setIsRenderedList(!isRenderedList);
+          });
+      } else setIsLoginVisible(true);
     }
   };
 

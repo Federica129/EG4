@@ -8,6 +8,7 @@ const MessageCard = ({
   textContent,
   isRenderedList,
   setIsRenderedList,
+  setIsLoginVisible,
   id,
 }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -29,12 +30,14 @@ const MessageCard = ({
           isModalVisible={isModalVisible}
           setIsModalVisible={setIsModalVisible}
           textContent="Are you sure? 😏"
-          Yes={() =>
-            DELETE("messages/", id).then(() => {
-              setIsModalVisible(false);
-              setIsRenderedList(!isRenderedList);
-            })
-          }
+          Yes={() => {
+            if (localStorage.getItem("username")) {
+              DELETE("messages/", id).then(() => {
+                setIsModalVisible(false);
+                setIsRenderedList(!isRenderedList);
+              });
+            } else setIsLoginVisible(true);
+          }}
         />
       </div>
     </div>

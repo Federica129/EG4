@@ -10,7 +10,7 @@ import "./App.css";
 function App() {
   const [filterValue, setFilterValue] = useState();
   const [isRenderedList, setIsRenderedList] = useState(false);
-  const [isLoginVisible, setIsLoginVisible] = useState(true);
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
 
   return (
     <div className="App">
@@ -24,16 +24,19 @@ function App() {
             isRenderedList={isRenderedList}
             setIsRenderedList={setIsRenderedList}
             setFilterValue={setFilterValue}
+            setIsLoginVisible={setIsLoginVisible}
           />
           <AddFriend
             isRenderedList={isRenderedList}
             setIsRenderedList={setIsRenderedList}
+            setIsLoginVisible={setIsLoginVisible}
           />
         </div>
         <div className="App__messages">
           <AddMessage
             isRenderedList={isRenderedList}
             setIsRenderedList={setIsRenderedList}
+            setIsLoginVisible={setIsLoginVisible}
           />
           <div className="inputFilter">
             <input
@@ -46,6 +49,7 @@ function App() {
             isRenderedList={isRenderedList}
             setIsRenderedList={setIsRenderedList}
             filterValue={filterValue}
+            setIsLoginVisible={setIsLoginVisible}
           />
         </div>
       </div>
