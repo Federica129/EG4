@@ -1,0 +1,74 @@
+.Form {
+  background-color: #f5e8c7;
+  border: 5px solid #ecccb2;
+  padding: 20px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Form__input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Form__input label {
+  color: #ac7088;
+  font-weight: bold;
+}
+
+.Form__input input:focus {
+  color: white;
+  background-color: #deb6ab;
+  outline: none;
+}
+
+.Button {
+  display: flex;
+  justify-content: center;
+}
+
+.Button button {
+  background-color: #ac7088;
+  padding: 10px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Button button:hover {
+  background-color: #ad768ce5;
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 3px;
+}
+
+.todo li {
+  list-style-type: number;
+  font-weight: bold;
+  color: #ac7088;
+}
+
+.todo button {
+  background-color: #ac7088;
+  padding: 3px 5px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.todo button:hover {
+  background-color: #ad768ce5;
+}
+
+input {
+  width: 80%;
+  border: 3px solid #ecccb2;
+}
