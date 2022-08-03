@@ -11,13 +11,14 @@ const initState = {
     { id: 3, title: "imparare i componenti funzionali" },
   ],
   counter: 4,
+  inputValue: "",
 };
 
 // console.log(init.taskDefault);
 
 const reducer = (state, action) => {
   let { type, payload } = action;
-  let { tasks, counter } = state;
+  let { tasks, counter, inputValue } = state;
 
   switch (type) {
     case "AddTask":
@@ -29,6 +30,11 @@ const reducer = (state, action) => {
       }
       break;
 
+    case "Update":
+      inputValue = payload;
+
+      break;
+
     case "DeleteTask":
       tasks = tasks.filter((obj) => obj.id !== payload);
 
@@ -36,7 +42,7 @@ const reducer = (state, action) => {
 
     default:
   }
-  return { ...state, tasks, counter };
+  return { ...state, tasks, counter, inputValue };
 };
 
 const taskNew = {};
@@ -45,12 +51,14 @@ const Form = () => {
   const [state, dispatch] = useReducer(reducer, initState);
 
   const onChangeTask = (e) => {
+    dispatch({ type: "Update", payload: e.target.value });
     taskNew.title = e.target.value;
     console.log(taskNew);
   };
 
   const handleAddDispatch = () => {
     dispatch({ type: "AddTask" });
+    state.inputValue = "";
   };
 
   const handleDeleteDispatch = (id) => {
@@ -74,7 +82,7 @@ const Form = () => {
       <form className="Form__input">
         <label>Aggiungi todo:</label>
         <Input
-          // value={task}
+          value={state.inputValue}
           type="text"
           placeholder="Aggiungi todo"
           name="Todo"
