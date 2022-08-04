@@ -8,7 +8,7 @@ const color = ["red", "blue", "green"];
 function App() {
   return (
     <div className="App">
-      <MainContent color={color} />
+      <MainContent {...color} />
     </div>
   );
 }

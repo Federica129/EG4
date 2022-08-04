@@ -1,7 +1,8 @@
 import ColorCard from "../ColorCard";
 import "./index.css";
 
-function ColorList({ color }) {
+function ColorList(color) {
+  console.log(color);
   return (
     <div className="ColorList">
       <ColorCard color={color[0]} />

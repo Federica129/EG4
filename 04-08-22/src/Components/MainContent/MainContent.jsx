@@ -1,10 +1,10 @@
 import ColorList from "../ColorList";
 import "./index.css";
 
-function MainContent({color}) {
+function MainContent(color) {
   return (
     <div className="MainContent">
-      <ColorList color={color} />
+      <ColorList {...color} />
     </div>
   );
 }
