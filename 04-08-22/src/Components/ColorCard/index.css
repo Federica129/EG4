@@ -1,0 +1,17 @@
+.ColorCard {
+  width: 100px;
+  height: 180px;
+  border: 1px solid black;
+}
+
+.Color {
+  width: 100%;
+  height: 60%;
+  /* background-color: #001aff; */
+}
+
+.Parag {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
