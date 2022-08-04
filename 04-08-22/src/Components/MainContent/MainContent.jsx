@@ -1,12 +1,8 @@
 import ColorList from "../ColorList";
 import "./index.css";
 
-function MainContent(color) {
-  return (
-    <div className="MainContent">
-      <ColorList {...color} />
-    </div>
-  );
+function MainContent({ children }) {
+  return <div className="MainContent">{children}</div>;
 }
 
 export default MainContent;

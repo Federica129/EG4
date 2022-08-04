@@ -1,17 +1,24 @@
 .ColorCard {
   width: 100px;
-  height: 180px;
-  border: 1px solid black;
+  height: 140px;
+  border: 1px solid rgba(0, 0, 0, 0.336);
+  box-sizing: border-box;
 }
 
 .Color {
   width: 100%;
-  height: 60%;
-  /* background-color: #001aff; */
+  height: 80%;
 }
 
 .Parag {
   width: 100%;
   text-align: center;
   font-weight: bold;
+  background-color: white;
+}
+
+.Parag p {
+  margin: 0;
+  padding: 3px;
+  text-shadow: 2px 1px 3px rgba(0, 0, 0, 0.281);
 }

@@ -5,7 +5,7 @@ function ColorCard({ color }) {
     <div className="ColorCard">
       <div className="Color" style={{ backgroundColor: color }}></div>
       <div className="Parag">
-        <p>#001AFF</p>
+        <p style={{ color: color }}>{color}</p>
       </div>
     </div>
   );
