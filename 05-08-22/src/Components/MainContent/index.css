@@ -1,0 +1,10 @@
+.ColorList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #fcfcfc65;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 0 40px rgba(238, 238, 238, 0.582);
+}

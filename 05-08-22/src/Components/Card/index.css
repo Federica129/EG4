@@ -1,0 +1,46 @@
+.Parag {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 0 0 10px 10px;
+}
+
+.Parag p {
+  color: white;
+  margin: 0;
+  padding: 3px;
+  text-shadow: 2px 1px 3px rgba(0, 0, 0, 0.582);
+}
+
+.BtnBox {
+  padding: 3px;
+  text-align: center;
+  position: relative;
+  top: 50px;
+}
+
+.BtnBox button {
+  font-weight: bold;
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right,
+    rgba(7, 0, 51, 1) 0%,
+    rgba(20, 1, 33, 1) 40%,
+    rgba(52, 0, 77, 1) 93%
+  );
+  padding: 10px 25px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px rgba(238, 238, 238, 0.582);
+  border-radius: 10px;
+}
+
+.BtnBox button:hover {
+  transition: 0.5s;
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
