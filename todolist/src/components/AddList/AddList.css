@@ -1,0 +1,23 @@
+ul {
+  padding: 20px;
+}
+
+fragment {
+  padding-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 15px;
+  /* border-bottom: 1px solid black; */
+}
+fragment li {
+  border-bottom: 1px solid black;
+  list-style: decimal;
+}
+
+.Deletebtn {
+  color: red;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  cursor: pointer;
+}
