@@ -1,5 +1,7 @@
-ul {
+.list {
+  height: 25rem;
   padding: 20px;
+  background-color: #729368;
 }
 
 fragment {
@@ -11,11 +13,30 @@ fragment {
   /* border-bottom: 1px solid black; */
 }
 fragment li {
-  border-bottom: 1px solid black;
-  list-style: decimal;
+  border-bottom: 1px solid white;
+  list-style: none;
+  color: white;
+  font-size: 2rem;
+  align-self: center;
+}
+AiFillStar {
+  color: yellow;
 }
 
+.AddList {
+  padding: 20px;
+}
+
+.AddList ul {
+  padding-left: 0;
+}
+.Addbtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
 .Deletebtn {
+  font-size: 2rem;
   color: red;
   background-color: rgba(255, 255, 255, 0);
   border: none;

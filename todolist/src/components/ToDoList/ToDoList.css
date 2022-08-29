@@ -1,6 +1,8 @@
 .ToDoList {
   background-color: white;
-  width: 60%;
-  height: 60%;
+  border-radius: 20px;
+  color: black;
+  width: 40%;
+  height: 70%;
   text-align: center;
 }
