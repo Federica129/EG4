@@ -1,14 +1,15 @@
 import "./App.css";
 import AddList from "./components/AddList";
 import ToDoList from "./components/ToDoList";
-import AiFillStar from "react-icons/ai";
+import { BsStars } from "react-icons/bs";
+import { WiStars } from "react-icons/wi";
 import { useState } from "react";
 
 function App() {
   const [list, setList] = useState([
     "Studiare",
     "Leggere la documentazione",
-    "imparare lo useState",
+    "Imparare useState",
   ]);
   const [value, setValue] = useState("");
 
@@ -26,7 +27,13 @@ function App() {
   return (
     <div className="App">
       <ToDoList>
-        <h1>To do list</h1>
+        <div className="title">
+          <WiStars className="stars" />
+          <BsStars className="stars" />
+          <h1>To-do-list</h1>
+          <BsStars className="stars" />
+          <WiStars className="stars" />
+        </div>
         <AddList
           list={list}
           onSubmit={onHandleSubmit}

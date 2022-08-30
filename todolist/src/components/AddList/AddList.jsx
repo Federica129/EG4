@@ -1,19 +1,19 @@
 import "./AddList.css";
-import { TbSend } from "react-icons/tb";
+import { BiSend } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
 
 function AddList({ list, onSubmit, setValue, value, onDeleteBtn }) {
   return (
     <>
       <div className="AddList">
-        <form onSubmit={(e) => onSubmit(e)}>
+        <form className="input" onSubmit={(e) => onSubmit(e)}>
           <input
             value={value}
             type="text"
             onChange={(e) => setValue(e.target.value)}
           />
           <button className="Addbtn" type="submit" value="Add">
-            <TbSend />
+            <BiSend />
           </button>
         </form>
 
@@ -21,7 +21,7 @@ function AddList({ list, onSubmit, setValue, value, onDeleteBtn }) {
           <ul>
             {list.map((e, i) => (
               <fragment>
-                <AiFillStar />
+                <AiFillStar className="star" />
                 <li key={i}>{e}</li>
                 <button className="Deletebtn" onClick={() => onDeleteBtn(i)}>
                   X
