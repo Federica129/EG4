@@ -21,7 +21,10 @@ function AddList({ list, onSubmit, setValue, value, onDeleteBtn }) {
           <ul>
             {list.map((e, i) => (
               <fragment>
-                <AiFillStar className="star" />
+                <span className="star">
+                  <AiFillStar />
+                </span>
+
                 <li key={i}>{e}</li>
                 <button className="Deletebtn" onClick={() => onDeleteBtn(i)}>
                   X
