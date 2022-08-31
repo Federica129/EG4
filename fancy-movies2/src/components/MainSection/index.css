@@ -1,0 +1,18 @@
+.MainSection {
+  padding: 100px 40px;
+  display: flex;
+  flex-direction: row;
+  background: black;
+  height: 100vh;
+}
+
+.list {
+  width: 70%;
+}
+
+.list h2 {
+  margin: 0;
+  color: white;
+  border-bottom: 1px solid red;
+  width: fit-content;
+}
