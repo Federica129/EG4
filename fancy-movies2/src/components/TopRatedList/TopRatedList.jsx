@@ -1,5 +1,6 @@
 import MainCard from "../MainCard";
-import { useRef, useEffect } from "react";
+import Modal from "../Modal";
+import { useState, useRef, useEffect } from "react";
 import "./index.css";
 
 const TopRatedList = ({ cardData, nCards }) => {
@@ -11,12 +12,17 @@ const TopRatedList = ({ cardData, nCards }) => {
       e.preventDefault();
       pippo.scrollLeft += e.deltaY;
     });
+
+    return pippo.removeEventListener("wheel", (e) => {
+      e.preventDefault();
+      pippo.scrollLeft += e.deltaY;
+    });
   }, []);
 
   return (
     <div className="TopRatedList" ref={scrollProva}>
-      {[...Array(nCards)].map((i, ii) => (
-        <MainCard cardData={cardData[ii]} classe={"pippo"} key={ii} />
+      {cardData.map((i, ii) => (
+        <MainCard cardData={i} classe={"pippo"} key={ii} />
       ))}
     </div>
   );

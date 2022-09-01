@@ -81,7 +81,7 @@
 .pippo .MainCard--img {
   position: relative;
   width: 150px;
-  height: 280px;
+  height: 100%;
 }
 
 .pippo .MainCard:hover {
@@ -96,4 +96,59 @@
 
 .pippo .MainCard__text p {
   font-size: 0.5rem;
+}
+
+.button {
+  display: flex;
+  justify-content: end;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  color: red;
+}
+
+.button p {
+  margin: 0;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.button p:hover {
+  color: rgba(255, 0, 0, 0.527);
+  transition: 0.5s;
+}
+
+.modal-title {
+  color: white;
+}
+
+.box {
+  display: flex;
+  gap: 20px;
+}
+
+.box2 img {
+  border-radius: 5px;
+}
+
+.vote {
+  display: flex;
+  color: white;
+  font-weight: bold;
+  gap: 2px;
+}
+
+.vote p {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.vote span {
+  align-self: center;
+  color: yellow;
+  font-size: 1.8rem;
+}
+
+.text {
+  color: white;
+  font-size: 1.8rem;
 }

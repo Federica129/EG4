@@ -11,6 +11,11 @@ const UpComing = ({ cardData, nCards }) => {
       e.preventDefault();
       pippo.scrollLeft += e.deltaY;
     });
+
+    return pippo.removeEventListener("wheel", (e) => {
+      e.preventDefault();
+      pippo.scrollLeft += e.deltaY;
+    });
   }, []);
 
   return (

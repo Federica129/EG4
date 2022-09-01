@@ -4,6 +4,7 @@ import MainSection from "./components/MainSection";
 import { useState, useEffect } from "react";
 
 import "./App.css";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <MainInput
         inputValue={inputValue}
         setInputValue={setInputValue}
