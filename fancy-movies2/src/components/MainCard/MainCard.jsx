@@ -4,8 +4,16 @@ import { useState, useRef, useEffect } from "react";
 import Modal from "../Modal";
 
 const MainCard = ({ cardData, classe }) => {
-  const { title, vote_average, poster_path, overview } = cardData;
+  const { title, vote_average, poster_path, overview, release_date } = cardData;
   const [visibility, setVisibility] = useState(false);
+  const [isActive, setActive] = useState("");
+
+  useEffect(() => {
+    setActive("");
+    setTimeout(() => {
+      setActive("active");
+    }, 1000);
+  }, [visibility]);
 
   return (
     <>
@@ -38,7 +46,7 @@ const MainCard = ({ cardData, classe }) => {
             <div className="button">
               <p onClick={() => setVisibility(false)}>X</p>
             </div>
-            <h1 className="modal-title">{title}</h1>
+
             <div className="box">
               <div className="box2">
                 <img src={`https://image.tmdb.org/t/p/w342${poster_path}`} />
@@ -50,7 +58,9 @@ const MainCard = ({ cardData, classe }) => {
                 </div>
               </div>
               <div className="text">
-                <p>{overview}</p>
+                <h1 className="modal-title">{title}</h1>
+                <p className={`description ${isActive}`}>{overview}</p>
+                <p>{release_date}</p>
               </div>
             </div>
           </div>

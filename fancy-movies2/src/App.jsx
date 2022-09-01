@@ -1,13 +1,16 @@
 import MovieEntity from "./components/MovieEntity";
 import MainInput from "./components/MainInput";
 import MainSection from "./components/MainSection";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 
 import "./App.css";
 import Navbar from "./components/Navbar";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
@@ -22,12 +25,12 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <MainSection />
       <MainInput
         inputValue={inputValue}
         setInputValue={setInputValue}
         onHandleSubmit={onHandleSubmit}
       />
-      <MainSection />
       <MovieEntity
         movieData={movieData}
         movieID={movieID}

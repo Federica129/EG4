@@ -5,9 +5,9 @@ const MainInput = ({ inputValue, setInputValue, onHandleSubmit }) => {
   const inputRef = useRef(null);
   const [active, setActive] = useState("");
 
-  useEffect(() => {
-    inputRef.current.focus(); //al riavvio, focus sull'input, pronto a scrivere senza selezionarlo
-  }, [active]);
+  // useEffect(() => {
+  //    inputRef.current.focus(); //al riavvio, focus sull'input, pronto a scrivere senza selezionarlo
+  // }, [active]);
 
   const onHandleInput = (e) => setInputValue(e.target.value);
 
@@ -17,6 +17,7 @@ const MainInput = ({ inputValue, setInputValue, onHandleSubmit }) => {
       onHandleSubmit(e);
     }
     setActive("active");
+    inputRef.current.focus();
   };
 
   return (

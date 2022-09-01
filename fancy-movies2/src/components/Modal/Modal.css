@@ -13,7 +13,7 @@
 }
 
 .Modal .modal__content {
-  background-color: rgb(29, 29, 29);
+  background-color: rgb(17, 17, 17);
   padding: 20px;
   height: 0;
   width: 0;
@@ -22,8 +22,8 @@
 }
 
 .Modal.active .modal__content {
-  height: 80%;
-  width: 80%;
+  height: 85vh;
+  width: 85vw;
   opacity: 1;
   border-radius: 10px;
 }

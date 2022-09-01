@@ -4,7 +4,6 @@
   flex-direction: row;
   overflow-x: scroll;
   gap: 20px;
-  width: 95%;
-  height: 38%;
-  padding: 0 25px;
+  height: 45%;
+  padding: 0 0 0 30px;
 }

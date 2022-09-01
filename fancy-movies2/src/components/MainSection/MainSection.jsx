@@ -34,7 +34,9 @@ const MainSection = () => {
 
   return (
     <div className="MainSection">
-      {movieLists.popular && <MainCard cardData={movieLists.popular[0]} />}
+      <div className="topMovie">
+        {movieLists.popular && <MainCard cardData={movieLists.popular[1]} />}
+      </div>
 
       <div className="list">
         <h2>Top Rated</h2>
