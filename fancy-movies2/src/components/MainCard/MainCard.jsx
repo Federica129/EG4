@@ -1,6 +1,6 @@
 import "./index.css";
 import { AiFillStar } from "react-icons/ai";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, memo } from "react";
 import Modal from "../Modal";
 
 const MainCard = ({ cardData, classe }) => {
@@ -70,4 +70,4 @@ const MainCard = ({ cardData, classe }) => {
   );
 };
 
-export default MainCard;
+export default memo(MainCard);

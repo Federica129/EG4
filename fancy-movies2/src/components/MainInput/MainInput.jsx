@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import "./index.css";
 
 const MainInput = ({ inputValue, setInputValue, onHandleSubmit }) => {
@@ -13,8 +13,10 @@ const MainInput = ({ inputValue, setInputValue, onHandleSubmit }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
     if (active === "active") {
       onHandleSubmit(e);
+      setInputValue("");
     }
     setActive("active");
     inputRef.current.focus();

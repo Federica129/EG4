@@ -9,7 +9,7 @@
   left: 0;
   position: fixed;
   transition: all 0.5s;
-  z-index: 3;
+  z-index: 5;
 }
 
 .Modal .modal__content {

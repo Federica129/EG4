@@ -2,6 +2,9 @@
   display: flex;
   color: white;
   text-transform: uppercase;
+  height: 100vh;
+  justify-content: center;
+  padding-top: 30px;
 }
 
 .MovieEntity__info {
@@ -51,7 +54,7 @@
 }
 
 .MovieEntity__poster {
-  width: 56%;
+  /* width: 56%; */
   height: 100vh;
   object-fit: cover;
 }
@@ -77,4 +80,13 @@
 .MovieEntity__book--btn:hover {
   background-color: black;
   color: white;
+}
+
+.MovieEntity__Error {
+  color: white;
+  text-transform: uppercase;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

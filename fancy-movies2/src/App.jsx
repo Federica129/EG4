@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
+  const [movieTitle, setMovieTitle] = useState("titanic");
   // useEffect(() => {
   //   window.scrollTo(0, 0);
   // }, []);
@@ -16,11 +17,8 @@ function App() {
     e.preventDefault();
     // console.log(inputValue);
 
-    setMovieID(inputValue);
+    setMovieTitle(inputValue);
   };
-
-  const [movieData, setMovieData] = useState({});
-  const [movieID, setMovieID] = useState("324668");
 
   return (
     <div className="App">
@@ -31,11 +29,8 @@ function App() {
         setInputValue={setInputValue}
         onHandleSubmit={onHandleSubmit}
       />
-      <MovieEntity
-        movieData={movieData}
-        movieID={movieID}
-        setMovieData={setMovieData}
-      />
+
+      <MovieEntity movieTitle={movieTitle} />
     </div>
   );
 }
