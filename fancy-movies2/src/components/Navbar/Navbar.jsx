@@ -1,7 +1,7 @@
 import "./index.css";
 import { BsLightningChargeFill } from "react-icons/bs";
 
-const Navbar = () => {
+const Navbar = ({ children }) => {
   return (
     <div className="Navbar">
       <div className="title">
@@ -10,6 +10,7 @@ const Navbar = () => {
         </div>
         <h1>Lorem</h1>
       </div>
+      {children}
       <div className="listNav">
         <ul>
           <li>Tasto1</li>

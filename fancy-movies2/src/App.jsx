@@ -15,22 +15,23 @@ function App() {
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
-    // console.log(inputValue);
 
     setMovieTitle(inputValue);
   };
 
   return (
     <div className="App">
-      <Navbar />
-      <MainSection />
-      <MainInput
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-        onHandleSubmit={onHandleSubmit}
-      />
-
+      <Navbar>
+        <MainInput
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          onHandleSubmit={onHandleSubmit}
+          setMovieTitle={setMovieTitle}
+          movieTitle={movieTitle}
+        />
+      </Navbar>{" "}
       <MovieEntity movieTitle={movieTitle} />
+      <MainSection />
     </div>
   );
 }

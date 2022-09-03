@@ -29,7 +29,7 @@ const MainSection = () => {
       setMovieListsFilt(
         movieLists.topRated.filter((movie) => movie.vote_average >= 8.7)
       );
-    console.log(movieListsFilt);
+    // console.log(movieListsFilt);
   }, [movieLists.topRated]); // !!!!!!!!!!!!!
 
   return (

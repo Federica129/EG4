@@ -22,7 +22,7 @@ const TopRatedList = ({ cardData, nCards }) => {
   return (
     <div className="TopRatedList" ref={scrollProva}>
       {cardData.map((i, ii) => (
-        <MainCard cardData={i} classe={"pippo"} key={ii} />
+        <MainCard cardData={i} classe={"cardList"} key={ii} />
       ))}
     </div>
   );

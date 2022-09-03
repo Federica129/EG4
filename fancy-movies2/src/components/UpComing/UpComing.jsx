@@ -21,7 +21,7 @@ const UpComing = ({ cardData, nCards }) => {
   return (
     <div className="UpComing" ref={scrollProva}>
       {[...Array(nCards)].map((i, ii) => (
-        <MainCard cardData={cardData[ii]} classe={"pippo"} key={ii} />
+        <MainCard cardData={cardData[ii]} classe={"cardList"} key={ii} />
       ))}
     </div>
   );
