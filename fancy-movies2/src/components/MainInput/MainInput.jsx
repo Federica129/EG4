@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { GET } from "../../utils/api";
-import "./index.css";
+import "./index.scss";
 
 const MainInput = ({
   inputValue,
@@ -12,7 +12,10 @@ const MainInput = ({
   const [active, setActive] = useState("");
   const [filter, setFilter] = useState("");
   const [filterS, setFilterS] = useState("");
-  const [queryActive, setQueryActive] = useState("");
+  const [language, setLanguage] = useState("en"); // per checkbox per cambiare lingua - valore standard inglese
+  const [queryActive, setQueryActive] = useState(false);
+
+  const checkbox = useRef(null);
 
   // useEffect(() => {
   //    inputRef.current.focus(); //al riavvio, focus sull'input, pronto a scrivere senza selezionarlo
@@ -21,14 +24,18 @@ const MainInput = ({
   const onHandleInput = (e) => {
     setInputValue(e.target.value);
     setFilter(e.target.value);
-    if (e.target.value.length > 0) {
-      setQueryActive("active");
-    } else setQueryActive("");
-
-    // if (inputRef.current.focus() !== inputRef.current) {
-    //   setQueryActive("");
-    // }
+    setQueryActive(true);
   };
+
+  // const handleOnCheck = (e) => {
+  //   if (e.target.checked) {
+  //     setLanguage(e.target.id);
+  //   }
+  //   if (!e.target.checked) {
+  //     setLanguage("en");
+  //   }
+  //   console.log(filterS);
+  // };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -44,32 +51,50 @@ const MainInput = ({
 
   useEffect(() => {
     if (filter) {
-      GET("search", "movie", `&query=${inputValue}&page=1`).then((data) =>
-        setFilterS(data)
-      );
+      GET(
+        "search",
+        "movie",
+        `&language=${language}`,
+        `&query=${inputValue}&page=1`
+      ).then((data) => setFilterS(data));
     }
-  }, [inputValue]);
+  }, [inputValue, filter, language]);
 
-  //   useEffect(() => {
-  //     const onEventListener = () => {
-  //             setActive(false);
-  //
-  //     }
+  useEffect(() => {
+    const onEventListener = (e) => {
+      setQueryActive(false);
+      if (e.target.tagName !== "INPUT" && e.target.className !== "submit_btn") {
+        setActive("");
+      }
+    };
 
-  //     window.addEventListener('click', (e) =>{
-  //         if (e.target.className !== 'list-results_button-container' && e.target.tagName !== 'BUTTON') {
-  //             onEventListener(e)
-  //         }
-  //     })
+    window.addEventListener("click", (e) => {
+      onEventListener(e);
+    });
 
-  //     return window.removeEventListener('click', (e)=> {
-  //         onEventListener(e)
-  //     })
-  // }, [])
+    return window.removeEventListener("click", (e) => {
+      onEventListener(e);
+    });
+    //mettere sempre il remove
+  }, []);
 
   return (
     <div className="MainInput">
       <form className={`MainInput ${active}`} onSubmit={onSubmit}>
+        {/* <input
+          ref={checkbox}
+          onClick={(e) => handleOnCheck(e)}
+          type="checkbox"
+          id="it"
+          value="Italiano"
+        />
+        <input
+          type="checkbox"
+          id="fr"
+          value="France"
+          onClick={(e) => handleOnCheck(e)}
+        /> */}
+
         <input
           placeholder="Search..."
           ref={inputRef}
@@ -77,18 +102,25 @@ const MainInput = ({
           onChange={onHandleInput}
           type="text"
         />
-        <button type="submit">Search</button>
-      </form>
 
+        <button className="submit_btn" type="submit">
+          Search
+        </button>
+      </form>
       {inputValue.length > 1 &&
       filterS.results &&
       filterS.results.length > 0 ? (
-        <div className={`MainInput__filter ${queryActive}`}>
+        <div className={`MainInput__filter ${queryActive && "active"}`}>
           <ul>
             {filterS.results.map((movie) => {
-              // console.log(movie);
               return (
-                <li key={movie.id} onClick={() => setMovieTitle(movie.title)}>
+                <li
+                  key={movie.id}
+                  onClick={() => {
+                    setMovieTitle(movie.title);
+                    window.scrollTo(0, 0);
+                  }}
+                >
                   {movie.title}
                 </li>
               );
@@ -96,7 +128,7 @@ const MainInput = ({
           </ul>
         </div>
       ) : (
-        <div className={`MainInput__filter ${queryActive}`}>
+        <div className={`MainInput__filter ${queryActive && "active"}`}>
           <p>Non ci sono risultati..</p>
         </div>
       )}

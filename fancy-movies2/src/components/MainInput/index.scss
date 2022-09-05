@@ -1,0 +1,87 @@
+.MainInput {
+  height: 40px;
+  width: 0;
+  display: flex;
+  position: absolute;
+  left: calc(50% - 50px);
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0);
+  transition: all 0.35s;
+
+  input {
+    padding-left: 14px;
+    border: 0;
+    outline: none;
+    font-weight: bold;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    opacity: 0;
+    width: 0;
+  }
+  button {
+    width: 100px;
+    padding: 0 15px;
+    border: 0;
+    font-weight: bold;
+    background-color: white;
+    border-left: 1px solid lightgrey;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+  }
+
+  .active {
+    left: calc(50% - 170px);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+    width: auto;
+    input {
+      opacity: 1;
+      transition: 0.4s;
+      width: 240px;
+    }
+    button {
+      border-radius: 0;
+      box-shadow: none;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+
+  &__filter {
+    opacity: 0;
+    pointer-events: none;
+
+    &.active {
+      opacity: 1;
+      width: 356px;
+      height: 165px;
+      position: absolute;
+      padding: 4px;
+      top: 42px;
+      left: calc(50% - 170px);
+      background-color: rgba(0, 0, 0, 0.664);
+      border-radius: 10px;
+      overflow-y: auto;
+      backdrop-filter: blur(4px);
+      pointer-events: all;
+    }
+    ul {
+      padding-left: 10px;
+    }
+    li {
+      list-style-type: none;
+      padding: 2px;
+      transition: 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(255, 0, 0, 0.438);
+        border-radius: 2px;
+        transition: 0.2s;
+      }
+    }
+    p {
+      padding: 2px;
+    }
+  }
+}

@@ -1,6 +1,6 @@
-import "./index.css";
+import "./index.scss";
 import { AiFillStar } from "react-icons/ai";
-import { useState, useRef, useEffect, memo } from "react";
+import { useState, useEffect, memo } from "react";
 import Modal from "../Modal";
 
 const MainCard = ({ cardData, classe }) => {
@@ -49,7 +49,10 @@ const MainCard = ({ cardData, classe }) => {
 
             <div className="box">
               <div className="box2">
-                <img src={`https://image.tmdb.org/t/p/w342${poster_path}`} />
+                <img
+                  src={`https://image.tmdb.org/t/p/w342${poster_path}`}
+                  alt="poster_path"
+                />
                 <div className="vote">
                   <span>
                     <AiFillStar />

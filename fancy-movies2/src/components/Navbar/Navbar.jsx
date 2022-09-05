@@ -1,4 +1,4 @@
-import "./index.css";
+import "./index.scss";
 import { BsLightningChargeFill } from "react-icons/bs";
 
 const Navbar = ({ children }) => {

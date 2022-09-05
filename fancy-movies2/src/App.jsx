@@ -1,17 +1,14 @@
 import MovieEntity from "./components/MovieEntity";
 import MainInput from "./components/MainInput";
 import MainSection from "./components/MainSection";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState } from "react";
 
-import "./App.css";
+import "./App.scss";
 import Navbar from "./components/Navbar";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [movieTitle, setMovieTitle] = useState("titanic");
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
 
   const onHandleSubmit = (e) => {
     e.preventDefault();

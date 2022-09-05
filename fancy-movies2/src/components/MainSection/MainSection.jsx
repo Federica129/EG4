@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import MainCard from "../MainCard";
-import Modal from "../Modal";
 import TopRatedList from "../TopRatedList";
 import { GET } from "../../utils/api";
-import "./index.css";
+import "./index.scss";
 import UpComing from "../UpComing";
 
 const MainSection = () => {

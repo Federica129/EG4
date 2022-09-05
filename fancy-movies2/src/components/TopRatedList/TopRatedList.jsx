@@ -1,7 +1,7 @@
 import MainCard from "../MainCard";
-import Modal from "../Modal";
-import { useState, useRef, useEffect } from "react";
-import "./index.css";
+
+import { useRef, useEffect } from "react";
+import "./index.scss";
 
 const TopRatedList = ({ cardData, nCards }) => {
   const scrollProva = useRef(null);

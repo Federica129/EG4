@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import "./Modal.css";
+import "./Modal.scss";
 
 function Modal({ children, visib, onHandleClick }) {
   const [isActive, setActive] = useState("");

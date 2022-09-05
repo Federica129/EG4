@@ -1,6 +1,6 @@
-import "./index.css";
+import "./index.scss";
 import { GET } from "../../utils/api";
-import { useState, useEffect, memo, useLayoutEffect } from "react";
+import { useState, useEffect, memo } from "react";
 
 const MovieEntity = ({ movieTitle }) => {
   const [movieData, setMovieData] = useState([
@@ -17,21 +17,14 @@ const MovieEntity = ({ movieTitle }) => {
 
   useEffect(() => {
     GET("search", "movie", `&query=${movieTitle}&page=1`).then((data) => {
-      data.results[0]
-        ? data.results[0].adult === false
-          ? setMovieData(data.results[0])
-          : setForbidden(true)
-        : setForbidden(true);
+      if (data.results[0] && data.results[0].adult === false) {
+        setMovieData(data.results[0]);
+        setForbidden(false);
+      } else {
+        setForbidden(true);
+      }
     });
-
-    //  console.log(data);
-    // console.log(data.results[0]);
-
-    // return () => setForbidden(false);
   }, [movieTitle]);
-
-  // const { poster_path, original_title, vote_average, title } =
-  //   movieData;
 
   return forbidden === false ? (
     <div className="MovieEntity">
@@ -53,7 +46,6 @@ const MovieEntity = ({ movieTitle }) => {
       <div className="MovieEntity__book">
         <button className="MovieEntity__book--btn">Book it!</button>
       </div>
-      {/* {movieData ? console.log(movieData) : <p>loading...</p>} */}
     </div>
   ) : (
     <div className="MovieEntity__Error">

@@ -1,6 +1,6 @@
 import MainCard from "../MainCard";
 import { useRef, useEffect } from "react";
-import "./index.css";
+import "./index.scss";
 
 const UpComing = ({ cardData, nCards }) => {
   const scrollProva = useRef(null);
