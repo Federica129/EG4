@@ -1,0 +1,42 @@
+.Footer {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.5886729691876751) 19%,
+    rgba(0, 0, 0, 1) 32%
+  );
+  color: white;
+  padding: 25px 0px 10px 0px;
+
+  &__contact {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: 0.5s;
+
+    & span:nth-child(1):hover {
+      color: red;
+      transition: 0.5s;
+    }
+    & span:nth-child(2):hover {
+      color: yellow;
+      transition: 0.5s;
+    }
+
+    & span:nth-child(3):hover {
+      color: green;
+      transition: 0.5s;
+    }
+
+    & span:nth-child(4):hover {
+      color: blue;
+      transition: 0.5s;
+    }
+  }
+  &__copyright {
+    text-align: center;
+    font-size: 0.7rem;
+  }
+}

@@ -1,6 +1,8 @@
 import "./index.scss";
 import { GET } from "../../utils/api";
 import { useState, useEffect, memo } from "react";
+import { AiFillStar } from "react-icons/ai";
+import Modal from "../Modal";
 
 const MovieEntity = ({ movieTitle }) => {
   const [movieData, setMovieData] = useState([
@@ -14,6 +16,15 @@ const MovieEntity = ({ movieTitle }) => {
   ]);
 
   const [forbidden, setForbidden] = useState(false);
+  const [visibility, setVisibility] = useState(false);
+  const [isActive, setActive] = useState("");
+
+  useEffect(() => {
+    setActive("");
+    setTimeout(() => {
+      setActive("active");
+    }, 1000);
+  }, [visibility]);
 
   useEffect(() => {
     GET("search", "movie", `&query=${movieTitle}&page=1`).then((data) => {
@@ -35,7 +46,12 @@ const MovieEntity = ({ movieTitle }) => {
         </div>
         <div className="MovieEntity__info--bottom">
           <p>rating</p>
-          <p>{movieData.vote_average || "not found"}</p>
+          <p>
+            <span>
+              <AiFillStar />
+            </span>
+            {movieData.vote_average || "not found"}
+          </p>
         </div>
       </div>
       <img
@@ -44,8 +60,53 @@ const MovieEntity = ({ movieTitle }) => {
         alt={movieData.original_title}
       />
       <div className="MovieEntity__book">
-        <button className="MovieEntity__book--btn">Book it!</button>
+        <button
+          onClick={() => {
+            setVisibility(true);
+          }}
+          className="MovieEntity__book--btn"
+        >
+          More info
+        </button>
       </div>
+      {visibility && (
+        <Modal>
+          <div className="modalbox">
+            <div
+              className="backdrop"
+              style={{
+                backgroundImage: `url("https://image.tmdb.org/t/p/original/${movieData.backdrop_path}")`,
+              }}
+            ></div>
+
+            <div className="overlay"></div>
+
+            <div className="button">
+              <p onClick={() => setVisibility(false)}>X</p>
+            </div>
+
+            <div className="box">
+              <div className="box2">
+                <img
+                  src={`https://image.tmdb.org/t/p/w342${movieData.poster_path}`}
+                  alt="poster_path"
+                />
+                <div className="vote">
+                  <span>
+                    <AiFillStar />
+                  </span>
+                  <p>{movieData.vote_average}</p>
+                </div>
+              </div>
+              <div className={`text ${isActive}`}>
+                <h1 className="modal-title">{movieData.title}</h1>
+                <p className={`description`}>{movieData.overview}</p>
+                <p>Release date: {movieData.release_date}</p>
+              </div>
+            </div>
+          </div>
+        </Modal>
+      )}
     </div>
   ) : (
     <div className="MovieEntity__Error">

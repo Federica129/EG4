@@ -10,11 +10,9 @@ const MainInput = ({
 }) => {
   const inputRef = useRef(null);
   const [active, setActive] = useState("");
-  const [filter, setFilter] = useState("");
   const [filterS, setFilterS] = useState("");
   const [language, setLanguage] = useState("en"); // per checkbox per cambiare lingua - valore standard inglese
   const [queryActive, setQueryActive] = useState(false);
-
   const checkbox = useRef(null);
 
   // useEffect(() => {
@@ -23,7 +21,7 @@ const MainInput = ({
 
   const onHandleInput = (e) => {
     setInputValue(e.target.value);
-    setFilter(e.target.value);
+
     setQueryActive(true);
   };
 
@@ -50,7 +48,7 @@ const MainInput = ({
   };
 
   useEffect(() => {
-    if (filter) {
+    if (inputValue) {
       GET(
         "search",
         "movie",
@@ -58,7 +56,7 @@ const MainInput = ({
         `&query=${inputValue}&page=1`
       ).then((data) => setFilterS(data));
     }
-  }, [inputValue, filter, language]);
+  }, [inputValue, language]);
 
   useEffect(() => {
     const onEventListener = (e) => {

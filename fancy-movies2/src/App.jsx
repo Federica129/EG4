@@ -2,9 +2,10 @@ import MovieEntity from "./components/MovieEntity";
 import MainInput from "./components/MainInput";
 import MainSection from "./components/MainSection";
 import { useState } from "react";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 import "./App.scss";
-import Navbar from "./components/Navbar";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -29,6 +30,7 @@ function App() {
       </Navbar>{" "}
       <MovieEntity movieTitle={movieTitle} />
       <MainSection />
+      <Footer />
     </div>
   );
 }

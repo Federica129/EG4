@@ -4,7 +4,14 @@ import { useState, useEffect, memo } from "react";
 import Modal from "../Modal";
 
 const MainCard = ({ cardData, classe }) => {
-  const { title, vote_average, poster_path, overview, release_date } = cardData;
+  const {
+    title,
+    vote_average,
+    poster_path,
+    overview,
+    release_date,
+    backdrop_path,
+  } = cardData;
   const [visibility, setVisibility] = useState(false);
   const [isActive, setActive] = useState("");
 
@@ -43,6 +50,15 @@ const MainCard = ({ cardData, classe }) => {
       {visibility && (
         <Modal>
           <div className="modalbox">
+            <div
+              className="backdrop"
+              style={{
+                backgroundImage: `url("https://image.tmdb.org/t/p/original/${backdrop_path}")`,
+              }}
+            ></div>
+
+            <div className="overlay"></div>
+
             <div className="button">
               <p onClick={() => setVisibility(false)}>X</p>
             </div>
@@ -60,10 +76,10 @@ const MainCard = ({ cardData, classe }) => {
                   <p>{vote_average}</p>
                 </div>
               </div>
-              <div className="text">
+              <div className={`text ${isActive}`}>
                 <h1 className="modal-title">{title}</h1>
-                <p className={`description ${isActive}`}>{overview}</p>
-                <p>{release_date}</p>
+                <p className={`description`}>{overview}</p>
+                <p>Release date: {release_date}</p>
               </div>
             </div>
           </div>

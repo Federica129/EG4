@@ -54,7 +54,7 @@
     &.active {
       opacity: 1;
       width: 356px;
-      height: 165px;
+      max-height: 165px;
       position: absolute;
       padding: 4px;
       top: 42px;
