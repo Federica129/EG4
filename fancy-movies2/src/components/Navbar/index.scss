@@ -1,9 +1,10 @@
+@import "../../styles/mixins";
+
 .Navbar {
-  position: sticky;
-  display: flex;
-  justify-content: space-between;
+  @include position(sticky, 0, autp, auto, auto, 4);
+  @include flex(flex, space-between);
+
   padding: 15px 15px;
-  top: 0;
   color: white;
   background: rgb(0, 0, 0);
   background: linear-gradient(
@@ -12,7 +13,7 @@
     rgba(0, 0, 0, 0.5886729691876751) 19%,
     rgba(0, 0, 0, 1) 32%
   );
-  z-index: 4;
+
   .title {
     display: flex;
     color: white;
@@ -29,9 +30,9 @@
 
   .listNav {
     ul {
-      display: flex;
+      @include flex(flex, flex-start, row, 20px);
+
       list-style-type: none;
-      gap: 20px;
       margin: 0;
     }
     li {
@@ -42,17 +43,25 @@
 
       &:nth-child(1):hover {
         border-bottom: red 2px solid;
+        -webkit-box-shadow: inset 0px -23px 27px -30px #ff0000;
+        box-shadow: inset 0px -23px 27px -30px #ff0000;
       }
 
       &:nth-child(2):hover {
         border-bottom: yellow 2px solid;
+        -webkit-box-shadow: inset 0px -23px 27px -30px yellow;
+        box-shadow: inset 0px -23px 27px -30px yellow;
       }
 
       &:nth-child(3):hover {
+        -webkit-box-shadow: inset 0px -23px 27px -30px green;
+        box-shadow: inset 0px -23px 27px -30px green;
         border-bottom: green 2px solid;
       }
 
       &:nth-child(4):hover {
+        -webkit-box-shadow: inset 0px -23px 27px -30px blue;
+        box-shadow: inset 0px -23px 27px -30px blue;
         border-bottom: blue 2px solid;
       }
     }

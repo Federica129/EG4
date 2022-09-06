@@ -1,15 +1,13 @@
+@import "../../styles/mixins";
+
 .Modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(flex, center, row, 0, center);
+  @include position(fixed, 0, auto, auto, 0, 5);
+
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.592);
-  top: 0;
-  left: 0;
-  position: fixed;
   transition: all 0.5s;
-  z-index: 5;
 
   .modal__content {
     background-color: rgba(0, 0, 0, 0.726);

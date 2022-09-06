@@ -1,7 +1,10 @@
+@import "../../styles/mixins";
+
 .MainInput {
+  @include flex(flex);
+
   height: 40px;
   width: 0;
-  display: flex;
   position: absolute;
   left: calc(50% - 50px);
   border-radius: 8px;
@@ -52,12 +55,12 @@
     pointer-events: none;
 
     &.active {
+      @include position(absolute, 42px);
+
       opacity: 1;
       width: 356px;
       max-height: 165px;
-      position: absolute;
       padding: 4px;
-      top: 42px;
       left: calc(50% - 170px);
       background-color: rgba(0, 0, 0, 0.664);
       border-radius: 10px;

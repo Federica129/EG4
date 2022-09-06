@@ -18,6 +18,7 @@ const MovieEntity = ({ movieTitle }) => {
   const [forbidden, setForbidden] = useState(false);
   const [visibility, setVisibility] = useState(false);
   const [isActive, setActive] = useState("");
+  const [isActiveHero, setActiveHero] = useState("");
 
   useEffect(() => {
     setActive("");
@@ -27,24 +28,38 @@ const MovieEntity = ({ movieTitle }) => {
   }, [visibility]);
 
   useEffect(() => {
-    GET("search", "movie", `&query=${movieTitle}&page=1`).then((data) => {
-      if (data.results[0] && data.results[0].adult === false) {
-        setMovieData(data.results[0]);
-        setForbidden(false);
-      } else {
-        setForbidden(true);
-      }
-    });
+    setActiveHero("");
+    setTimeout(() => {
+      GET("search", "movie", `&query=${movieTitle}&page=1`).then((data) => {
+        if (data.results[0] && data.results[0].adult === false) {
+          setMovieData(data.results[0]);
+          setForbidden(false);
+        } else {
+          setForbidden(true);
+        }
+      });
+    }, 1000);
+    setTimeout(() => {
+      setActiveHero("activeHero");
+    }, 1500);
   }, [movieTitle]);
 
   return forbidden === false ? (
     <div className="MovieEntity">
+      <div
+        className={`backdrop ${isActiveHero}`}
+        style={{
+          backgroundImage: `url("https://image.tmdb.org/t/p/original/${movieData.backdrop_path}")`,
+        }}
+      ></div>
+
+      <div className="overlay"></div>
       <div className="MovieEntity__info">
-        <div className="MovieEntity__info--title">
+        <div className={`MovieEntity__info--title ${isActiveHero}`}>
           <p>title</p>
           <h1>{movieData.title}</h1>
         </div>
-        <div className="MovieEntity__info--bottom">
+        <div className={`MovieEntity__info--bottom ${isActiveHero}`}>
           <p>rating</p>
           <p>
             <span>
@@ -55,7 +70,7 @@ const MovieEntity = ({ movieTitle }) => {
         </div>
       </div>
       <img
-        className="MovieEntity__poster"
+        className={`MovieEntity__poster ${isActiveHero}`}
         src={`https://image.tmdb.org/t/p/original${movieData.poster_path}`}
         alt={movieData.original_title}
       />

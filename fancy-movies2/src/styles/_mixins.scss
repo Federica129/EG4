@@ -1,0 +1,33 @@
+@mixin position(
+  $position: static,
+  $top: auto,
+  $right: auto,
+  $bottom: auto,
+  $left: auto,
+  $z-index: 0
+) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $z-index;
+}
+
+@mixin flex(
+  $display: flex,
+  $justify-content: flex-start,
+  $flex-direction: row,
+  $gap: 0px,
+  $align-items: stretch,
+  $align-self: auto,
+  $flex-wrap: nowrap
+) {
+  display: $display;
+  justify-content: $justify-content;
+  flex-direction: $flex-direction;
+  gap: $gap;
+  align-items: $align-items;
+  align-self: $align-self;
+  flex-wrap: $flex-wrap;
+}

@@ -1,73 +1,123 @@
+@import "../../styles/mixins";
+
 .MovieEntity {
-  display: flex;
+  @include flex(flex, center);
+
   color: white;
   text-transform: uppercase;
   height: calc(100vh - 86px);
-  justify-content: center;
   padding: 5px;
+
+  .backdrop {
+    transition: 0.2s;
+    opacity: 0;
+
+    &.activeHero {
+      @include position(absolute, 0, auto, auto, 0, 1);
+
+      height: 95%;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      filter: blur(1px);
+      opacity: 0.6;
+      transition: 0.4s;
+    }
+  }
+
+  .overlay {
+    @include position(absolute, 0, auto, auto, 0, 2);
+
+    width: 100%;
+    height: 100%;
+    background: rgb(20, 20, 20);
+    background: linear-gradient(
+      0deg,
+      rgba(20, 20, 20, 1) 9%,
+      rgba(20, 20, 20, 0.8855917366946778) 31%,
+      rgba(0, 0, 0, 0.4009978991596639) 74%
+    );
+  }
+
   &__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
+    @include flex(flex, space-between, column, 0, flex-end);
+
     width: 22%;
     padding: 20px;
+    z-index: 3;
 
     &--title {
+      opacity: 0;
+      transition: 0.2s;
       transform: translate(100px, 120px);
-      p {
-        color: rgb(169, 169, 169);
-        text-transform: uppercase;
-      }
 
-      h1 {
-        margin: 2px 0px;
-        font-size: 4rem;
-        text-shadow: 1px 1px 2px black;
+      &.activeHero {
+        opacity: 1;
+        z-index: 3;
+        transition: 0.5s;
+
+        p {
+          color: rgb(169, 169, 169);
+          text-transform: uppercase;
+        }
+
+        h1 {
+          margin: 2px 0px;
+          font-size: 4rem;
+          text-shadow: 1px 1px 2px black;
+          z-index: 4;
+        }
       }
     }
+
     &--bottom {
-      position: relative;
-      width: 100%;
-      align-self: flex-end;
-      font-weight: bold;
-      font-size: 0.9rem;
+      opacity: 0;
+      transition: 0.2s;
 
-      p:nth-child(1),
-      p:nth-child(3) {
-        color: rgb(169, 169, 169);
-      }
+      &.activeHero {
+        @include position(relative);
 
-      span {
-        color: yellow;
-      }
-      ul {
-        padding: 0;
-        list-style-type: none;
-      }
-    }
+        width: 100%;
+        align-self: flex-end;
+        font-weight: bold;
+        font-size: 0.9rem;
+        z-index: 3;
+        transition: 0.5s;
+        opacity: 1;
 
-    &--tagline {
-      position: absolute;
-      top: 0;
-      right: -30px;
-      writing-mode: vertical-rl;
-      font-size: 1.5rem;
-      font-weight: bold;
-      height: 300px;
-      transform: translateY(-120px);
+        p:nth-child(1),
+        p:nth-child(3) {
+          color: rgb(169, 169, 169);
+        }
+
+        span {
+          color: yellow;
+        }
+        ul {
+          padding: 0;
+          list-style-type: none;
+        }
+      }
     }
   }
   &__poster {
-    /* width: 56%; */
-    height: calc(100vh - 86px);
-    object-fit: cover;
+    opacity: 0;
+    transition: 0.2s;
+
+    &.activeHero {
+      /* width: 56%; */
+      height: calc(100vh - 86px);
+      object-fit: cover;
+      z-index: 2;
+      opacity: 1;
+      transition: 0.5s;
+    }
   }
 
   &__book {
-    display: flex;
-    flex-direction: column-reverse;
+    @include flex(flex, flex-start, column-reverse);
     width: 22%;
+    z-index: 3;
 
     &--btn {
       max-width: 200px;
@@ -87,11 +137,11 @@
     }
   }
   &__Error {
+    @include flex(flex, center, row, 0, center);
+
     color: white;
     text-transform: uppercase;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    z-index: 3;
   }
 }

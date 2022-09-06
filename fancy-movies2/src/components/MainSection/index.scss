@@ -1,12 +1,14 @@
+@import "../../styles/mixins";
+
 .MainSection {
-  display: flex;
-  /* justify-content: center; */
-  padding: 10px 40px;
-  height: 90vh;
+  @include flex(flex, center);
+
+  padding: 25px 40px;
+  height: calc(100vh - 86px);
   max-width: 100vw;
   .list {
     width: calc(70% - 30px);
-    height: 85vh;
+    // height: 85vh;
 
     h2 {
       margin: 0;
@@ -18,12 +20,14 @@
     padding: 0 25px;
     width: 30%;
 
-    p {
-      display: none;
-    }
+    .MainCard__text {
+      p {
+        display: none;
+      }
 
-    h3 {
-      display: none;
+      h3 {
+        display: none;
+      }
     }
   }
 }

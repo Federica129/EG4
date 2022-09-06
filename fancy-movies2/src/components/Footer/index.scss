@@ -1,3 +1,5 @@
+@import "../../styles/mixins";
+
 .Footer {
   background: rgb(0, 0, 0);
   background: linear-gradient(
@@ -10,9 +12,8 @@
   padding: 25px 0px 10px 0px;
 
   &__contact {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
+    @include flex(flex, center, row, 20px);
+
     font-size: 1.5rem;
     transition: 0.5s;
 

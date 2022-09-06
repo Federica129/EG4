@@ -9,7 +9,7 @@ import "./App.scss";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [movieTitle, setMovieTitle] = useState("titanic");
+  const [movieTitle, setMovieTitle] = useState("moulin");
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
