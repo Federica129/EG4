@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import MainCard from "../MainCard";
 import TopRatedList from "../TopRatedList";
 import { GET } from "../../utils/api";
-import "./index.scss";
+import styles from "./index.module.scss";
 import UpComing from "../UpComing";
 
 const MainSection = () => {
@@ -32,12 +32,12 @@ const MainSection = () => {
   }, [movieLists.topRated]); // !!!!!!!!!!!!!
 
   return (
-    <div className="MainSection">
-      <div className="topMovie">
+    <div className={styles.MainSection}>
+      <div className={styles.topMovie}>
         {movieLists.popular && <MainCard cardData={movieLists.popular[1]} />}
       </div>
 
-      <div className="list">
+      <div className={styles.list}>
         <h2>Top Rated</h2>
         {movieLists.topRated && (
           <TopRatedList cardData={movieListsFilt} nCards={10} />

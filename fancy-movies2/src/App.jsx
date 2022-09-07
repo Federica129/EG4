@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 import "./App.scss";
+import ListMovie from "./components/ListMovie";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -30,6 +31,15 @@ function App() {
       </Navbar>{" "}
       <MovieEntity movieTitle={movieTitle} />
       <MainSection />
+      {/* <ListMovie>
+        <MainInput
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          onHandleSubmit={onHandleSubmit}
+          setMovieTitle={setMovieTitle}
+          movieTitle={movieTitle}
+        />
+      </ListMovie> */}
       <Footer />
     </div>
   );

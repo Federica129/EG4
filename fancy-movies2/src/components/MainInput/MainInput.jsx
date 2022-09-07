@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { GET } from "../../utils/api";
-import "./index.scss";
+import styles from "./index.module.scss";
+// import "./index.scss";
 
 const MainInput = ({
   inputValue,
@@ -38,10 +39,10 @@ const MainInput = ({
   const onSubmit = (e) => {
     e.preventDefault();
 
-    setActive("active");
+    setActive(styles.active);
     inputRef.current.focus();
 
-    if (active === "active") {
+    if (active === styles.active) {
       onHandleSubmit(e);
       setInputValue("");
     }
@@ -75,10 +76,10 @@ const MainInput = ({
     });
     //mettere sempre il remove
   }, []);
-
+  console.log(styles);
   return (
-    <div className="MainInput">
-      <form className={`MainInput ${active}`} onSubmit={onSubmit}>
+    <div className={styles.MainInput}>
+      <form className={`${styles.MainInput} ${active}`} onSubmit={onSubmit}>
         {/* <input
           ref={checkbox}
           onClick={(e) => handleOnCheck(e)}
@@ -108,7 +109,11 @@ const MainInput = ({
       {inputValue.length > 1 &&
       filterS.results &&
       filterS.results.length > 0 ? (
-        <div className={`MainInput__filter ${queryActive && "active"}`}>
+        <div
+          className={`${styles.MainInput__filter} ${
+            queryActive && styles.active
+          }`}
+        >
           <ul>
             {filterS.results.map((movie) => {
               return (
@@ -126,7 +131,11 @@ const MainInput = ({
           </ul>
         </div>
       ) : (
-        <div className={`MainInput__filter ${queryActive && "active"}`}>
+        <div
+          className={`${styles.MainInput__filter} ${
+            queryActive && styles.active
+          }`}
+        >
           <p>Non ci sono risultati..</p>
         </div>
       )}

@@ -1,0 +1,18 @@
+@import "../../styles/mixins";
+
+.ListMovie {
+  @include flex(flex, flex-start, row);
+  height: calc(100vh - 86px);
+
+  .info {
+    background-color: red;
+    height: calc(100vh - 86px);
+    width: 25vw;
+  }
+
+  .list {
+    background-color: antiquewhite;
+    height: calc(100vh - 86px);
+    width: 75vw;
+  }
+}

@@ -1,9 +1,0 @@
-@import "../../styles/mixins";
-
-.TopRatedList {
-  @include flex(flex, flex-start, row, 20px, center);
-
-  overflow-x: scroll;
-  height: 45%;
-  padding: 0 0 0 30px;
-}

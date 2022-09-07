@@ -1,7 +1,7 @@
 import MainCard from "../MainCard";
 
 import { useRef, useEffect } from "react";
-import "./index.scss";
+import styles from "./index.module.scss";
 
 const TopRatedList = ({ cardData, nCards }) => {
   const scrollProva = useRef(null);
@@ -20,9 +20,9 @@ const TopRatedList = ({ cardData, nCards }) => {
   }, []);
 
   return (
-    <div className="TopRatedList" ref={scrollProva}>
+    <div className={styles.TopRatedList} ref={scrollProva}>
       {cardData.map((i, ii) => (
-        <MainCard cardData={i} classe={"cardList"} key={ii} />
+        <MainCard cardData={i} classe={styles.cardList} key={ii} />
       ))}
     </div>
   );

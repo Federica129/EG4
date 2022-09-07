@@ -1,4 +1,4 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 import { AiFillStar } from "react-icons/ai";
 import { useState, useEffect, memo } from "react";
 import Modal from "../Modal";
@@ -18,7 +18,7 @@ const MainCard = ({ cardData, classe }) => {
   useEffect(() => {
     setActive("");
     setTimeout(() => {
-      setActive("active");
+      setActive(styles.active);
     }, 1000);
   }, [visibility]);
 
@@ -30,15 +30,15 @@ const MainCard = ({ cardData, classe }) => {
           setVisibility(true);
         }}
       >
-        <div className="MainCard">
+        <div className={styles.MainCard}>
           <img
-            className="MainCard--img"
+            className={styles.img}
             src={`https://image.tmdb.org/t/p/w342${poster_path}`}
             alt={title}
           />
-          <div className="MainCard__text">
+          <div className={styles.text}>
             <h3>{title}</h3>
-            <div className="MainCard__text2">
+            <div className={styles.text2}>
               <p>{vote_average}</p>
               <span>
                 <AiFillStar />
@@ -49,36 +49,36 @@ const MainCard = ({ cardData, classe }) => {
       </div>
       {visibility && (
         <Modal>
-          <div className="modalbox">
+          <div className={styles.modalbox}>
             <div
-              className="backdrop"
+              className={styles.backdrop}
               style={{
                 backgroundImage: `url("https://image.tmdb.org/t/p/original/${backdrop_path}")`,
               }}
             ></div>
 
-            <div className="overlay"></div>
+            <div className={styles.overlay}></div>
 
-            <div className="button">
+            <div className={styles.button}>
               <p onClick={() => setVisibility(false)}>X</p>
             </div>
 
-            <div className="box">
-              <div className="box2">
+            <div className={styles.box}>
+              <div className={styles.box2}>
                 <img
                   src={`https://image.tmdb.org/t/p/w342${poster_path}`}
                   alt="poster_path"
                 />
-                <div className="vote">
+                <div className={styles.vote}>
                   <span>
                     <AiFillStar />
                   </span>
                   <p>{vote_average}</p>
                 </div>
               </div>
-              <div className={`text ${isActive}`}>
-                <h1 className="modal-title">{title}</h1>
-                <p className={`description`}>{overview}</p>
+              <div className={`${styles.text} ${isActive}`}>
+                <h1 className={styles.modalTitle}>{title}</h1>
+                <p className={styles.description}>{overview}</p>
                 <p>Release date: {release_date}</p>
               </div>
             </div>

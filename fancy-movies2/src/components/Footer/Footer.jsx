@@ -1,4 +1,4 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 import {
   AiFillYoutube,
   AiFillGithub,
@@ -8,8 +8,8 @@ import {
 
 const Footer = () => {
   return (
-    <div className="Footer">
-      <div className="Footer__contact">
+    <div className={styles.Footer}>
+      <div className={styles.contact}>
         <span>
           <AiFillYoutube />
         </span>
@@ -23,7 +23,7 @@ const Footer = () => {
           <AiFillFacebook />
         </span>
       </div>
-      <div className="Footer__copyright">Made by Federica.</div>
+      <div className={styles.copyright}>Made by Federica.</div>
     </div>
   );
 };

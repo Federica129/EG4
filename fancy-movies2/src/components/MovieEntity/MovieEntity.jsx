@@ -1,4 +1,4 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 import { GET } from "../../utils/api";
 import { useState, useEffect, memo } from "react";
 import { AiFillStar } from "react-icons/ai";
@@ -15,6 +15,12 @@ const MovieEntity = ({ movieTitle }) => {
     },
   ]);
 
+  const [movieData1, setMovieData1] = useState([
+    {
+      key: "",
+    },
+  ]);
+
   const [forbidden, setForbidden] = useState(false);
   const [visibility, setVisibility] = useState(false);
   const [isActive, setActive] = useState("");
@@ -23,7 +29,7 @@ const MovieEntity = ({ movieTitle }) => {
   useEffect(() => {
     setActive("");
     setTimeout(() => {
-      setActive("active");
+      setActive(styles.active);
     }, 1000);
   }, [visibility]);
 
@@ -33,33 +39,39 @@ const MovieEntity = ({ movieTitle }) => {
       GET("search", "movie", `&query=${movieTitle}&page=1`).then((data) => {
         if (data.results[0] && data.results[0].adult === false) {
           setMovieData(data.results[0]);
+          console.log(data.results[0].id);
           setForbidden(false);
+          GET("movie", `${data.results[0].id}/videos`, "&language=en-US").then(
+            (dataMovie) => {
+              setMovieData1(dataMovie.results[0]);
+            }
+          );
         } else {
           setForbidden(true);
         }
       });
     }, 1000);
     setTimeout(() => {
-      setActiveHero("activeHero");
+      setActiveHero(styles.activeHero);
     }, 1500);
   }, [movieTitle]);
 
   return forbidden === false ? (
-    <div className="MovieEntity">
+    <div className={styles.MovieEntity}>
       <div
-        className={`backdrop ${isActiveHero}`}
+        className={`${styles.backdrop} ${isActiveHero}`}
         style={{
           backgroundImage: `url("https://image.tmdb.org/t/p/original/${movieData.backdrop_path}")`,
         }}
       ></div>
 
-      <div className="overlay"></div>
-      <div className="MovieEntity__info">
-        <div className={`MovieEntity__info--title ${isActiveHero}`}>
+      <div className={styles.overlay}></div>
+      <div className={styles.info}>
+        <div className={`${styles.title} ${isActiveHero}`}>
           <p>title</p>
           <h1>{movieData.title}</h1>
         </div>
-        <div className={`MovieEntity__info--bottom ${isActiveHero}`}>
+        <div className={`${styles.bottom} ${isActiveHero}`}>
           <p>rating</p>
           <p>
             <span>
@@ -70,53 +82,62 @@ const MovieEntity = ({ movieTitle }) => {
         </div>
       </div>
       <img
-        className={`MovieEntity__poster ${isActiveHero}`}
+        className={`${styles.poster} ${isActiveHero}`}
         src={`https://image.tmdb.org/t/p/original${movieData.poster_path}`}
         alt={movieData.original_title}
       />
-      <div className="MovieEntity__book">
+      <div className={styles.book}>
         <button
           onClick={() => {
             setVisibility(true);
           }}
-          className="MovieEntity__book--btn"
+          className={styles.btn}
         >
           More info
         </button>
       </div>
       {visibility && (
         <Modal>
-          <div className="modalbox">
+          <div className={styles.modalbox}>
             <div
-              className="backdrop"
+              className={styles.backdrop}
               style={{
                 backgroundImage: `url("https://image.tmdb.org/t/p/original/${movieData.backdrop_path}")`,
               }}
             ></div>
 
-            <div className="overlay"></div>
+            <div className={styles.overlay}></div>
 
-            <div className="button">
+            <div className={styles.button}>
               <p onClick={() => setVisibility(false)}>X</p>
             </div>
 
-            <div className="box">
-              <div className="box2">
+            <div className={styles.box}>
+              <div className={styles.box2}>
                 <img
                   src={`https://image.tmdb.org/t/p/w342${movieData.poster_path}`}
                   alt="poster_path"
                 />
-                <div className="vote">
+                <div className={styles.vote}>
                   <span>
                     <AiFillStar />
                   </span>
                   <p>{movieData.vote_average}</p>
                 </div>
               </div>
-              <div className={`text ${isActive}`}>
-                <h1 className="modal-title">{movieData.title}</h1>
-                <p className={`description`}>{movieData.overview}</p>
+              <div className={`${styles.info2} ${isActive}`}>
+                <h1 className={styles.modalTitle}>{movieData.title}</h1>
+                <p className={styles.description}>{movieData.overview}</p>
                 <p>Release date: {movieData.release_date}</p>
+                <div className={styles.trailer}>
+                  <iframe
+                    src={`https://www.youtube.com/embed/${movieData1.key}?autoplay=1`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    autoplay
+                  ></iframe>
+                </div>
               </div>
             </div>
           </div>
@@ -124,7 +145,7 @@ const MovieEntity = ({ movieTitle }) => {
       )}
     </div>
   ) : (
-    <div className="MovieEntity__Error">
+    <div className={styles.Error}>
       {console.log(forbidden)}
       <h1>Nessun risultato o contenuto vietato ai minori.</h1>
     </div>

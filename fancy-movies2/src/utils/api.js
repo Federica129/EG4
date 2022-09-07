@@ -15,3 +15,5 @@ export { GET };
 // https://api.themoviedb.org/3/  search  /  company  ?api_key=0311818904149c6cafd27cd94505d8ab  &query=titanic&page=1
 
 // https://api.themoviedb.org/3/ search / movie ?api_key=0311818904149c6cafd27cd94505d8ab &query=titanic&page=1
+
+// https://api.themoviedb.org/3/  movie / 354912 / videos ?api_key=0311818904149c6cafd27cd94505d8ab&language=en-US
