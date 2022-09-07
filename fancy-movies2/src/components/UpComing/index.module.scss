@@ -1,7 +1,7 @@
 @import "../../styles/mixins";
 
 .UpComing {
-  @include flex(flex, flex-start, row, 20px, center);
+  @include flex(flex, flex-start, row, 25px, center);
 
   overflow-x: scroll;
   height: 45%;

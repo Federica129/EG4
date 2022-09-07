@@ -6,6 +6,7 @@
   padding: 25px 40px;
   height: calc(100vh - 86px);
   max-width: 100vw;
+
   .list {
     width: calc(70% - 30px);
     // height: 85vh;
@@ -18,7 +19,8 @@
   }
   .topMovie {
     padding: 0 25px;
-    width: 30%;
+    align-self: center;
+    // width: 30%;
 
     .text {
       p {

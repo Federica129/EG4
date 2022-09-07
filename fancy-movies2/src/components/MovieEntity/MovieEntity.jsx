@@ -39,7 +39,6 @@ const MovieEntity = ({ movieTitle }) => {
       GET("search", "movie", `&query=${movieTitle}&page=1`).then((data) => {
         if (data.results[0] && data.results[0].adult === false) {
           setMovieData(data.results[0]);
-          console.log(data.results[0].id);
           setForbidden(false);
           GET("movie", `${data.results[0].id}/videos`, "&language=en-US").then(
             (dataMovie) => {

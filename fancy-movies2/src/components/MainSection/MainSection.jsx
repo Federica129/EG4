@@ -34,18 +34,24 @@ const MainSection = () => {
   return (
     <div className={styles.MainSection}>
       <div className={styles.topMovie}>
-        {movieLists.popular && <MainCard cardData={movieLists.popular[1]} />}
+        {movieLists.popular && (
+          <MainCard type="popular" cardData={movieLists.popular[1]} />
+        )}
       </div>
 
       <div className={styles.list}>
         <h2>Top Rated</h2>
         {movieLists.topRated && (
-          <TopRatedList cardData={movieListsFilt} nCards={10} />
+          <TopRatedList type="topRated" cardData={movieListsFilt} nCards={10} />
         )}
 
         <h2>Up coming</h2>
         {movieLists.upcoming && (
-          <UpComing cardData={movieLists.upcoming} nCards={15} />
+          <UpComing
+            type="upComing"
+            cardData={movieLists.upcoming}
+            nCards={15}
+          />
         )}
       </div>
     </div>

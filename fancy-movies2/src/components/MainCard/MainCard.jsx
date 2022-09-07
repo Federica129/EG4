@@ -3,7 +3,7 @@ import { AiFillStar } from "react-icons/ai";
 import { useState, useEffect, memo } from "react";
 import Modal from "../Modal";
 
-const MainCard = ({ cardData, classe }) => {
+const MainCard = ({ cardData, type }) => {
   const {
     title,
     vote_average,
@@ -22,28 +22,33 @@ const MainCard = ({ cardData, classe }) => {
     }, 1000);
   }, [visibility]);
 
+  // const style = {
+  //   topRated: styles.topRated,
+  //   upComing: styles.upComing,
+  //   popular: styles.popular,
+  // };
+  // console.log(styles[type]);
+
   return (
     <>
       <div
-        className={classe}
+        className={`${styles.MainCard} ${styles[type]}`}
         onClick={() => {
           setVisibility(true);
         }}
       >
-        <div className={styles.MainCard}>
-          <img
-            className={styles.img}
-            src={`https://image.tmdb.org/t/p/w342${poster_path}`}
-            alt={title}
-          />
-          <div className={styles.text}>
-            <h3>{title}</h3>
-            <div className={styles.text2}>
-              <p>{vote_average}</p>
-              <span>
-                <AiFillStar />
-              </span>
-            </div>
+        <img
+          className={styles.img}
+          src={`https://image.tmdb.org/t/p/w342${poster_path}`}
+          alt={title}
+        />
+        <div className={styles.text}>
+          <h3>{title}</h3>
+          <div className={styles.text2}>
+            <p>{vote_average}</p>
+            <span>
+              <AiFillStar />
+            </span>
           </div>
         </div>
       </div>
@@ -80,6 +85,15 @@ const MainCard = ({ cardData, classe }) => {
                 <h1 className={styles.modalTitle}>{title}</h1>
                 <p className={styles.description}>{overview}</p>
                 <p>Release date: {release_date}</p>
+                {/* <div className={styles.trailer}>
+                  <iframe
+                    src={`https://www.youtube.com/embed/${movieData1.key}?autoplay=1`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    autoplay
+                  ></iframe>
+                </div> */}
               </div>
             </div>
           </div>

@@ -188,7 +188,7 @@
 
     .box {
       @include flex(flex, flex-start, row, 20px);
-      // height: 85vh;
+      height: 85vh;
       z-index: 2;
 
       .box2 img {
