@@ -213,6 +213,22 @@
   .MainCard {
     .modalbox {
       height: 100%;
+      .backdrop {
+        background-size: contain;
+        filter: blur(0px);
+        opacity: 1;
+      }
+
+      .overlay {
+        background: rgb(0, 0, 0);
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 1) 40%,
+          rgba(0, 0, 0, 0.8855917366946778) 70%,
+          rgba(0, 0, 0, 0.4009978991596639) 77%,
+          rgba(0, 0, 0, 0) 100%
+        );
+      }
 
       .button {
         font-size: 1.4rem;
@@ -221,14 +237,14 @@
 
       .box {
         @include flex(flex, center, column, 20px);
-        height: 50vh;
+        height: 75vh;
 
         .box2 {
           display: none;
         }
 
         .text2 {
-          font-size: 1.5rem;
+          font-size: 1.4rem;
 
           .modalTitle {
             font-size: 85%;
