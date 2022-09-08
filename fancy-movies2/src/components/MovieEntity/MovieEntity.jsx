@@ -39,6 +39,7 @@ const MovieEntity = ({ movieTitle }) => {
       GET("search", "movie", `&query=${movieTitle}&page=1`).then((data) => {
         if (data.results[0] && data.results[0].adult === false) {
           setMovieData(data.results[0]);
+          // console.log(data.results[0].id);
           setForbidden(false);
           GET("movie", `${data.results[0].id}/videos`, "&language=en-US").then(
             (dataMovie) => {
@@ -104,13 +105,10 @@ const MovieEntity = ({ movieTitle }) => {
                 backgroundImage: `url("https://image.tmdb.org/t/p/original/${movieData.backdrop_path}")`,
               }}
             ></div>
-
             <div className={styles.overlay}></div>
-
             <div className={styles.button}>
               <p onClick={() => setVisibility(false)}>X</p>
             </div>
-
             <div className={styles.box}>
               <div className={styles.box2}>
                 <img
@@ -128,15 +126,17 @@ const MovieEntity = ({ movieTitle }) => {
                 <h1 className={styles.modalTitle}>{movieData.title}</h1>
                 <p className={styles.description}>{movieData.overview}</p>
                 <p>Release date: {movieData.release_date}</p>
-                <div className={styles.trailer}>
-                  <iframe
-                    src={`https://www.youtube.com/embed/${movieData1.key}?autoplay=1`}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    autoplay
-                  ></iframe>
-                </div>
+                {movieData1 ? (
+                  <div className={styles.trailer}>
+                    <iframe
+                      src={`https://www.youtube.com/embed/${movieData1.key}?autoplay=1`}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      autoPlay
+                    ></iframe>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

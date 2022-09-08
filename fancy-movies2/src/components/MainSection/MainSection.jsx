@@ -10,17 +10,17 @@ const MainSection = () => {
   const [movieListsFilt, setMovieListsFilt] = useState([]);
 
   useEffect(() => {
-    GET("movie", "popular", "&language=en-US&page=1").then((data) =>
-      setMovieLists((prev) => ({ ...prev, popular: data.results }))
-    );
+    GET("movie", "popular", "&language=en-US&page=1").then((data) => {
+      setMovieLists((prev) => ({ ...prev, popular: data.results }));
+    });
 
     GET("movie", "top_rated", "&language=en-US&page=1").then((data) => {
       setMovieLists((prev) => ({ ...prev, topRated: data.results }));
     });
 
-    GET("movie", "upcoming", "&language=en-US&page=1").then((data) =>
-      setMovieLists((prev) => ({ ...prev, upcoming: data.results }))
-    );
+    GET("movie", "upcoming", "&language=en-US&page=1").then((data) => {
+      setMovieLists((prev) => ({ ...prev, upcoming: data.results }));
+    });
   }, []);
 
   useEffect(() => {

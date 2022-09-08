@@ -2,6 +2,7 @@ import styles from "./index.module.scss";
 import { AiFillStar } from "react-icons/ai";
 import { useState, useEffect, memo } from "react";
 import Modal from "../Modal";
+import { GET } from "../../utils/api";
 
 const MainCard = ({ cardData, type }) => {
   const {
@@ -11,9 +12,17 @@ const MainCard = ({ cardData, type }) => {
     overview,
     release_date,
     backdrop_path,
+    id,
   } = cardData;
+
   const [visibility, setVisibility] = useState(false);
   const [isActive, setActive] = useState("");
+
+  const [movieData, setMovieData] = useState([
+    {
+      key: "",
+    },
+  ]);
 
   useEffect(() => {
     setActive("");
@@ -22,12 +31,12 @@ const MainCard = ({ cardData, type }) => {
     }, 1000);
   }, [visibility]);
 
-  // const style = {
-  //   topRated: styles.topRated,
-  //   upComing: styles.upComing,
-  //   popular: styles.popular,
-  // };
-  // console.log(styles[type]);
+  useEffect(() => {
+    GET("movie", `${id}/videos`, "&language=en-US").then((dataMovie) => {
+      setMovieData(dataMovie.results[0]);
+      console.log(dataMovie.results);
+    });
+  }, []);
 
   return (
     <>
@@ -85,15 +94,17 @@ const MainCard = ({ cardData, type }) => {
                 <h1 className={styles.modalTitle}>{title}</h1>
                 <p className={styles.description}>{overview}</p>
                 <p>Release date: {release_date}</p>
-                {/* <div className={styles.trailer}>
-                  <iframe
-                    src={`https://www.youtube.com/embed/${movieData1.key}?autoplay=1`}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    autoplay
-                  ></iframe>
-                </div> */}
+                {movieData ? (
+                  <div className={styles.trailer}>
+                    <iframe
+                      src={`https://www.youtube.com/embed/${movieData.key}?autoplay=1`}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      autoPlay
+                    ></iframe>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

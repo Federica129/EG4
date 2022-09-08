@@ -191,15 +191,15 @@
         font-size: 45%;
       }
 
-      // .trailer {
-      //   @include flex(flex, center);
-      //   height: 100%;
+      .trailer {
+        @include flex(flex, center);
+        height: 100%;
 
-      //   iframe {
-      //     width: 40vw;
-      //     border-radius: 10px;
-      //   }
-      // }
+        iframe {
+          width: 40vw;
+          border-radius: 10px;
+        }
+      }
 
       .description {
         font-size: 65%;
