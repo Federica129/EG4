@@ -300,7 +300,7 @@
         opacity: 0;
 
         &.activeHero {
-          @include position(absolute, 600px, 0, 0, 0);
+          @include position(absolute, 620px, 0, 0, 0);
 
           width: 100%;
 
@@ -320,25 +320,60 @@
     }
 
     .book {
-      // @include flex(flex, flex-start, column-reverse);
-      display: block;
-      width: 22%;
+      // @include flex(flex, flex-end, column-reverse);
+      width: 30%;
       z-index: 3;
 
       .btn {
+        @include position(relative, -70px, 200px, 0, 130px);
+        border-radius: 5px;
         max-width: 200px;
-        padding: 20px 30px;
-        border: 0;
-        font-weight: bold;
-        text-transform: uppercase;
-        cursor: pointer;
-        box-shadow: 0 0 8px rgba(0, 0, 0, 0.65);
-        // transform: translate(-100px, -120px);
-        transition: all 0.35s;
+        padding: 10px 15px;
+        transform: none;
+      }
+    }
 
-        &:hover {
-          background-color: black;
-          color: white;
+    .modalbox {
+      .box {
+        @include flex(flex, center, column, 20px);
+        height: 50vh;
+
+        .box2 {
+          display: none;
+        }
+
+        .vote {
+          @include flex(flex, flex-start, row, 2px);
+
+          p {
+            margin: 0;
+            font-size: 1.5rem;
+          }
+
+          span {
+            align-self: center;
+            font-size: 1.8rem;
+          }
+        }
+        .info2 {
+          font-size: 1.5rem;
+
+          .modalTitle {
+            font-size: 85%;
+          }
+
+          p {
+            margin: 2px;
+          }
+
+          .trailer {
+            height: 80%;
+
+            iframe {
+              width: 90vw;
+              border-radius: 20px;
+            }
+          }
         }
       }
     }

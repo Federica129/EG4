@@ -39,9 +39,9 @@ const MainCard = ({ cardData, type }) => {
   }, []);
 
   return (
-    <>
+    <div className={styles.MainCard}>
       <div
-        className={`${styles.MainCard} ${styles[type]}`}
+        className={` ${styles[type]}`}
         onClick={() => {
           setVisibility(true);
         }}
@@ -90,7 +90,7 @@ const MainCard = ({ cardData, type }) => {
                   <p>{vote_average}</p>
                 </div>
               </div>
-              <div className={`${styles.text} ${isActive}`}>
+              <div className={`${styles.text2} ${isActive}`}>
                 <h1 className={styles.modalTitle}>{title}</h1>
                 <p className={styles.description}>{overview}</p>
                 <p>Release date: {release_date}</p>
@@ -110,7 +110,7 @@ const MainCard = ({ cardData, type }) => {
           </div>
         </Modal>
       )}
-    </>
+    </div>
   );
 };
 
