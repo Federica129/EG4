@@ -44,6 +44,7 @@ const MainCard = ({ cardData, type }) => {
         className={` ${styles[type]}`}
         onClick={() => {
           setVisibility(true);
+          document.body.style.overflow = "hidden";
         }}
       >
         <img
@@ -74,7 +75,14 @@ const MainCard = ({ cardData, type }) => {
             <div className={styles.overlay}></div>
 
             <div className={styles.button}>
-              <p onClick={() => setVisibility(false)}>X</p>
+              <p
+                onClick={() => {
+                  setVisibility(false);
+                  document.body.style.overflow = "auto";
+                }}
+              >
+                X
+              </p>
             </div>
 
             <div className={styles.box}>

@@ -90,6 +90,7 @@ const MovieEntity = ({ movieTitle }) => {
         <button
           onClick={() => {
             setVisibility(true);
+            document.body.style.overflow = "hidden";
           }}
           className={styles.btn}
         >
@@ -107,7 +108,14 @@ const MovieEntity = ({ movieTitle }) => {
             ></div>
             <div className={styles.overlay}></div>
             <div className={styles.button}>
-              <p onClick={() => setVisibility(false)}>X</p>
+              <p
+                onClick={() => {
+                  setVisibility(false);
+                  document.body.style.overflow = "auto";
+                }}
+              >
+                X
+              </p>
             </div>
             <div className={styles.box}>
               <div className={styles.box2}>

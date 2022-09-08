@@ -214,6 +214,11 @@
     .modalbox {
       height: 100%;
 
+      .button {
+        font-size: 1.4rem;
+        padding-top: 15px;
+      }
+
       .box {
         @include flex(flex, center, column, 20px);
         height: 50vh;

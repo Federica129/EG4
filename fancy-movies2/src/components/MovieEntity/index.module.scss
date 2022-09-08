@@ -119,6 +119,7 @@
     z-index: 3;
 
     .btn {
+      color: black;
       max-width: 200px;
       padding: 20px 30px;
       border: 0;
@@ -334,6 +335,10 @@
     }
 
     .modalbox {
+      .button {
+        font-size: 1.4rem;
+        padding-top: 15px;
+      }
       .box {
         @include flex(flex, center, column, 20px);
         height: 50vh;
