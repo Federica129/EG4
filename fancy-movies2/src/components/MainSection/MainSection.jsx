@@ -6,7 +6,7 @@ import { GET } from "../../utils/api";
 import styles from "./index.module.scss";
 import UpComing from "../UpComing";
 
-const MainSection = () => {
+const MainSection = ({ allRef }) => {
   const [movieLists, setMovieLists] = useState({});
   const [movieListsFilt, setMovieListsFilt] = useState([]);
 
@@ -34,7 +34,7 @@ const MainSection = () => {
 
   return (
     <>
-      <div className={styles.MainSection}>
+      <div ref={allRef.refMovie} className={styles.MainSection}>
         <div className={styles.topMovie}>
           {movieLists.popular && (
             <MainCard type="popular" cardData={movieLists.popular[1]} />
@@ -61,7 +61,7 @@ const MainSection = () => {
           )}
         </div>
       </div>
-      <div className={styles.list}>
+      <div ref={allRef.refPopular} className={styles.list}>
         <h2>Popular</h2>
         {movieLists.popular && (
           <Popular

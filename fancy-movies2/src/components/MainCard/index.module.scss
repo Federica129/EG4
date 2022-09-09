@@ -145,6 +145,7 @@
 }
 
 .topRated {
+  transition: 0.5s;
   &:hover {
     opacity: 1;
     z-index: 2;
@@ -179,6 +180,7 @@
 }
 
 .upComing {
+  transition: 0.5s;
   &:hover {
     opacity: 1;
     z-index: 2;
@@ -212,6 +214,7 @@
 }
 
 .popularList {
+  transition: 0.5s;
   overflow: hidden;
   &:hover {
     overflow: hidden;

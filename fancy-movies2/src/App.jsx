@@ -1,7 +1,7 @@
 import MovieEntity from "./components/MovieEntity";
 import MainInput from "./components/MainInput";
 import MainSection from "./components/MainSection";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -12,6 +12,16 @@ function App() {
   const [inputValue, setInputValue] = useState("");
   const [movieTitle, setMovieTitle] = useState("moulin");
 
+  const refMovie = useRef(null);
+  const refPopular = useRef(null);
+  const refContact = useRef(null);
+
+  const allRef = {
+    refMovie,
+    refPopular,
+    refContact,
+  };
+
   const onHandleSubmit = (e) => {
     e.preventDefault();
 
@@ -20,7 +30,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar>
+      <Navbar allRef={allRef}>
         <MainInput
           inputValue={inputValue}
           setInputValue={setInputValue}
@@ -30,7 +40,7 @@ function App() {
         />
       </Navbar>{" "}
       <MovieEntity movieTitle={movieTitle} />
-      <MainSection />
+      <MainSection allRef={allRef} />
       {/* <ListMovie>
         <MainInput
           inputValue={inputValue}
@@ -40,7 +50,7 @@ function App() {
           movieTitle={movieTitle}
         />
       </ListMovie> */}
-      <Footer />
+      <Footer allRef={allRef} />
     </div>
   );
 }

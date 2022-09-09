@@ -6,22 +6,23 @@ import {
   AiFillInstagram,
 } from "react-icons/ai";
 
-const Footer = () => {
+const Footer = ({ allRef }) => {
   return (
-    <div className={styles.Footer}>
+    <div ref={allRef.refContact} className={styles.Footer}>
       <div className={styles.contact}>
-        <span>
+        <a href="https://www.youtube.com/" target="_blank">
           <AiFillYoutube />
-        </span>
-        <span>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank">
           <AiFillInstagram />
-        </span>
-        <span>
+        </a>
+        <a href="https://github.com/Federica129" target="_blank">
           <AiFillGithub />
-        </span>{" "}
-        <span>
+        </a>
+
+        <a href="https://www.facebook.com/" target="_blank">
           <AiFillFacebook />
-        </span>
+        </a>
       </div>
       <div className={styles.copyright}>Made by Federica.</div>
     </div>
