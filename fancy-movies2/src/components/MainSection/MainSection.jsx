@@ -51,7 +51,7 @@ const MainSection = () => {
             />
           )}
 
-          <h2>Up coming</h2>
+          <h2>UpComing</h2>
           {movieLists.upcoming && (
             <UpComing
               type="upComing"
@@ -62,7 +62,7 @@ const MainSection = () => {
         </div>
       </div>
       <div className={styles.list}>
-        <h2>Top Rated TV</h2>
+        <h2>Popular</h2>
         {movieLists.popular && (
           <Popular
             type="popularList"
