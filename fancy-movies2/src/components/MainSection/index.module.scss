@@ -9,7 +9,6 @@
 
   .list {
     width: calc(70% - 30px);
-    // height: 85vh;
 
     h2 {
       margin: 0;
@@ -17,6 +16,7 @@
       width: fit-content;
     }
   }
+
   .topMovie {
     padding: 0 25px;
     align-self: center;
@@ -30,6 +30,42 @@
       h3 {
         display: none;
       }
+    }
+  }
+}
+
+.list {
+  padding: 0 20px;
+
+  h2 {
+    margin: 0;
+    color: white;
+    width: fit-content;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .MainSection {
+    @include flex(flex, center, column);
+    padding: 0px 20px;
+    height: max-content;
+
+    .list {
+      width: 100%;
+      padding: 0px;
+      h2 {
+        font-size: 1rem;
+        padding: 2px 0;
+      }
+    }
+    .topMovie {
+      padding: 0px;
+    }
+  }
+  .list {
+    h2 {
+      font-size: 1rem;
+      padding: 2px 0;
     }
   }
 }

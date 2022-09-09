@@ -112,13 +112,14 @@
           height: 100%;
 
           iframe {
-            width: 40vw;
+            height: 100%;
+            width: 80%;
             border-radius: 10px;
           }
         }
 
         .description {
-          font-size: 65%;
+          font-size: 50%;
           text-transform: none;
         }
       }
@@ -129,12 +130,13 @@
 .popular {
   height: 100vh;
   @include flex(flex, center, column, 0, stretch, center);
+  text-shadow: 1px 1px 2px black;
 
   position: relative;
   color: rgb(255, 255, 255);
   img {
-    width: 85%;
-    height: 85%;
+    width: 25vw;
+    height: 85vh;
     box-shadow: 1px 0px 20px -2px #4f4f4f;
   }
   .text {
@@ -209,6 +211,32 @@
   }
 }
 
+.popularList {
+  overflow: hidden;
+  &:hover {
+    overflow: hidden;
+    opacity: 1;
+    z-index: 2;
+    transform: scale(1.1);
+    transition: all 0.5s;
+  }
+  img {
+    max-width: 19vw;
+    max-height: 30vh;
+  }
+
+  .text {
+    h3 {
+      display: none;
+    }
+    p {
+      display: none;
+    }
+  }
+  .text2 {
+    display: none;
+  }
+}
 @media only screen and (max-width: 600px) {
   .MainCard {
     .modalbox {
@@ -223,9 +251,9 @@
         background: rgb(0, 0, 0);
         background: linear-gradient(
           0deg,
-          rgba(0, 0, 0, 1) 40%,
-          rgba(0, 0, 0, 0.8855917366946778) 70%,
-          rgba(0, 0, 0, 0.4009978991596639) 77%,
+          rgba(0, 0, 0, 1) 69%,
+          rgba(0, 0, 0, 0.9859943977591037) 73%,
+          rgba(0, 0, 0, 0.4009978991596639) 89%,
           rgba(0, 0, 0, 0) 100%
         );
       }
@@ -240,7 +268,21 @@
         height: 75vh;
 
         .box2 {
-          display: none;
+          img {
+            display: none;
+          }
+
+          .vote {
+            @include position(absolute, 170px, 0, 0, 310px);
+            p {
+              font-size: 1rem;
+            }
+
+            span {
+              align-self: auto;
+              font-size: 1.3rem;
+            }
+          }
         }
 
         .text2 {
@@ -264,6 +306,76 @@
           }
         }
       }
+    }
+  }
+
+  .popular {
+    height: 20vh;
+    width: 90vw;
+    position: relative;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 55vh;
+      position: relative;
+      top: 65px;
+    }
+    .text {
+      @include position(absolute, calc(133px - 95px), 0, 0, 0);
+      @include flex(flex, center, row, 0, auto, center);
+      text-shadow: #4f4f4f;
+
+      p,
+      span {
+        display: none;
+      }
+    }
+  }
+
+  .topRated {
+    overflow: hidden;
+    img {
+      max-width: 19vw;
+      box-shadow: none;
+    }
+
+    .text {
+      h3 {
+        display: none;
+      }
+      p {
+        display: none;
+      }
+    }
+    .text2 {
+      display: none;
+    }
+  }
+
+  .upComing {
+    overflow: hidden;
+    img {
+      max-width: 19vw;
+      box-shadow: none;
+    }
+
+    .text {
+      h3 {
+        display: none;
+      }
+      p {
+        display: none;
+      }
+    }
+    .text2 {
+      display: none;
+    }
+  }
+
+  .pupularList {
+    img {
+      max-width: 12vw;
+      max-height: 27vh;
     }
   }
 }

@@ -245,13 +245,14 @@
           height: 100%;
 
           iframe {
-            width: 40vw;
+            height: 100%;
+            width: 80%;
             border-radius: 10px;
           }
         }
 
         .description {
-          font-size: 65%;
+          font-size: 50%;
           text-transform: none;
         }
       }
@@ -355,22 +356,23 @@
         height: 75vh;
 
         .box2 {
-          display: none;
-        }
-
-        .vote {
-          @include flex(flex, flex-start, row, 2px);
-
-          p {
-            margin: 0;
-            font-size: 1.5rem;
+          img {
+            display: none;
           }
 
-          span {
-            align-self: center;
-            font-size: 1.8rem;
+          .vote {
+            @include position(absolute, 170px, 0, 0, 310px);
+            p {
+              font-size: 1rem;
+            }
+
+            span {
+              align-self: auto;
+              font-size: 1.3rem;
+            }
           }
         }
+
         .info2 {
           font-size: 1.4rem;
 

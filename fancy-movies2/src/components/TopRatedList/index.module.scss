@@ -7,3 +7,16 @@
   height: 45%;
   padding: 0 0 0 30px;
 }
+
+@media only screen and (max-width: 600px) {
+  .TopRatedList {
+    overflow-y: hidden;
+    height: 35%;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    @include flex(flex, flex-start, row, 3px, center);
+
+    padding: 0 0 0 0;
+  }
+}

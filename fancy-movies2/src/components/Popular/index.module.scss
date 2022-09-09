@@ -1,22 +1,22 @@
 @import "../../styles/mixins";
 
-.UpComing {
-  @include flex(flex, flex-start, row, 25px, center);
+.Popular {
+  @include flex(flex, flex-start, row, 3px, center);
 
   overflow-x: scroll;
-  height: 45%;
-  padding: 0 0 0 30px;
+  height: 35vh;
+  padding: 0 0 0 7px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 600px) {
-  .UpComing {
+  .Popular {
     height: 35%;
     overflow-y: hidden;
-    &::-webkit-scrollbar {
-      display: none;
-    }
     @include flex(flex, flex-start, row, 3px, center);
 
-    padding: 0 0 0 0;
+    padding: 0px;
   }
 }
