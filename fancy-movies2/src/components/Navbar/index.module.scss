@@ -1,7 +1,7 @@
 @import "../../styles/mixins";
 
 .Navbar {
-  @include position(sticky, 0, autp, auto, auto, 4);
+  @include position(sticky, 0, auto, auto, auto, 4);
   @include flex(flex, space-between);
 
   padding: 15px 15px;
