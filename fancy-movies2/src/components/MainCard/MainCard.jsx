@@ -14,6 +14,7 @@ const MainCard = ({ cardData, type }) => {
     backdrop_path,
     id,
     name,
+    first_air_date,
   } = cardData;
 
   const [visibility, setVisibility] = useState(false);
@@ -102,9 +103,9 @@ const MainCard = ({ cardData, type }) => {
                 </div>
               </div>
               <div className={`${styles.text2} ${isActive}`}>
-                <h1 className={styles.modalTitle}>{title}</h1>
+                <h1 className={styles.modalTitle}>{title? title : name}</h1>
                 <p className={styles.description}>{overview}</p>
-                <p>Release date: {release_date}</p>
+                <p>Release date: {release_date? release_date : first_air_date}</p>
                 {movieData ? (
                   <div className={styles.trailer}>
                     <iframe

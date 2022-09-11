@@ -278,6 +278,9 @@ text-align: center;
    }
   }
 }
+
+
+
 @media only screen and (max-width: 600px) {
   .MainCard {
     .modalbox {
@@ -413,19 +416,20 @@ text-align: center;
     }
   }
 
-  .pupularList {
+  .popularList {
     img {
-      max-width: 12vw;
+      max-width: 19vw;
       max-height: 27vh;
     }
   }
 
   .popularTv {
-    img {
-      max-width: 50vw;
-      max-height: 17vh;
+    
+   img {
+    box-shadow: none;
+      max-width: 40vw;
+      height: 14vh;
     }
-  
     .text {
      display: none;
       
@@ -436,3 +440,19 @@ text-align: center;
     }
   }
 }
+
+@media only screen and (max-width: 375px) {
+  .popularTv {
+   img {
+      max-width: 40vw;
+      height: 17vh;
+    }
+}}
+
+@media only screen and (max-width: 360px) {
+  .popularTv {
+   img {
+      max-width: 40vw;
+      height: 15vh;
+    }
+}}
