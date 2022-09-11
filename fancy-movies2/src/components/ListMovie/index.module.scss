@@ -86,17 +86,34 @@
    
   } .btn {
       @include flex(flex, space-between);
-   
+   .prev{
       button {
-       font-size: 1.5rem;
+       span {
+        font-size: 1.7rem;
+
        &:hover {
-        color: rgb(255, 255, 255);
+        color: white;
+      }
+      
       }
       }
-   
+   }
       p{
        font-size: 1.3rem;
       }
+
+      .next{
+        button {
+         span {
+          font-size: 1.7rem;
+
+         &:hover {
+          color: white;
+        }
+
+        }
+        }
+     }
      }
 
   }
