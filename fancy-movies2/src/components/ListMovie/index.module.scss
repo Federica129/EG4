@@ -1,18 +1,61 @@
 @import "../../styles/mixins";
-
 .ListMovie {
-  @include flex(flex, flex-start, row);
-  height: calc(100vh - 86px);
-
-  .info {
-    background-color: red;
-    height: calc(100vh - 86px);
-    width: 25vw;
-  }
-
-  .list {
-    background-color: antiquewhite;
-    height: calc(100vh - 86px);
-    width: 75vw;
-  }
+  @include flex(flex, center);
+  padding-top: 30px;
+  width: 100%;
+  
+  .listTv { 
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 35px;
+  grid-row-gap: 0px;
 }
+
+
+}
+.btn {
+   @include flex(flex, space-around);
+   color: white;
+
+   button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    font-size: 2rem;
+    transition: 0.5s;
+    align-self: center;
+    &:hover {
+      color: red;
+      transition: 0.5s;
+    }
+   }
+
+   p{
+    font-weight: bolder;
+    font-size: 2rem;
+   }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .ListMovie {
+      padding-top: 0px;
+      .listTv { 
+      grid-template-columns: repeat(4, 1fr);
+      grid-column-gap: 0px;
+    }
+
+   
+  } .btn {
+      @include flex(flex, space-between);
+   
+      button {
+       font-size: 1.5rem;
+      }
+   
+      p{
+       font-size: 1.5rem;
+      }
+     }
+
+  }

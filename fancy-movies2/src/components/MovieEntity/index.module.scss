@@ -106,6 +106,7 @@
 
     &.activeHero {
       height: calc(100vh - 86px);
+      width: min-content;
       object-fit: cover;
       z-index: 2;
       opacity: 1;
@@ -115,7 +116,7 @@
 
   .book {
     @include flex(flex, flex-start, column-reverse);
-    width: 22%;
+    width: 20%;
     z-index: 3;
 
     .btn {

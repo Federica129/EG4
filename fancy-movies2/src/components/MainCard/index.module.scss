@@ -1,6 +1,7 @@
 @import "../../styles/mixins";
 
 .MainCard {
+  width: fit-content;
   color: white;
   transition: 0.5s;
   .modalbox {
@@ -240,6 +241,43 @@
     display: none;
   }
 }
+
+.popularTv {
+  
+  padding: 5px;
+text-align: center;
+
+  img {
+    max-width: 50vw;
+    max-height: 35vh;
+    transition: all 0.5s;
+    box-shadow: 1px 0px 20px -2px #4f4f4f;
+    &:hover {
+      z-index: 2;
+      transform: scale(1.1);
+      transition: all 0.5s;
+    }
+  }
+
+  .text {
+    h3 {font-size: 0.7rem;
+      margin:0;
+    }
+  }
+  .text2 {
+   @include flex(flex, center);
+
+   p{
+    margin: 0;
+   }
+
+   span {
+    color: yellow;
+    align-self: center;
+    font-size: 1.2rem;
+   }
+  }
+}
 @media only screen and (max-width: 600px) {
   .MainCard {
     .modalbox {
@@ -379,6 +417,22 @@
     img {
       max-width: 12vw;
       max-height: 27vh;
+    }
+  }
+
+  .popularTv {
+    img {
+      max-width: 50vw;
+      max-height: 17vh;
+    }
+  
+    .text {
+     display: none;
+      
+     
+    }
+    .text2 {
+      display: none;
     }
   }
 }

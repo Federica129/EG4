@@ -5,10 +5,12 @@ import Popular from "../Popular";
 import { GET } from "../../utils/api";
 import styles from "./index.module.scss";
 import UpComing from "../UpComing";
+import ListMovie from "../ListMovie";
 
 const MainSection = ({ allRef }) => {
   const [movieLists, setMovieLists] = useState({});
   const [movieListsFilt, setMovieListsFilt] = useState([]);
+  const [numPage, setNumPage] = useState(1)
 
   useEffect(() => {
     GET("movie", "popular", "&language=en-US&page=1").then((data) => {
@@ -23,6 +25,12 @@ const MainSection = ({ allRef }) => {
       setMovieLists((prev) => ({ ...prev, upcoming: data.results }));
     });
   }, []);
+
+  useEffect(() => {
+    GET("tv", "popular", `&language=en-US&page=`, `${numPage}`).then((data) => {
+      setMovieLists((prev) => ({ ...prev, popularTv: data.results }));
+    });
+  }, [numPage, setNumPage])
 
   useEffect(() => {
     movieLists.topRated &&
@@ -42,7 +50,7 @@ const MainSection = ({ allRef }) => {
         </div>
 
         <div className={styles.list}>
-          <h2>Top Rated > 8.6</h2>
+          <h2>Top Rated {">"} 8.6</h2>
           {movieLists.topRated && (
             <TopRatedList
               type="topRated"
@@ -68,6 +76,17 @@ const MainSection = ({ allRef }) => {
             type="popularList"
             cardData={movieLists.popular}
             nCards={20}
+          />
+        )}
+      </div>
+      <div className={styles.listTv}>
+        <h2>Popular Tv</h2>
+        {movieLists.popularTv && (
+          <ListMovie
+          numPage={numPage}
+          setNumPage={setNumPage}
+            type="popularTv"
+            cardData={movieLists.popularTv}
           />
         )}
       </div>

@@ -13,6 +13,7 @@ const MainCard = ({ cardData, type }) => {
     release_date,
     backdrop_path,
     id,
+    name,
   } = cardData;
 
   const [visibility, setVisibility] = useState(false);
@@ -34,8 +35,10 @@ const MainCard = ({ cardData, type }) => {
   useEffect(() => {
     GET("movie", `${id}/videos`, "&language=en-US").then((dataMovie) => {
       setMovieData(dataMovie.results[0]);
-      console.log(dataMovie.results);
-    });
+      // console.log(dataMovie.results);
+      
+    }); GET("tv", `${id}/videos`, "&language=en-US").then((dataMovie) => {
+      setMovieData(dataMovie.results[0]);})
   }, []);
 
   return (
@@ -53,12 +56,12 @@ const MainCard = ({ cardData, type }) => {
           alt={title}
         />
         <div className={styles.text}>
-          <h3>{title}</h3>
+          <h3>{title? title : name}</h3>
           <div className={styles.text2}>
-            <p>{vote_average}</p>
             <span>
               <AiFillStar />
             </span>
+            <p>{vote_average}</p>
           </div>
         </div>
       </div>
@@ -122,4 +125,4 @@ const MainCard = ({ cardData, type }) => {
   );
 };
 
-export default memo(MainCard);
+export default MainCard;

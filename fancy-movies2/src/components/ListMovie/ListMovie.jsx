@@ -1,20 +1,21 @@
 import styles from "./index.module.scss";
 import MainCard from "../MainCard";
 
-const ListMovie = ({ children }) => {
-  // useEffect(() => {
-  //   GET("movie", "popular", "&language=en-US&page=1").then((data) =>
-  //     setMovieLists((prev) => ({ ...prev, popular: data.results }))
-  //   );
-  // }, []);
-
+const ListMovie = ({cardData, type, numPage, setNumPage}) => {
   return (
+    <>
+    <>
     <div className={styles.ListMovie}>
-      <div className={styles.info}>{children}</div>
-      {/* <div className="list">{cardData.map((i, ii) => (
-        <MainCard cardData={i} classe={"cardList"} key={ii} />
-      ))}</div> */}
-    </div>
+      <div className={styles.listTv}>{cardData.map((i, ii) => (
+        <MainCard type={type} cardData={i} classe={"cardList"} key={ii} />
+      ))}</div>
+     </div></>
+      <div className={styles.btn}>
+      <button onClick={() => setNumPage(numPage - 1)} disabled={numPage == 1}>{'<'}</button>
+      <p>{numPage}</p>
+      <button onClick={() => setNumPage(numPage + 1)} disabled={numPage == 20} >{'>'}</button></div>
+      
+     </>
   );
 };
 
