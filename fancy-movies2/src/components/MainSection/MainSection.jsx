@@ -30,7 +30,7 @@ const MainSection = ({ allRef }) => {
     GET("tv", "popular", `&language=en-US&page=`, `${numPage}`).then((data) => {
       setMovieLists((prev) => ({ ...prev, popularTv: data.results }));
     });
-  }, [numPage, setNumPage])
+  }, [numPage])
 
   useEffect(() => {
     movieLists.topRated &&

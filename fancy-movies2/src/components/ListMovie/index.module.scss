@@ -14,17 +14,16 @@
 
 }
 .btn {
-   @include flex(flex, space-around);
+   @include flex(flex, space-around, row, 0, stretch, center);
    color: white;
-
-   button {
+   .prev{
+    button {
     background-color: transparent;
     border: none;
     font-weight: bolder;
     font-size: 2.3rem;
-    
-    align-self: center;
     cursor: pointer;
+    
     span {
       transition: 0.5s;
       color:white;
@@ -39,12 +38,41 @@
     }
     
    }
+  }
 
-   p{
+  p{
     margin: 0;
     font-weight: bolder;
     font-size: 2rem;
    }
+
+  .next {
+    button {
+      background-color: transparent;
+      border: none;
+      font-weight: bolder;
+      font-size: 2.3rem;
+      cursor: pointer;
+      
+      span {
+        transition: 0.5s;
+        color:white;
+        svg {
+          display: flex;
+          align-self: center;
+        }
+       &:hover {
+        color: red;
+        transition: 0.5s;
+      }
+      }
+      
+     }
+  }
+
+   
+
+   
   }
 
   @media only screen and (max-width: 600px) {
@@ -67,7 +95,7 @@
       }
    
       p{
-       font-size: 1.4rem;
+       font-size: 1.3rem;
       }
      }
 

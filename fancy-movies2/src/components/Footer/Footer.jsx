@@ -2,7 +2,7 @@ import styles from "./index.module.scss";
 import {
   AiFillYoutube,
   AiFillGithub,
-  AiFillFacebook,
+  AiFillLinkedin,
   AiFillInstagram,
 } from "react-icons/ai";
 
@@ -20,8 +20,8 @@ const Footer = ({ allRef }) => {
           <AiFillGithub />
         </a>
 
-        <a href="https://www.facebook.com/" target="_blank">
-          <AiFillFacebook />
+        <a href="https://www.linkedin.com/in/federica-schillaci/" target="_blank">
+          <AiFillLinkedin />
         </a>
       </div>
       <div className={styles.copyright}>Made by Federica.</div>

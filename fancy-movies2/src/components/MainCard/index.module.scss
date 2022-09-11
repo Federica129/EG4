@@ -109,12 +109,12 @@
         }
 
         .trailer {
-          @include flex(flex, center);
-          height: 100%;
-
+          @include flex(flex, center,);
+         height: 50vh; 
+         
           iframe {
-            height: 100%;
-            width: 80%;
+            height: 100%; 
+          width: 40vw;
             border-radius: 10px;
           }
         }

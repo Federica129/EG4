@@ -1,10 +1,10 @@
 import styles from "./index.module.scss";
 import { AiFillStar } from "react-icons/ai";
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect } from "react";
 import Modal from "../Modal";
 import { GET } from "../../utils/api";
 
-const MainCard = ({ cardData, type }) => {
+const MainCard = ({ cardData, type, numPage, setNumPage }) => {
   const {
     title,
     vote_average,
@@ -34,13 +34,18 @@ const MainCard = ({ cardData, type }) => {
   }, [visibility]);
 
   useEffect(() => {
-    GET("movie", `${id}/videos`, "&language=en-US").then((dataMovie) => {
+   id && GET("movie", `${id}/videos`, "&language=en-US").then((dataMovie) => {
       setMovieData(dataMovie.results[0]);
       // console.log(dataMovie.results);
-      
-    }); GET("tv", `${id}/videos`, "&language=en-US").then((dataMovie) => {
-      setMovieData(dataMovie.results[0]);})
+    }); 
   }, []);
+
+
+useEffect(() => {
+  id && GET("tv", `${id}/videos`, "&language=en-US").then((dataMovie) => {
+      setMovieData(dataMovie.results[0]);})
+    },[numPage, visibility]);
+
 
   return (
     <div className={styles.MainCard}>

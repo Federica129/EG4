@@ -15,9 +15,10 @@
     @include flex(flex, center, row, 20px);
 
     font-size: 1.5rem;
-    transition: 0.5s;
+    
     a {
       color: white;
+      transition: 0.5s;
     }
 
     & a:nth-child(1):hover {
