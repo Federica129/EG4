@@ -87,9 +87,13 @@
 
    
   } .btn {
-      @include flex(flex, center, row, 30px);
+      // @include flex(flex, spa, row, 30px);
+      flex: 0 0 auto;
    .prev{
       button {
+        display: flex;
+        flex: 0 0 auto;
+        padding: 0px;
        span {
         font-size: 1.7rem;
 
@@ -106,6 +110,9 @@
 
       .next{
         button {
+          padding: 0px;
+          display: flex;
+          flex: 0 0 auto;
          span {
           font-size: 1.7rem;
 
