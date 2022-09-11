@@ -85,7 +85,7 @@
 
    
   } .btn {
-      @include flex(flex, space-between);
+      @include flex(flex, space-around);
    .prev{
       button {
        span {
@@ -94,7 +94,7 @@
        &:hover {
         color: white;
       }
-      
+
       }
       }
    }
