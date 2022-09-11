@@ -243,8 +243,7 @@
 }
 
 .popularTv {
-  
-  padding: 5px;
+padding: 5px;
 text-align: center;
 
   img {
@@ -424,11 +423,11 @@ text-align: center;
   }
 
   .popularTv {
-    
+    padding: 2px;
    img {
     box-shadow: none;
       max-width: 40vw;
-      height: 14vh;
+      height: 15vh;
     }
     .text {
      display: none;
@@ -443,16 +442,18 @@ text-align: center;
 
 @media only screen and (max-width: 375px) {
   .popularTv {
+    padding: 2px;
    img {
       max-width: 40vw;
-      height: 16vh;
+      height: 17vh;
     }
 }}
 
 @media only screen and (max-width: 360px) {
   .popularTv {
+    padding: 2px;
    img {
       max-width: 40vw;
-      height: 14vh;
+      height: 15vh;
     }
 }}

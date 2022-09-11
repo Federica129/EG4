@@ -85,7 +85,7 @@
 
    
   } .btn {
-      @include flex(flex, space-around);
+      @include flex(flex, center, row, 30px);
    .prev{
       button {
        span {
