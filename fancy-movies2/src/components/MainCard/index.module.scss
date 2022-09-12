@@ -109,12 +109,12 @@
         }
 
         .trailer {
-          @include flex(flex, center,);
-         height: 50vh; 
-         
+          @include flex(flex, center);
+          height: 50vh;
+
           iframe {
-            height: 100%; 
-          width: 40vw;
+            height: 100%;
+            width: 40vw;
             border-radius: 10px;
           }
         }
@@ -243,9 +243,8 @@
 }
 
 .popularTv {
-<<<<<<< Updated upstream
-padding: 5px;
-text-align: center;
+  padding: 5px;
+  text-align: center;
 
   img {
     max-width: 50vw;
@@ -260,45 +259,26 @@ text-align: center;
   }
 
   .text {
-    h3 {font-size: 0.7rem;
-      margin:0;
-    }
-  }
-  .text2 {
-   @include flex(flex, center);
-
-   p{
-    margin: 0;
-   }
-
-   span {
-    color: yellow;
-    align-self: center;
-    font-size: 1.2rem;
-   }
-  }
-}
-
-
-
-=======
-  img {
-    max-width: 14vw;
-    max-height: 25vh;
-  }
-  .text {
     h3 {
-      display: none;
-    }
-    p {
-      display: none;
+      font-size: 0.7rem;
+      margin: 0;
     }
   }
   .text2 {
-    display: none;
+    @include flex(flex, center);
+
+    p {
+      margin: 0;
+    }
+
+    span {
+      color: yellow;
+      align-self: center;
+      font-size: 1.2rem;
+    }
   }
 }
->>>>>>> Stashed changes
+
 @media only screen and (max-width: 600px) {
   .MainCard {
     .modalbox {
@@ -443,15 +423,13 @@ text-align: center;
 
   .popularTv {
     padding: 2px;
-   img {
-    box-shadow: none;
+    img {
+      box-shadow: none;
       max-width: 40vw;
       height: 15vh;
     }
     .text {
-     display: none;
-      
-     
+      display: none;
     }
     .text2 {
       display: none;
@@ -462,17 +440,19 @@ text-align: center;
 @media only screen and (max-width: 375px) {
   .popularTv {
     padding: 2px;
-   img {
+    img {
       max-width: 40vw;
       height: 17vh;
     }
-}}
+  }
+}
 
 @media only screen and (max-width: 360px) {
   .popularTv {
     padding: 2px;
-   img {
+    img {
       max-width: 40vw;
       height: 15vh;
     }
-}}
+  }
+}

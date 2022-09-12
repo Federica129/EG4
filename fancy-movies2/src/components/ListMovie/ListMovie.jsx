@@ -25,14 +25,14 @@ const ListMovie = ({ cardData, type, numPage, setNumPage }) => {
       </>
       <div className={styles.btn}>
         <div className={styles.prev}>
-          <button onClick={() => setNumPage(1)} disabled={numPage == 1}>
+          <button onClick={() => setNumPage(1)} disabled={numPage === 1}>
             <span>
               <MdSkipPrevious />
             </span>
           </button>
           <button
             onClick={() => setNumPage(numPage - 1)}
-            disabled={numPage == 1}
+            disabled={numPage === 1}
           >
             <span>
               <IoIosArrowBack />
@@ -43,13 +43,13 @@ const ListMovie = ({ cardData, type, numPage, setNumPage }) => {
         <div className={styles.next}>
           <button
             onClick={() => setNumPage(numPage + 1)}
-            disabled={numPage == 20}
+            disabled={numPage === 20}
           >
             <span>
               <IoIosArrowForward />
             </span>
           </button>
-          <button onClick={() => setNumPage(20)} disabled={numPage == 20}>
+          <button onClick={() => setNumPage(20)} disabled={numPage === 20}>
             <span>
               <MdSkipNext />
             </span>
