@@ -243,6 +243,7 @@
 }
 
 .popularTv {
+<<<<<<< Updated upstream
 padding: 5px;
 text-align: center;
 
@@ -280,6 +281,24 @@ text-align: center;
 
 
 
+=======
+  img {
+    max-width: 14vw;
+    max-height: 25vh;
+  }
+  .text {
+    h3 {
+      display: none;
+    }
+    p {
+      display: none;
+    }
+  }
+  .text2 {
+    display: none;
+  }
+}
+>>>>>>> Stashed changes
 @media only screen and (max-width: 600px) {
   .MainCard {
     .modalbox {

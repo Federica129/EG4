@@ -10,7 +10,7 @@ import ListMovie from "../ListMovie";
 const MainSection = ({ allRef }) => {
   const [movieLists, setMovieLists] = useState({});
   const [movieListsFilt, setMovieListsFilt] = useState([]);
-  const [numPage, setNumPage] = useState(1)
+  const [numPage, setNumPage] = useState(1);
 
   useEffect(() => {
     GET("movie", "popular", "&language=en-US&page=1").then((data) => {
@@ -30,7 +30,7 @@ const MainSection = ({ allRef }) => {
     GET("tv", "popular", `&language=en-US&page=`, `${numPage}`).then((data) => {
       setMovieLists((prev) => ({ ...prev, popularTv: data.results }));
     });
-  }, [numPage])
+  }, [numPage]);
 
   useEffect(() => {
     movieLists.topRated &&
@@ -83,8 +83,8 @@ const MainSection = ({ allRef }) => {
         <h2>Popular Tv</h2>
         {movieLists.popularTv && (
           <ListMovie
-          numPage={numPage}
-          setNumPage={setNumPage}
+            numPage={numPage}
+            setNumPage={setNumPage}
             type="popularTv"
             cardData={movieLists.popularTv}
           />

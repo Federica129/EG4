@@ -1,5 +1,6 @@
 @import "../../styles/mixins";
 .ListMovie {
+<<<<<<< Updated upstream
   @include flex(flex, center);
   padding-top: 30px;
   width: 100%;
@@ -39,8 +40,23 @@
     }
     
    }
+=======
+  height: calc(100vh - 86px);
+  .listTv {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+>>>>>>> Stashed changes
   }
+  //   .info {
+  //     background-color: red;
+  //     height: calc(100vh - 86px);
+  //     width: 25vw;
+  //   }
 
+<<<<<<< Updated upstream
   p{
     margin: 0;
     font-weight: bolder;
@@ -126,3 +142,11 @@
      }
 
   }
+=======
+  //   .list {
+  //     background-color: antiquewhite;
+  //     height: calc(100vh - 86px);
+  //     width: 75vw;
+  //   }
+}
+>>>>>>> Stashed changes

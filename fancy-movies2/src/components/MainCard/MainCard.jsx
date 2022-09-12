@@ -7,13 +7,13 @@ import { GET } from "../../utils/api";
 const MainCard = ({ cardData, type, numPage, setNumPage }) => {
   const {
     title,
+    name,
     vote_average,
     poster_path,
     overview,
     release_date,
     backdrop_path,
     id,
-    name,
     first_air_date,
   } = cardData;
 
@@ -34,18 +34,19 @@ const MainCard = ({ cardData, type, numPage, setNumPage }) => {
   }, [visibility]);
 
   useEffect(() => {
-   id && GET("movie", `${id}/videos`, "&language=en-US").then((dataMovie) => {
-      setMovieData(dataMovie.results[0]);
-      // console.log(dataMovie.results);
-    }); 
+    id &&
+      GET("movie", `${id}/videos`, "&language=en-US").then((dataMovie) => {
+        setMovieData(dataMovie.results[0]);
+        // console.log(dataMovie.results);
+      });
   }, []);
 
-
-useEffect(() => {
-  id && GET("tv", `${id}/videos`, "&language=en-US").then((dataMovie) => {
-      setMovieData(dataMovie.results[0]);})
-    },[numPage, visibility]);
-
+  useEffect(() => {
+    id &&
+      GET("tv", `${id}/videos`, "&language=en-US").then((dataMovie) => {
+        setMovieData(dataMovie.results[0]);
+      });
+  }, [numPage, visibility]);
 
   return (
     <div className={styles.MainCard}>
@@ -62,7 +63,7 @@ useEffect(() => {
           alt={title}
         />
         <div className={styles.text}>
-          <h3>{title? title : name}</h3>
+          <h3>{title ? title : name}</h3>
           <div className={styles.text2}>
             <span>
               <AiFillStar />
@@ -108,9 +109,11 @@ useEffect(() => {
                 </div>
               </div>
               <div className={`${styles.text2} ${isActive}`}>
-                <h1 className={styles.modalTitle}>{title? title : name}</h1>
+                <h1 className={styles.modalTitle}>{title ? title : name}</h1>
                 <p className={styles.description}>{overview}</p>
-                <p>Release date: {release_date? release_date : first_air_date}</p>
+                <p>
+                  Release date: {release_date ? release_date : first_air_date}
+                </p>
                 {movieData ? (
                   <div className={styles.trailer}>
                     <iframe
