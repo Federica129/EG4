@@ -1,0 +1,34 @@
+@import "../../styles/mixins";
+
+.Footer {
+  background: rgb(138, 121, 111);
+  background: linear-gradient(
+    180deg,
+    rgba(138, 121, 111, 0) 0%,
+    rgba(138, 121, 111, 0.5046393557422969) 13%,
+    rgba(138, 121, 111, 1) 23%,
+    rgba(48, 38, 39, 1) 68%
+  );
+  padding: 25px 0px 10px 0px;
+  color: white;
+
+  .contact {
+    @include flex(flex, center, row, 20px);
+
+    font-size: 1.5rem;
+
+    a {
+      color: white;
+      transition: 0.5s;
+    }
+
+    & a:hover {
+      color: #d8d8d8;
+      transition: 0.5s;
+    }
+  }
+  .copyright {
+    text-align: center;
+    font-size: 0.7rem;
+  }
+}
