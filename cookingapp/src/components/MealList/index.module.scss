@@ -1,0 +1,19 @@
+.MealList {
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  ul {
+    padding: 0px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));
+    grid-gap: 2px;
+    border-radius: 10px;
+    width: 95vw;
+  }
+}

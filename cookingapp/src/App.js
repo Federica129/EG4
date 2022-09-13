@@ -1,9 +1,10 @@
 import styles from "./App.module.scss";
+import HomePage from "./components/pages/HomePage";
 
 function App() {
   return (
     <div className={styles.App}>
-      <h1>Sono la hero di app</h1>
+      <HomePage />
     </div>
   );
 }

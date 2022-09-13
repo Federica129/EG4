@@ -5,8 +5,9 @@ import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Catalog from "./components/Catalog";
-import ErrorPage from "./components/ErrorPage";
+import Catalog from "./components/pages/Catalog";
+import ErrorPage from "./components/pages/ErrorPage";
+import HomePage from "./components/pages/HomePage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,8 +15,9 @@ root.render(
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/catalogo" element={<Catalog />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/catalogo" element={<HomePage />} />
+        <Route path="/catalogo/:categoryName" element={<Catalog />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />

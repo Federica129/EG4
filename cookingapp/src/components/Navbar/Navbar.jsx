@@ -17,7 +17,8 @@ function Navbar() {
               title={title}
               style={({ isActive }) => ({
                 pointerEvents: isActive ? "none" : "auto",
-                "border-bottom": isActive ? "1px solid white" : "none",
+                borderBottom: isActive ? "1px solid white" : "none",
+                color: isActive ? "#d8d8d8" : "white",
               })}
             >
               {label}
