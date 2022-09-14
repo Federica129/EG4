@@ -11,14 +11,15 @@
     rgba(138, 121, 111, 1) 23%,
     rgba(48, 38, 39, 1) 68%
   );
-  padding: 25px 0px 10px 0px;
+  padding: 20px 0px 10px 0px;
   color: white;
   width: 100vw;
+  z-index: 999;
 
   .contact {
     @include flex(flex, center, row, 20px);
 
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 
     a {
       color: white;

@@ -1,0 +1,37 @@
+.Recipe {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .Title {
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 3px #000000cc;
+  }
+
+  .list {
+    margin: 0;
+    text-shadow: 1px 1px 3px #000000cc;
+    text-align: center;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background-color: #302627;
+    width: max-content;
+    padding: 5px 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    li {
+      list-style-type: none;
+
+      a {
+        color: white;
+        padding: 5px;
+        text-decoration: none;
+      }
+    }
+  }
+}

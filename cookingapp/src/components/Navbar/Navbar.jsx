@@ -1,5 +1,11 @@
 import styles from "./index.module.scss";
 import { NavLink } from "react-router-dom";
+import {
+  AiFillYoutube,
+  AiFillGithub,
+  AiFillLinkedin,
+  AiFillInstagram,
+} from "react-icons/ai";
 
 function Navbar() {
   const links = [
@@ -9,6 +15,24 @@ function Navbar() {
 
   return (
     <div className={styles.Navbar}>
+      <div className={styles.contact}>
+        <a href="https://www.youtube.com/" target="_blank">
+          <AiFillYoutube />
+        </a>
+        <a href="https://www.instagram.com/" target="_blank">
+          <AiFillInstagram />
+        </a>
+        <a href="https://github.com/Federica129" target="_blank">
+          <AiFillGithub />
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/federica-schillaci/"
+          target="_blank"
+        >
+          <AiFillLinkedin />
+        </a>
+      </div>
       <ul>
         {links.map(({ href, label, title }) => (
           <li key={href}>

@@ -1,9 +1,12 @@
-import "./index.modules.scss";
+import styles from "./index.module.scss";
 
 function Hero() {
   return (
-    <div className="Navbar">
-      <h1>Sono la hero</h1>
+    <div className={styles.Hero}>
+      <div className={styles.title}>
+        <h1>Fatto in casa</h1>
+        <h2>da Lorem</h2>
+      </div>
     </div>
   );
 }

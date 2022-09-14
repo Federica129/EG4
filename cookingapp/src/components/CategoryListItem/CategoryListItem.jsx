@@ -14,6 +14,9 @@ function CategoryList({ data }) {
       </div>
       <div className={styles.content}>
         <h3 className={styles.title}>{category.strCategory}</h3>
+        {/* <div className={styles.description}>
+          <p>{category.strCategoryDescription}</p>
+        </div> */}
       </div>
       <Link
         to={`/catalogo/${category.strCategory}`}

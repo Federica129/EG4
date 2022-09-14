@@ -9,8 +9,8 @@ function HomePage() {
 
   return (
     <div className={styles.HomePage}>
-      {/* <Hero /> */}
-      <h1>Category</h1>
+      <Hero />
+      <h1 className={styles.name}>Category</h1>
       <CategoryList data={data?.categories} />
     </div>
   );

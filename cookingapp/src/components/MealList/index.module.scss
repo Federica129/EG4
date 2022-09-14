@@ -1,14 +1,21 @@
 .MealList {
+  height: 100vh;
   display: flex;
-  justify-content: center;
-  height: 80vh;
-  overflow: scroll;
+  flex-direction: column;
+
+  .title {
+    color: white;
+    text-align: center;
+    text-shadow: 1px 1px 3px #000000cc;
+    margin: 2px;
+  }
 
   &::-webkit-scrollbar {
     display: none;
   }
 
   ul {
+    align-self: center;
     padding: 0px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));

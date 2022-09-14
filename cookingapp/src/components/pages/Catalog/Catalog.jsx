@@ -11,11 +11,11 @@ function Catalog() {
   const { data, loading, error } = useFetch(
     `${ENDPOINTS.FILTER}?c=${categoryName}`
   );
-  // console.log(data && data.meals);
+
+  // console.log(data && data);
   return (
     <div className="Catalog">
-      <h1>{categoryName}</h1>
-      <MealList meals={data?.meals} />
+      <MealList meals={data?.meals} categoryName={categoryName} />
     </div>
   );
 }
