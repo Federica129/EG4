@@ -5,8 +5,18 @@
   padding: 15px 20px;
   border-radius: 10px;
   background-color: #4d3f40;
+  height: 65vh;
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   .content {
+    height: max-content;
+  }
+
+  .text {
     margin: 0;
   }
 }

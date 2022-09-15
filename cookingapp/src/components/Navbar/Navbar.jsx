@@ -44,6 +44,7 @@ function Navbar() {
                 borderBottom: isActive ? "1px solid white" : "none",
                 color: isActive ? "#d8d8d8" : "white",
               })}
+              end
             >
               {label}
             </NavLink>

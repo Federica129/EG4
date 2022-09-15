@@ -7,8 +7,10 @@ function Istruzioni() {
 
   return (
     <div className={styles.Istruzioni}>
-      <h3 className={styles.title}>Istruzioni:</h3>
-      <p className={styles.content}>{instructions}</p>
+      <div className={styles.content}>
+        <h3 className={styles.title}>Istruzioni:</h3>
+        <p className={styles.text}>{instructions}</p>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,13 @@
 import styles from "./index.module.scss";
 import { ENDPOINTS } from "../../../utils/endpoints";
 import { useFetch } from "../../../utils/useFetch";
-import { useParams, Outlet, Link, NavLink } from "react-router-dom";
+import {
+  useParams,
+  Outlet,
+  Link,
+  NavLink,
+  useLoaderData,
+} from "react-router-dom";
 
 const formatRecipe = (data) => {
   const initialRecipe = data.meals?.at(0) ?? {};
@@ -33,10 +39,12 @@ function Recipe() {
   const params = useParams();
   const { categoryName, recipeName, id } = params;
 
-  const { data, loading, error } = useFetch(
-    `${ENDPOINTS.DETEAIL}?i=${id}`,
-    formatRecipe
-  );
+  const data = useLoaderData();
+
+  // const { data, loading, error } = useFetch(
+  //   `${ENDPOINTS.DETEAIL}?i=${id}`,
+  //   formatRecipe
+  // );
 
   return (
     data && (
@@ -84,7 +92,7 @@ function Recipe() {
             </NavLink>
           </li>
         </ul>
-        <Outlet context={data} />
+        <Outlet context={formatRecipe(data)} />
       </div>
     )
   );
