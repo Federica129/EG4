@@ -20,6 +20,7 @@ import Recipe from "./components/pages/Recipe";
 import Ingredienti from "./components/Ingredienti";
 import Istruzioni from "./components/Istruzioni";
 import { ENDPOINTS } from "./utils/endpoints";
+import AuthGuard from "./components/AuthGuard/AuthGuard";
 
 // versione new 6.4
 const router = createBrowserRouter([
@@ -38,6 +39,13 @@ const router = createBrowserRouter([
         path: "/catalogo",
         element: <ErrorPage />,
       },
+      // {
+      //   path: "/catalogo/?query=:categoryName",
+      //   element: <Catalog />,
+      //   loader: ({ params }) => {
+      //     return fetch(`${ENDPOINTS.FILTER}?c=${params?.categoryName}`);
+      //   },
+      // },
       {
         path: "/catalogo/:categoryName",
         children: [
@@ -59,7 +67,11 @@ const router = createBrowserRouter([
               },
               {
                 path: "youtube",
-                element: <Player />,
+                element: (
+                  <AuthGuard>
+                    <Player />
+                  </AuthGuard>
+                ),
               },
               {
                 path: "ingredients",

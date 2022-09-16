@@ -1,9 +1,14 @@
 import "./index.modules.scss";
 import { ENDPOINTS } from "../../../utils/endpoints";
 import { useFetch } from "../../../utils/useFetch";
-import { useParams, useLoaderData } from "react-router-dom";
-import MealList from "../../MealList";
-
+import { useParams, useLoaderData, Await } from "react-router-dom";
+// import MealList from "../../MealList";
+import React, { Suspense } from "react";
+export const MealList = React.lazy(() => import("../../MealList"));
+//1 importare il componente interessante
+//2 Aggiungere il componente suspense con prop fallback con all'interno
+// quello che stamperà in fase di caricamento
+//3 con await, se non arrivano le risposte, stampa quel error
 function Catalog() {
   const params = useParams();
   const { categoryName } = params;
@@ -16,7 +21,11 @@ function Catalog() {
   // console.log(data && data);
   return (
     <div className="Catalog">
-      <MealList meals={data?.meals} categoryName={categoryName} />
+      <Suspense fallback={<div>loading!</div>}>
+        <Await resolve={data} errorElement={<div>Could not load data 😬</div>}>
+          <MealList meals={data?.meals} categoryName={categoryName} />
+        </Await>
+      </Suspense>
     </div>
   );
 }

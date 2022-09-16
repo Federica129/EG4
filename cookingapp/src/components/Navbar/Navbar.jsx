@@ -1,5 +1,6 @@
 import styles from "./index.module.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useSearchParams } from "react-router-dom";
+import { useState } from "react";
 import {
   AiFillYoutube,
   AiFillGithub,
@@ -12,6 +13,16 @@ function Navbar() {
     { href: "/", label: "Home", title: "Home" },
     { href: "/catalogo", label: "Catalogo", title: "Catalogo" },
   ];
+
+  // searchParams input
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const [query, setQuery] = useState(searchParams.get(`query`));
+
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   setQuery(e.target.value);
+  //   setSearchParams({ query });
+  // }
 
   return (
     <div className={styles.Navbar}>
@@ -33,6 +44,9 @@ function Navbar() {
           <AiFillLinkedin />
         </a>
       </div>
+      {/* <form>
+        <input value={query} onChange={handleSubmit} type="text" />
+      </form> */}
       <ul>
         {links.map(({ href, label, title }) => (
           <li key={href}>

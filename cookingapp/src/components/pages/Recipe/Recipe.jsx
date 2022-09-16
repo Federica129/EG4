@@ -7,7 +7,9 @@ import {
   Link,
   NavLink,
   useLoaderData,
+  useLocation,
 } from "react-router-dom";
+import { useEffect } from "react";
 
 const formatRecipe = (data) => {
   const initialRecipe = data.meals?.at(0) ?? {};
@@ -40,6 +42,17 @@ function Recipe() {
   const { categoryName, recipeName, id } = params;
 
   const data = useLoaderData();
+
+  const location = useLocation();
+  //location ti mostra un oggetto dell'url della pagina attuale - applicato in mealList in Link
+
+  useEffect(() => {
+    if (!location) {
+      console.log("accesso diretto");
+      return;
+    }
+    console.log(location);
+  }, [location]);
 
   // const { data, loading, error } = useFetch(
   //   `${ENDPOINTS.DETEAIL}?i=${id}`,

@@ -8,7 +8,7 @@ import { useFetch } from "../../../utils/useFetch";
 function HomePage() {
   // const { data, loading, error } = useFetch(`${ENDPOINTS.CATEGORIES}`);
   const data = useLoaderData();
-  console.log(data);
+  // console.log(data);
 
   if (!data) {
     return "Loading...";

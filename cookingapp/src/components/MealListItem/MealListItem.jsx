@@ -1,5 +1,5 @@
 import styles from "./index.module.scss";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 
 function CategoryList(props) {
   const { meal, categoryName } = props;
@@ -21,6 +21,7 @@ function CategoryList(props) {
           to={`/catalogo/${categoryName}/${meal.strMeal}/${meal.idMeal}`}
           title={`naviga sul catalogo ${meal.strMeal}`}
           className={styles.link}
+          state={{ meal, categoryName }}
         >
           {meal.strMeal}
         </Link>

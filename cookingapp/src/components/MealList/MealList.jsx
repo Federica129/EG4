@@ -1,5 +1,6 @@
 import styles from "./index.module.scss";
 import MealListItem from "../MealListItem";
+import React from "react";
 
 function MealList(props) {
   const { meals, categoryName } = props;
