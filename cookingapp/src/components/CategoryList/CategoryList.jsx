@@ -6,31 +6,30 @@ import { useEffect } from "react";
 
 function CategoryList({ data }) {
   const categories = data;
-
   // console.log(categories);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [numPage, setNumPage] = useState(1);
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const [numPage, setNumPage] = useState(1);
 
-  useEffect(() => {
-    setSearchParams(numPage);
-    searchParams.get("page");
-  }, [numPage]);
+  // useEffect(() => {
+  //   setSearchParams(numPage);
+  //   searchParams.get("page");
+  // }, [numPage]);
 
-  let pagina = numPage;
-  const perPage = 4;
-  const totalPage = Math.ceil(data.length / perPage);
+  // let pagina = numPage;
+  // const perPage = 4;
+  // const totalPage = Math.ceil(data.length / perPage);
 
-  const increment = () => {
-    setNumPage(numPage + 1);
-  };
+  // const increment = () => {
+  //   setNumPage(numPage + 1);
+  // };
 
-  const prev = () => {
-    setNumPage(numPage - 1);
-  };
+  // const prev = () => {
+  //   setNumPage(numPage - 1);
+  // };
 
   return (
     <>
-      <button type="button" onClick={prev} disabled={numPage === 1}>
+      {/* <button type="button" onClick={prev} disabled={numPage === 1}>
         Prev
       </button>
       <button
@@ -39,14 +38,15 @@ function CategoryList({ data }) {
         disabled={numPage === totalPage}
       >
         Next
-      </button>
+      </button> */}
       <div className="CategoryList">
         <ul>
-          {categories
-            ?.map((category) => (
+          {
+            categories?.map((category) => (
               <CategoryListItem key={category.idCategory} data={category} />
             ))
-            .slice((pagina - 1) * perPage, pagina * perPage)}
+            // .slice((pagina - 1) * perPage, pagina * perPage)
+          }
         </ul>
       </div>
     </>

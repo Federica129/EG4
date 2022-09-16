@@ -3,8 +3,8 @@ import { ENDPOINTS } from "../../../utils/endpoints";
 import { useFetch } from "../../../utils/useFetch";
 import { useParams, useLoaderData, Await } from "react-router-dom";
 // import MealList from "../../MealList";
-import React, { Suspense } from "react";
-export const MealList = React.lazy(() => import("../../MealList"));
+import { lazy, Suspense } from "react";
+const MealList = lazy(() => import("../../MealList"));
 //1 importare il componente interessante
 //2 Aggiungere il componente suspense con prop fallback con all'interno
 // quello che stamperà in fase di caricamento
