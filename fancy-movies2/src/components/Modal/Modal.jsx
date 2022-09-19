@@ -4,7 +4,7 @@ import { GET } from "../../utils/api";
 import { ModalContext } from "../../App";
 import styles from "./Modal.module.scss";
 
-function Modal({ id }) {
+function Modal({ id, modalType, setModalType }) {
   const [isActive, setActive] = useState("");
 
   const modalVisib = useContext(ModalContext);
@@ -23,6 +23,8 @@ function Modal({ id }) {
     overview: "",
     backdrop_path: "",
     release_date: "",
+    name: "",
+    last_air_date: "",
   });
 
   // useEffect(() => {
@@ -38,23 +40,24 @@ function Modal({ id }) {
 
   useEffect(() => {
     id &&
-      GET("movie", `${id}/videos`, "&language=en-US").then((dataMovie) => {
+      modalType === "tv" &&
+      GET("tv", `${id}/videos`, "&language=en-US").then((dataMovie) => {
         dataMovie.results && setMovieData(dataMovie?.results[0]);
-        // console.log(dataMovie.results);
+      }) &&
+      GET("tv", `${id}`, "&language=en-US").then((data) => {
+        setModalData(data);
       });
   }, [id]);
 
   useEffect(() => {
     id &&
-      GET("tv", `${id}/videos`, "&language=en-US").then((dataMovie) => {
+      modalType === "" &&
+      GET("movie", `${id}/videos`, "&language=en-US").then((dataMovie) => {
         dataMovie.results && setMovieData(dataMovie?.results[0]);
+      }) &&
+      GET("movie", `${id}`, "&language=en-US").then((data) => {
+        setModalData(data);
       });
-  }, [id]);
-
-  useEffect(() => {
-    GET("movie", `${id}`, "&language=en-US").then((data) => {
-      setModalData(data);
-    });
   }, [id]);
 
   return (
@@ -67,7 +70,9 @@ function Modal({ id }) {
           <div
             className={styles.backdrop}
             style={{
-              backgroundImage: `url("https://image.tmdb.org/t/p/original/${modalData.backdrop_path}")`,
+              backgroundImage: `url("https://image.tmdb.org/t/p/original/${
+                modalData.backdrop_path ?? null
+              }")`,
             }}
           ></div>
 
@@ -77,6 +82,7 @@ function Modal({ id }) {
             <p
               onClick={() => {
                 setVisibility(false);
+                setModalType("");
                 document.body.style.overflow = "auto";
               }}
             >
@@ -86,22 +92,41 @@ function Modal({ id }) {
           <div className={styles.box}>
             <div className={styles.box2}>
               <img
-                src={`https://image.tmdb.org/t/p/w342${modalData.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w342${
+                  modalData.poster_path ? modalData.poster_path : null
+                }`}
                 alt="poster_path"
               />
               <div className={styles.vote}>
                 <span>
                   <AiFillStar />
                 </span>
-                <p>{Number(modalData.vote_average.toFixed(1))}</p>
+                <p>
+                  {Number(
+                    modalData.vote_average
+                      ? modalData.vote_average.toFixed(1)
+                      : null
+                  )}
+                </p>
               </div>
             </div>
             <div className={`${styles.text2} ${isActive}`}>
-              <h1 className={styles.modalTitle}>{modalData.title}</h1>
-              <p className={styles.description}>{modalData.overview}</p>
+              <h1 className={styles.modalTitle}>
+                {modalData.title ? modalData.title : modalData.name}
+              </h1>
+              <p className={styles.description}>
+                {modalData.overview ? modalData.overview : null}
+              </p>
               <p>
                 Release date:{" "}
-                {modalData.release_date.split("-").reverse().join("-")}
+                {
+                  modalData.release_date
+                    ? modalData.release_date
+                    : modalData.last_air_date
+                  // .split("-")
+                  // .reverse()
+                  // .join("-")
+                }
               </p>
 
               <div className={styles.trailer}>

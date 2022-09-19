@@ -6,11 +6,10 @@ import { GET } from "../../utils/api";
 import styles from "./index.module.scss";
 import UpComing from "../UpComing";
 import ListMovie from "../ListMovie";
-import Modal from "../Modal";
 
 export const ModalContext = createContext();
 
-const MainSection = ({ allRef, setId }) => {
+const MainSection = ({ allRef, setId, setModalType }) => {
   const [movieLists, setMovieLists] = useState({});
   const [movieListsFilt, setMovieListsFilt] = useState([]);
   const [numPage, setNumPage] = useState("1");
@@ -108,6 +107,7 @@ const MainSection = ({ allRef, setId }) => {
             cardData={movieLists.popularTv}
             setVisibility={setVisibility}
             setId={setId}
+            setModalType={setModalType}
           />
         )}
       </div>

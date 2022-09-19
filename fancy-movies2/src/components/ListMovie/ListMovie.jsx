@@ -4,13 +4,14 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 import { memo } from "react";
 
-const ListMovie = ({ cardData, type, numPage, setNumPage, setId }) => {
-  //   const GETprova = () => {
-
-  // setNumPage('1')
-
-  //   }
-
+const ListMovie = ({
+  cardData,
+  type,
+  numPage,
+  setNumPage,
+  setId,
+  setModalType,
+}) => {
   return (
     <>
       <>
@@ -18,13 +19,12 @@ const ListMovie = ({ cardData, type, numPage, setNumPage, setId }) => {
           <div className={styles.listTv}>
             {cardData.map((i, ii) => (
               <MainCard
-                numPage={numPage}
-                setNumPage={setNumPage}
                 type={type}
                 cardData={i}
                 classe={"cardList"}
                 key={ii}
                 setId={setId}
+                setModalType={setModalType}
               />
             ))}
           </div>

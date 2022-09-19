@@ -15,6 +15,7 @@ function App() {
   const [movieTitle, setMovieTitle] = useState("moulin");
   const [visibility, setVisibility] = useState(false);
   const [id, setId] = useState(0);
+  const [modalType, setModalType] = useState("");
 
   const modalVisibility = {
     visibility,
@@ -49,10 +50,20 @@ function App() {
             movieTitle={movieTitle}
           />
         </Navbar>{" "}
-        <MovieEntity movieTitle={movieTitle} setId={setId} />
-        <MainSection allRef={allRef} setId={setId} />
+        <MovieEntity
+          movieTitle={movieTitle}
+          setId={setId}
+          modalType={modalType}
+        />
+        <MainSection
+          allRef={allRef}
+          setId={setId}
+          setModalType={setModalType}
+        />
         <Footer allRef={allRef} />
-        {visibility && <Modal id={id} />}
+        {visibility && (
+          <Modal id={id} modalType={modalType} setModalType={setModalType} />
+        )}
       </ModalContext.Provider>
     </div>
   );
