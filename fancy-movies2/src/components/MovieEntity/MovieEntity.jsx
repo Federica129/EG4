@@ -1,10 +1,11 @@
 import styles from "./index.module.scss";
 import { GET } from "../../utils/api";
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect, useContext } from "react";
 import { AiFillStar } from "react-icons/ai";
 import Modal from "../Modal";
+import { ModalContext } from "../../App";
 
-const MovieEntity = ({ movieTitle }) => {
+const MovieEntity = ({ movieTitle, setId }) => {
   const [movieData, setMovieData] = useState([
     {
       poster_path: "",
@@ -12,6 +13,7 @@ const MovieEntity = ({ movieTitle }) => {
       vote_average: 0,
       title: "",
       adult: false,
+      id: 0,
     },
   ]);
 
@@ -22,9 +24,11 @@ const MovieEntity = ({ movieTitle }) => {
   ]);
 
   const [forbidden, setForbidden] = useState(false);
-  const [visibility, setVisibility] = useState(false);
   const [isActive, setActive] = useState("");
   const [isActiveHero, setActiveHero] = useState("");
+
+  const modalVisib = useContext(ModalContext);
+  const { visibility, setVisibility } = modalVisib;
 
   useEffect(() => {
     setActive("");
@@ -89,6 +93,7 @@ const MovieEntity = ({ movieTitle }) => {
       <div className={styles.book}>
         <button
           onClick={() => {
+            setId(movieData.id);
             setVisibility(true);
             document.body.style.overflow = "hidden";
           }}
@@ -97,7 +102,7 @@ const MovieEntity = ({ movieTitle }) => {
           More info
         </button>
       </div>
-      {visibility && (
+      {/* {visibility && (
         <Modal>
           <div className={styles.modalbox}>
             <div
@@ -149,7 +154,7 @@ const MovieEntity = ({ movieTitle }) => {
             </div>
           </div>
         </Modal>
-      )}
+      )} */}
     </div>
   ) : (
     <div className={styles.Error}>
@@ -159,4 +164,4 @@ const MovieEntity = ({ movieTitle }) => {
   );
 };
 
-export default memo(MovieEntity);
+export default MovieEntity;

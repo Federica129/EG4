@@ -1,10 +1,10 @@
 import styles from "./index.module.scss";
 import { AiFillStar } from "react-icons/ai";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Modal from "../Modal";
-import { GET } from "../../utils/api";
+import { ModalContext } from "../../App";
 
-const MainCard = ({ cardData, type, numPage, setNumPage }) => {
+const MainCard = ({ cardData, type, numPage, setNumPage, setId }) => {
   const {
     title,
     name,
@@ -17,42 +17,22 @@ const MainCard = ({ cardData, type, numPage, setNumPage }) => {
     first_air_date,
   } = cardData;
 
-  const [visibility, setVisibility] = useState(false);
+  // const [visibility, setVisibility] = useState(false);
+
+  const modalVisib = useContext(ModalContext);
+  const { setVisibility } = modalVisib;
+
+  // console.log(value);
+
+  // const [visibility, setVisibility] = useState(false);
   const [isActive, setActive] = useState("");
-
-  const [movieData, setMovieData] = useState([
-    {
-      key: "",
-    },
-  ]);
-
-  useEffect(() => {
-    setActive("");
-    setTimeout(() => {
-      setActive(styles.active);
-    }, 1000);
-  }, [visibility]);
-
-  useEffect(() => {
-    id &&
-      GET("movie", `${id}/videos`, "&language=en-US").then((dataMovie) => {
-        setMovieData(dataMovie.results[0]);
-        // console.log(dataMovie.results);
-      });
-  }, []);
-
-  useEffect(() => {
-    id &&
-      GET("tv", `${id}/videos`, "&language=en-US").then((dataMovie) => {
-        setMovieData(dataMovie.results[0]);
-      });
-  }, [numPage, visibility]);
 
   return (
     <div className={styles.MainCard}>
       <div
         className={` ${styles[type]}`}
         onClick={() => {
+          setId(id);
           setVisibility(true);
           document.body.style.overflow = "hidden";
         }}
@@ -72,64 +52,16 @@ const MainCard = ({ cardData, type, numPage, setNumPage }) => {
           </div>
         </div>
       </div>
-      {visibility && (
-        <Modal>
-          <div className={styles.modalbox}>
-            <div
-              className={styles.backdrop}
-              style={{
-                backgroundImage: `url("https://image.tmdb.org/t/p/original/${backdrop_path}")`,
-              }}
-            ></div>
 
-            <div className={styles.overlay}></div>
-
-            <div className={styles.button}>
-              <p
-                onClick={() => {
-                  setVisibility(false);
-                  document.body.style.overflow = "auto";
-                }}
-              >
-                X
-              </p>
-            </div>
-
-            <div className={styles.box}>
-              <div className={styles.box2}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w342${poster_path}`}
-                  alt="poster_path"
-                />
-                <div className={styles.vote}>
-                  <span>
-                    <AiFillStar />
-                  </span>
-                  <p>{vote_average}</p>
-                </div>
-              </div>
-              <div className={`${styles.text2} ${isActive}`}>
-                <h1 className={styles.modalTitle}>{title ? title : name}</h1>
-                <p className={styles.description}>{overview}</p>
-                <p>
-                  Release date: {release_date ? release_date : first_air_date}
-                </p>
-                {movieData ? (
-                  <div className={styles.trailer}>
-                    <iframe
-                      src={`https://www.youtube.com/embed/${movieData.key}?autoplay=1`}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      autoPlay
-                    ></iframe>
-                  </div>
-                ) : null}
-              </div>
-            </div>
-          </div>
-        </Modal>
-      )}
+      {/* {visibility && (
+        <ModalContext.Provider value={ModalVisibility}>
+          <Modal
+            numPage={numPage}
+            setNumPage={setNumPage}
+            cardData={cardData}
+          />
+        </ModalContext.Provider>
+      )} */}
     </div>
   );
 };

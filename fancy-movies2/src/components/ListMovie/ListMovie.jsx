@@ -4,7 +4,13 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 import { memo } from "react";
 
-const ListMovie = ({ cardData, type, numPage, setNumPage }) => {
+const ListMovie = ({ cardData, type, numPage, setNumPage, setId }) => {
+  //   const GETprova = () => {
+
+  // setNumPage('1')
+
+  //   }
+
   return (
     <>
       <>
@@ -18,6 +24,7 @@ const ListMovie = ({ cardData, type, numPage, setNumPage }) => {
                 cardData={i}
                 classe={"cardList"}
                 key={ii}
+                setId={setId}
               />
             ))}
           </div>
@@ -25,14 +32,14 @@ const ListMovie = ({ cardData, type, numPage, setNumPage }) => {
       </>
       <div className={styles.btn}>
         <div className={styles.prev}>
-          <button onClick={() => setNumPage(1)} disabled={numPage === 1}>
+          <button onClick={() => setNumPage("1")} disabled={numPage === "1"}>
             <span>
               <MdSkipPrevious />
             </span>
           </button>
           <button
-            onClick={() => setNumPage(numPage - 1)}
-            disabled={numPage === 1}
+            onClick={() => setNumPage((prev) => (Number(prev) - 1).toString())}
+            disabled={numPage === "1"}
           >
             <span>
               <IoIosArrowBack />
@@ -42,14 +49,14 @@ const ListMovie = ({ cardData, type, numPage, setNumPage }) => {
         <p>{numPage}</p>
         <div className={styles.next}>
           <button
-            onClick={() => setNumPage(numPage + 1)}
-            disabled={numPage === 20}
+            onClick={() => setNumPage((prev) => (Number(prev) + 1).toString())}
+            disabled={numPage === "20"}
           >
             <span>
               <IoIosArrowForward />
             </span>
           </button>
-          <button onClick={() => setNumPage(20)} disabled={numPage === 20}>
+          <button onClick={() => setNumPage("20")} disabled={numPage === "20"}>
             <span>
               <MdSkipNext />
             </span>

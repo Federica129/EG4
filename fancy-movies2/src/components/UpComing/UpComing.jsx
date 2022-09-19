@@ -2,7 +2,7 @@ import MainCard from "../MainCard";
 import { useRef, useEffect } from "react";
 import styles from "./index.module.scss";
 
-const UpComing = ({ cardData, nCards, type }) => {
+const UpComing = ({ cardData, nCards, type, setId }) => {
   const scrollProva = useRef(null);
 
   useEffect(() => {
@@ -26,6 +26,7 @@ const UpComing = ({ cardData, nCards, type }) => {
           type={type}
           classe={styles.cardList}
           key={ii}
+          setId={setId}
         />
       ))}
     </div>

@@ -3,7 +3,7 @@ import MainCard from "../MainCard";
 import { useRef, useEffect } from "react";
 import styles from "./index.module.scss";
 
-const TopRatedList = ({ cardData, nCards, type }) => {
+const TopRatedList = ({ cardData, nCards, type, setId }) => {
   const scrollProva = useRef(null);
 
   useEffect(() => {
@@ -22,7 +22,13 @@ const TopRatedList = ({ cardData, nCards, type }) => {
   return (
     <div className={styles.TopRatedList} ref={scrollProva}>
       {cardData.map((i, ii) => (
-        <MainCard cardData={i} type={type} classe={styles.cardList} key={ii} />
+        <MainCard
+          cardData={i}
+          type={type}
+          classe={styles.cardList}
+          key={ii}
+          setId={setId}
+        />
       ))}
     </div>
   );

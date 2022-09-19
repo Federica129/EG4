@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import MainCard from "../MainCard";
 import TopRatedList from "../TopRatedList";
 import Popular from "../Popular";
@@ -6,30 +6,37 @@ import { GET } from "../../utils/api";
 import styles from "./index.module.scss";
 import UpComing from "../UpComing";
 import ListMovie from "../ListMovie";
+import Modal from "../Modal";
 
-const MainSection = ({ allRef }) => {
+export const ModalContext = createContext();
+
+const MainSection = ({ allRef, setId }) => {
   const [movieLists, setMovieLists] = useState({});
   const [movieListsFilt, setMovieListsFilt] = useState([]);
-  const [numPage, setNumPage] = useState(1);
+  const [numPage, setNumPage] = useState("1");
+  const [visibility, setVisibility] = useState(false);
 
   useEffect(() => {
     GET("movie", "popular", "&language=en-US&page=1").then((data) => {
-      setMovieLists((prev) => ({ ...prev, popular: data.results }));
+      setMovieLists((prev) => ({ ...prev, popular: data?.results }));
     });
 
     GET("movie", "top_rated", "&language=en-US&page=1").then((data) => {
-      setMovieLists((prev) => ({ ...prev, topRated: data.results }));
+      setMovieLists((prev) => ({ ...prev, topRated: data?.results }));
     });
 
     GET("movie", "upcoming", "&language=en-US&page=1").then((data) => {
-      setMovieLists((prev) => ({ ...prev, upcoming: data.results }));
+      setMovieLists((prev) => ({ ...prev, upcoming: data?.results }));
     });
   }, []);
 
   useEffect(() => {
-    GET("tv", "popular", `&language=en-US&page=`, `${numPage}`).then((data) => {
-      setMovieLists((prev) => ({ ...prev, popularTv: data.results }));
-    });
+    numPage &&
+      GET("tv", "popular", `&language=en-US&page=`, `${numPage}`).then(
+        (data) => {
+          setMovieLists((prev) => ({ ...prev, popularTv: data?.results }));
+        }
+      );
   }, [numPage]);
 
   useEffect(() => {
@@ -42,10 +49,16 @@ const MainSection = ({ allRef }) => {
 
   return (
     <>
+      {" "}
       <div ref={allRef.refMovie} className={styles.MainSection}>
         <div className={styles.topMovie}>
           {movieLists.popular && (
-            <MainCard type="popular" cardData={movieLists.popular[1]} />
+            <MainCard
+              type="popular"
+              setVisibility={setVisibility}
+              cardData={movieLists.popular[0]}
+              setId={setId}
+            />
           )}
         </div>
 
@@ -56,6 +69,8 @@ const MainSection = ({ allRef }) => {
               type="topRated"
               cardData={movieListsFilt}
               nCards={10}
+              setVisibility={setVisibility}
+              setId={setId}
             />
           )}
 
@@ -65,6 +80,8 @@ const MainSection = ({ allRef }) => {
               type="upComing"
               cardData={movieLists.upcoming}
               nCards={15}
+              setVisibility={setVisibility}
+              setId={setId}
             />
           )}
         </div>
@@ -76,6 +93,8 @@ const MainSection = ({ allRef }) => {
             type="popularList"
             cardData={movieLists.popular}
             nCards={20}
+            setVisibility={setVisibility}
+            setId={setId}
           />
         )}
       </div>
@@ -87,6 +106,8 @@ const MainSection = ({ allRef }) => {
             setNumPage={setNumPage}
             type="popularTv"
             cardData={movieLists.popularTv}
+            setVisibility={setVisibility}
+            setId={setId}
           />
         )}
       </div>

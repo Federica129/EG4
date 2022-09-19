@@ -1,0 +1,233 @@
+@import "../../styles/mixins";
+
+.Modal {
+  @include flex(flex, center, row, 0, center);
+  @include position(fixed, 0, auto, auto, 0, 5);
+
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.592);
+  transition: all 0.5s;
+
+  .modalContent {
+    background-color: rgb(0, 0, 0);
+    backdrop-filter: blur(4px);
+    padding: 20px;
+    height: 80vh;
+    width: 80vw;
+    opacity: 1;
+    transition: all 0.5s;
+
+    .modalbox {
+      height: 100%;
+
+      .backdrop {
+        @include position(absolute, 0, auto, auto, 0, -3);
+
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: blur(1px);
+        opacity: 0.6;
+      }
+
+      .overlay {
+        @include position(absolute, 0, auto, auto, 0, -2);
+
+        width: 100%;
+        height: 100%;
+        background: rgb(0, 0, 0);
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 1) 46%,
+          rgba(0, 0, 0, 0.804359243697479) 64%,
+          rgba(0, 0, 0, 0.2861519607843137) 100%
+        );
+      }
+
+      .button {
+        @include flex(flex, flex-end);
+
+        font-size: 1.2rem;
+        font-weight: bolder;
+        color: red;
+        z-index: 2;
+        p {
+          margin: 0;
+          transition: 0.5s;
+          cursor: pointer;
+
+          &:hover {
+            color: rgba(255, 0, 0, 0.527);
+            transition: 0.5s;
+          }
+        }
+      }
+
+      .box {
+        @include flex(flex, flex-start, row, 20px);
+        height: 85vh;
+        z-index: 2;
+
+        .box2 {
+          img {
+            height: 90%;
+            border-radius: 5px;
+          }
+        }
+
+        .vote {
+          @include flex(flex, flex-start, row, 2px);
+
+          color: white;
+          font-weight: bold;
+
+          p {
+            margin: 0;
+            font-size: 1.5rem;
+          }
+
+          span {
+            align-self: center;
+            color: yellow;
+            font-size: 1.8rem;
+          }
+        }
+        .text2 {
+          color: white;
+          font-size: 1.9rem;
+          transition: 0.1s;
+          opacity: 0;
+          width: 100%;
+          height: 40vh;
+          // display: flex;
+
+          &.active {
+            opacity: 1;
+            transition: 0.4s;
+          }
+
+          .modalTitle {
+            font-size: 100%;
+            color: white;
+            margin: 0;
+            text-align: center;
+            padding: 5px;
+          }
+
+          p:nth-child(3) {
+            text-align: end;
+            font-size: 45%;
+          }
+
+          .trailer {
+            @include flex(flex, center);
+            height: 50vh;
+
+            iframe {
+              height: 100%;
+              width: 40vw;
+              border-radius: 10px;
+            }
+          }
+
+          .description {
+            font-size: 50%;
+            text-transform: none;
+          }
+        }
+      }
+    }
+  }
+  &.active {
+    .modalContent {
+      height: 85vh;
+      width: 85vw;
+      opacity: 1;
+      border-radius: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .Modal {
+    .modalContent {
+      .modalbox {
+        height: 100%;
+        .backdrop {
+          background-size: contain;
+          filter: blur(0px);
+          opacity: 1;
+        }
+
+        .overlay {
+          background: rgb(0, 0, 0);
+          background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 1) 69%,
+            rgba(0, 0, 0, 0.9859943977591037) 73%,
+            rgba(0, 0, 0, 0.4009978991596639) 89%,
+            rgba(0, 0, 0, 0) 100%
+          );
+        }
+
+        .button {
+          font-size: 1.4rem;
+          padding-top: 15px;
+        }
+
+        .box {
+          @include flex(flex, center, column, 20px);
+          height: 75vh;
+
+          .box2 {
+            img {
+              display: none;
+            }
+
+            .vote {
+              @include position(absolute, 170px, 0, 0, 310px);
+              p {
+                font-size: 1rem;
+              }
+
+              span {
+                align-self: auto;
+                font-size: 1.3rem;
+              }
+            }
+          }
+
+          .text2 {
+            font-size: 1.4rem;
+
+            .modalTitle {
+              font-size: 85%;
+            }
+
+            p {
+              margin: 2px;
+            }
+
+            .trailer {
+              height: 80%;
+
+              iframe {
+                width: 90vw;
+                border-radius: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+    &.active {
+      .modalContent {
+        height: 100vh;
+        width: 100vw;
+      }
+    }
+  }
+}
