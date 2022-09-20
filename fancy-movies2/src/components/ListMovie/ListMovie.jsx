@@ -4,14 +4,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 import { memo } from "react";
 
-const ListMovie = ({
-  cardData,
-  type,
-  numPage,
-  setNumPage,
-  setId,
-  setModalType,
-}) => {
+const ListMovie = ({ cardData, type, setId, setModalType, reducer }) => {
   return (
     <>
       <>
@@ -32,31 +25,37 @@ const ListMovie = ({
       </>
       <div className={styles.btn}>
         <div className={styles.prev}>
-          <button onClick={() => setNumPage("1")} disabled={numPage === "1"}>
+          <button
+            onClick={() => reducer.dispatch({ type: "MINDECREMENT" })}
+            disabled={reducer.state.page == "1"}
+          >
             <span>
               <MdSkipPrevious />
             </span>
           </button>
           <button
-            onClick={() => setNumPage((prev) => (Number(prev) - 1).toString())}
-            disabled={numPage === "1"}
+            onClick={() => reducer.dispatch({ type: "DECREMENT" })}
+            disabled={reducer.state.page == "1"}
           >
             <span>
               <IoIosArrowBack />
             </span>
           </button>
         </div>
-        <p>{numPage}</p>
+        <p>{reducer.state.page}</p>
         <div className={styles.next}>
           <button
-            onClick={() => setNumPage((prev) => (Number(prev) + 1).toString())}
-            disabled={numPage === "20"}
+            onClick={() => reducer.dispatch({ type: "INCREMENT" })}
+            disabled={reducer.state.page == "20"}
           >
             <span>
               <IoIosArrowForward />
             </span>
           </button>
-          <button onClick={() => setNumPage("20")} disabled={numPage === "20"}>
+          <button
+            onClick={() => reducer.dispatch({ type: "MAXINCREMENT" })}
+            disabled={reducer.state.page == "20"}
+          >
             <span>
               <MdSkipNext />
             </span>

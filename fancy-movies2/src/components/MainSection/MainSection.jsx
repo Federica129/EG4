@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
 import MainCard from "../MainCard";
 import TopRatedList from "../TopRatedList";
 import Popular from "../Popular";
@@ -6,14 +6,15 @@ import { GET } from "../../utils/api";
 import styles from "./index.module.scss";
 import UpComing from "../UpComing";
 import ListMovie from "../ListMovie";
-
-export const ModalContext = createContext();
+import { ModalContext } from "../../App";
 
 const MainSection = ({ allRef, setId, setModalType }) => {
   const [movieLists, setMovieLists] = useState({});
   const [movieListsFilt, setMovieListsFilt] = useState([]);
   const [numPage, setNumPage] = useState("1");
-  const [visibility, setVisibility] = useState(false);
+
+  const changePage = useContext(ModalContext);
+  const { reducerFn } = changePage;
 
   useEffect(() => {
     GET("movie", "popular", "&language=en-US&page=1").then((data) => {
@@ -30,21 +31,23 @@ const MainSection = ({ allRef, setId, setModalType }) => {
   }, []);
 
   useEffect(() => {
-    numPage &&
-      GET("tv", "popular", `&language=en-US&page=`, `${numPage}`).then(
-        (data) => {
-          setMovieLists((prev) => ({ ...prev, popularTv: data?.results }));
-        }
-      );
-  }, [numPage]);
+    reducerFn.state.page &&
+      GET(
+        "tv",
+        "popular",
+        `&language=en-US&page=`,
+        `${reducerFn.state.page}`
+      ).then((data) => {
+        setMovieLists((prev) => ({ ...prev, popularTv: data?.results }));
+      });
+  }, [reducerFn.state.page]);
 
   useEffect(() => {
     movieLists.topRated &&
       setMovieListsFilt(
         movieLists.topRated.filter((movie) => movie.vote_average >= 8.6)
       );
-    // console.log(movieListsFilt);
-  }, [movieLists.topRated]); // !!!!!!!!!!!!!
+  }, [movieLists.topRated]);
 
   return (
     <>
@@ -54,7 +57,6 @@ const MainSection = ({ allRef, setId, setModalType }) => {
           {movieLists.popular && (
             <MainCard
               type="popular"
-              setVisibility={setVisibility}
               cardData={movieLists.popular[0]}
               setId={setId}
             />
@@ -68,7 +70,6 @@ const MainSection = ({ allRef, setId, setModalType }) => {
               type="topRated"
               cardData={movieListsFilt}
               nCards={10}
-              setVisibility={setVisibility}
               setId={setId}
             />
           )}
@@ -79,7 +80,6 @@ const MainSection = ({ allRef, setId, setModalType }) => {
               type="upComing"
               cardData={movieLists.upcoming}
               nCards={15}
-              setVisibility={setVisibility}
               setId={setId}
             />
           )}
@@ -92,7 +92,6 @@ const MainSection = ({ allRef, setId, setModalType }) => {
             type="popularList"
             cardData={movieLists.popular}
             nCards={20}
-            setVisibility={setVisibility}
             setId={setId}
           />
         )}
@@ -105,9 +104,9 @@ const MainSection = ({ allRef, setId, setModalType }) => {
             setNumPage={setNumPage}
             type="popularTv"
             cardData={movieLists.popularTv}
-            setVisibility={setVisibility}
             setId={setId}
             setModalType={setModalType}
+            reducer={reducerFn}
           />
         )}
       </div>

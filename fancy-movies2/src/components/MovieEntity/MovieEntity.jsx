@@ -2,7 +2,6 @@ import styles from "./index.module.scss";
 import { GET } from "../../utils/api";
 import { useState, useEffect, useContext } from "react";
 import { AiFillStar } from "react-icons/ai";
-import Modal from "../Modal";
 import { ModalContext } from "../../App";
 
 const MovieEntity = ({ movieTitle, setId }) => {
@@ -24,18 +23,11 @@ const MovieEntity = ({ movieTitle, setId }) => {
   ]);
 
   const [forbidden, setForbidden] = useState(false);
-  const [isActive, setActive] = useState("");
   const [isActiveHero, setActiveHero] = useState("");
 
   const modalVisib = useContext(ModalContext);
-  const { visibility, setVisibility } = modalVisib;
-
-  useEffect(() => {
-    setActive("");
-    setTimeout(() => {
-      setActive(styles.active);
-    }, 1000);
-  }, [visibility]);
+  const { modalVisibility } = modalVisib;
+  const { setVisibility } = modalVisibility;
 
   useEffect(() => {
     setActiveHero("");
@@ -43,7 +35,6 @@ const MovieEntity = ({ movieTitle, setId }) => {
       GET("search", "movie", `&query=${movieTitle}&page=1`).then((data) => {
         if (data.results[0] && data.results[0].adult === false) {
           setEntityData(data.results[0]);
-          // console.log(data.results[0].id);
           setForbidden(false);
           GET("movie", `${data.results[0].id}/videos`, "&language=en-US").then(
             (dataMovie) => {
@@ -105,7 +96,6 @@ const MovieEntity = ({ movieTitle, setId }) => {
     </div>
   ) : (
     <div className={styles.Error}>
-      {console.log(forbidden)}
       <h1>Nessun risultato o contenuto vietato ai minori.</h1>
     </div>
   );

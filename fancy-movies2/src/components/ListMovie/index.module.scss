@@ -5,9 +5,9 @@
   width: 100%;
 
   .listTv {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-column-gap: 35px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-row-gap: 0px;
   }
 }

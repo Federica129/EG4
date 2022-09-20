@@ -1,16 +1,18 @@
 import MovieEntity from "./components/MovieEntity";
 import MainInput from "./components/MainInput";
 import MainSection from "./components/MainSection";
-import { useState, useRef, createContext } from "react";
+import { useState, useRef, createContext, useReducer } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Modal from "./components/Modal";
+import { initialState, reducer } from "./utils/initState.js";
 
 import "./App.scss";
 
 export const ModalContext = createContext();
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState);
   const [inputValue, setInputValue] = useState("");
   const [movieTitle, setMovieTitle] = useState("moulin");
   const [visibility, setVisibility] = useState(false);
@@ -20,6 +22,13 @@ function App() {
   const modalVisibility = {
     visibility,
     setVisibility,
+  };
+
+  const reducerFn = {
+    initialState,
+    reducer,
+    dispatch,
+    state,
   };
 
   const refMovie = useRef(null);
@@ -32,7 +41,7 @@ function App() {
     refContact,
   };
 
-  const onHandleSubmit = (e) => {
+  const onHandleSubmit = e => {
     e.preventDefault();
 
     setMovieTitle(inputValue);
@@ -40,7 +49,7 @@ function App() {
 
   return (
     <div className="App">
-      <ModalContext.Provider value={modalVisibility}>
+      <ModalContext.Provider value={{ modalVisibility, reducerFn }}>
         <Navbar allRef={allRef}>
           <MainInput
             inputValue={inputValue}

@@ -6,9 +6,11 @@ import styles from "./Modal.module.scss";
 
 function Modal({ id, modalType, setModalType }) {
   const [isActive, setActive] = useState("");
+  const [isActiveModal, setActiveModal] = useState("");
 
   const modalVisib = useContext(ModalContext);
-  const { visibility, setVisibility } = modalVisib;
+  const { modalVisibility } = modalVisib;
+  const { visibility, setVisibility } = modalVisibility;
 
   const [movieData, setMovieData] = useState([
     {
@@ -27,9 +29,9 @@ function Modal({ id, modalType, setModalType }) {
     last_air_date: "",
   });
 
-  // useEffect(() => {
-  //   setActive("active");
-  // }, []);
+  useEffect(() => {
+    setActiveModal(styles.active);
+  }, []);
 
   useEffect(() => {
     setActive("");
@@ -41,10 +43,10 @@ function Modal({ id, modalType, setModalType }) {
   useEffect(() => {
     id &&
       modalType === "tv" &&
-      GET("tv", `${id}/videos`, "&language=en-US").then((dataMovie) => {
+      GET("tv", `${id}/videos`, "&language=en-US").then(dataMovie => {
         dataMovie.results && setMovieData(dataMovie?.results[0]);
       }) &&
-      GET("tv", `${id}`, "&language=en-US").then((data) => {
+      GET("tv", `${id}`, "&language=en-US").then(data => {
         setModalData(data);
       });
   }, [id]);
@@ -52,20 +54,17 @@ function Modal({ id, modalType, setModalType }) {
   useEffect(() => {
     id &&
       modalType === "" &&
-      GET("movie", `${id}/videos`, "&language=en-US").then((dataMovie) => {
+      GET("movie", `${id}/videos`, "&language=en-US").then(dataMovie => {
         dataMovie.results && setMovieData(dataMovie?.results[0]);
       }) &&
-      GET("movie", `${id}`, "&language=en-US").then((data) => {
+      GET("movie", `${id}`, "&language=en-US").then(data => {
         setModalData(data);
       });
   }, [id]);
 
   return (
-    <div
-      className={`${styles.Modal}
-    `}
-    >
-      <div className={styles.modalContent}>
+    <div className={`${styles.Modal}`}>
+      <div className={`${styles.modalContent} ${isActiveModal}`}>
         <div className={styles.modalbox}>
           <div
             className={styles.backdrop}
@@ -119,14 +118,13 @@ function Modal({ id, modalType, setModalType }) {
               </p>
               <p>
                 Release date:{" "}
-                {
-                  modalData.release_date
-                    ? modalData.release_date
-                    : modalData.last_air_date
-                  // .split("-")
-                  // .reverse()
-                  // .join("-")
-                }
+                {(modalData.release_date
+                  ? modalData.release_date
+                  : modalData.last_air_date
+                )
+                  .split("-")
+                  .reverse()
+                  .join("-")}
               </p>
 
               <div className={styles.trailer}>

@@ -7,7 +7,8 @@ const MainCard = ({ cardData, type, setId, setModalType }) => {
   const { title, vote_average, poster_path, id } = cardData;
 
   const modalVisib = useContext(ModalContext);
-  const { setVisibility } = modalVisib;
+  const { modalVisibility } = modalVisib;
+  const { setVisibility } = modalVisibility;
 
   return (
     <div className={styles.MainCard}>
