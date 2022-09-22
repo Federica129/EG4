@@ -12,6 +12,10 @@ const init = {
   user: {
     name: "Nessuno",
   },
+
+  list: {
+    todo: ["pasta", "pane", "pollo"],
+  },
 };
 
 const reducerCount = (state = {}, action) => {
@@ -36,7 +40,25 @@ const reducerUser = (state = {}, action) => {
   }
 };
 
-const reducer = combineReducers({ count: reducerCount, user: reducerUser });
+const reducerList = (state = {}, action) => {
+  switch (action.type) {
+    case "ADD":
+      return { ...state, todo: [...state.todo, action.payload] };
+    case "DELETE":
+      return {
+        ...state,
+        todo: [...state.todo].filter((_, i) => i !== action.payload),
+      };
+    default:
+      return state;
+  }
+};
+
+const reducer = combineReducers({
+  count: reducerCount,
+  user: reducerUser,
+  list: reducerList,
+});
 const store = createStore(reducer, init);
 
 export default store;
